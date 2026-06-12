@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐯 화정 유소년 야구단 공주대회 대시보드</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .scrollbar-none::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-none {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-100 text-slate-800 pb-16 antialiased">
+
+  <!-- Toast Alert Box -->
+  <div id="toast" class="hidden fixed top-4 left-1/2 -translate-x-1/2 z-50 w-11/12 max-w-sm p-3.5 rounded-xl shadow-xl bg-slate-900 text-white text-xs font-semibold leading-relaxed transition-all">
+    <div class="flex gap-2 items-center">
+      <span>🧭</span>
+      <p id="toast-message" class="flex-1 whitespace-pre-line"></p>
+    </div>
+  </div>
+
+  <!-- Top Banner Header -->
+  <header class="bg-slate-950 text-white shadow-lg border-b border-slate-800 relative overflow-hidden pb-10 sm:pb-12">
+    <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="absolute right-4 top-2 text-4xl opacity-20 pointer-events-none filter grayscale select-none animate-pulse hidden md:block">🐯⚾🐯</div>
+
+    <div class="max-w-5xl mx-auto px-4 py-6 md:py-8 relative z-10">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        
+        <!-- Logo & Title -->
+        <div class="flex items-center gap-3 sm:gap-4 w-full md:w-auto">
+          <!-- HJ Tiger SVG Logo Container -->
+          <div id="header-logo" class="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden border-2 border-amber-400 bg-white shadow-2xl shrink-0 flex items-center justify-center p-0.5">
+            <!-- SVG injected dynamically by JS -->
+          </div>
+
+          <div class="min-w-0 flex-1">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/10 text-amber-400 text-xs font-bold uppercase tracking-wider mb-2 border border-amber-400/20">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              2026 공주 공산성배 전국유소년야구대회
+            </div>
+            <h1 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight leading-tight truncate">
+              🐯 화정 유소년 야구단 공주대회
+            </h1>
+            <p class="mt-1.5 text-slate-400 text-xs sm:text-sm max-w-xl leading-relaxed">
+              화정 유소년 타이거즈의 최신 변경된 새싹·꿈나무·유소년 전 경기 일정 및 시간별 맞춤 기상 예보 정보
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- 📊 Quick Statistics Row (Interactive & Clickable!) -->
+  <section class="relative z-10 max-w-5xl mx-auto px-3 -mt-6 sm:-mt-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      
+      <!-- Sprout Card -->
+      <button 
+        id="stat-sprout"
+        onclick="handleStatCardClick('새싹')"
+        class="rounded-2xl p-4 text-center border transition-all duration-300 transform hover:scale-[1.03] shadow-md bg-white border-slate-200/80 hover:bg-slate-50 text-emerald-600"
+      >
+        <div class="text-base sm:text-lg md:text-xl font-black flex items-center justify-center gap-1.5 text-current">
+          <span>🌱</span> 새싹 리그
+        </div>
+        <div class="text-lg sm:text-xl md:text-2xl font-black mt-2 font-mono text-current">2 경기</div>
+        <div id="stat-sprout-desc" class="text-[10px] mt-1 font-bold text-slate-400">클릭 시 새싹 일정 필터링</div>
+      </button>
+
+      <!-- Dream Card -->
+      <button 
+        id="stat-dream"
+        onclick="handleStatCardClick('꿈나무')"
+        class="rounded-2xl p-4 text-center border transition-all duration-300 transform hover:scale-[1.03] shadow-md bg-white border-slate-200/80 hover:bg-slate-50 text-blue-600"
+      >
+        <div class="text-base sm:text-lg md:text-xl font-black flex items-center justify-center gap-1.5 text-current">
+          <span>🌳</span> 꿈나무 리그
+        </div>
+        <div class="text-lg sm:text-xl md:text-2xl font-black mt-2 font-mono text-current">3 경기</div>
+        <div id="stat-dream-desc" class="text-[10px] mt-1 font-bold text-slate-400">클릭 시 꿈나무 일정 필터링</div>
+      </button>
+
+      <!-- Youth Card -->
+      <button 
+        id="stat-youth"
+        onclick="handleStatCardClick('유소년')"
+        class="rounded-2xl p-4 text-center border transition-all duration-300 transform hover:scale-[1.03] shadow-md bg-white border-slate-200/80 hover:bg-slate-50 text-amber-500"
+      >
+        <div class="text-base sm:text-lg md:text-xl font-black flex items-center justify-center gap-1.5 text-current">
+          <span>⚾</span> 유소년 리그
+        </div>
+        <div class="text-lg sm:text-xl md:text-2xl font-black mt-2 font-mono text-current">2 경기</div>
+        <div id="stat-youth-desc" class="text-[10px] mt-1 font-bold text-slate-400">클릭 시 유소년 일정 필터링</div>
+      </button>
+
+      <!-- Stadiums Card -->
+      <button 
+        id="stat-stadium"
+        onclick="handleStatCardClick('구장')"
+        class="rounded-2xl p-4 text-center border transition-all duration-300 transform hover:scale-[1.03] shadow-md bg-white text-slate-800 border-slate-200/80 hover:bg-slate-50"
+      >
+        <div class="text-base sm:text-lg md:text-xl font-black flex items-center justify-center gap-1.5 text-slate-600">
+          <span>🏟️</span> 대회 경기장
+        </div>
+        <div class="text-lg sm:text-xl md:text-2xl font-black mt-2 font-mono text-slate-800">4 개소</div>
+        <div id="stat-stadium-desc" class="text-[10px] mt-1 font-bold text-slate-400">클릭 시 구장정보 열기</div>
+      </button>
+
+    </div>
+
+    <!-- 🏟️ DYNAMIC EXPANDABLE INFO PANEL: 4 Stadiums & Naver Map Connections -->
+    <div id="stadium-panel" class="hidden bg-white rounded-3xl shadow-lg border border-slate-200 p-5 mt-4 animate-fade-in">
+      <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
+        <h3 class="text-base sm:text-lg font-black text-slate-800 flex items-center gap-2">
+          <span>🏟️</span> 공주대회 공식 경기장 목록 및 지도 서비스
+        </h3>
+        <button onclick="toggleStadiumPanel(false)" class="text-xs font-bold text-red-500 hover:underline">
+          닫기 ×
+        </button>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Injected dynamically by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Container -->
+  <main class="max-w-5xl mx-auto px-3 mt-6 sm:mt-8">
+    
+    <!-- Interactive Schedule Card -->
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+      
+      <!-- Header & Date Filters -->
+      <div class="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 bg-slate-50/70">
+        <div class="min-w-0">
+          <h2 class="text-lg sm:text-xl md:text-2xl font-black text-slate-900 flex items-center gap-2">
+            <span>📅</span> 🐯 화정 유소년 야구단 경기 일정표
+          </h2>
+        </div>
+
+        <!-- Date Filter Quick Toggle (크기 확대) -->
+        <div class="flex gap-1.5 bg-slate-200 p-1.5 rounded-2xl text-xs font-bold shrink-0">
+          <button id="btn-date-all" onclick="filterDate('전체')" class="flex-1 sm:flex-initial px-4 py-2.5 sm:py-2 rounded-xl transition-all text-center text-xs sm:text-sm md:text-base bg-white text-slate-950 shadow-sm font-black whitespace-nowrap">📅 전체 날짜</button>
+          <button id="btn-date-20" onclick="filterDate('2026-06-20')" class="flex-1 sm:flex-initial px-4 py-2.5 sm:py-2 rounded-xl transition-all text-center text-xs sm:text-sm md:text-base text-slate-600 hover:text-slate-800 whitespace-nowrap">20일(토)</button>
+          <button id="btn-date-21" onclick="filterDate('2026-06-21')" class="flex-1 sm:flex-initial px-4 py-2.5 sm:py-2 rounded-xl transition-all text-center text-xs sm:text-sm md:text-base text-slate-600 hover:text-slate-800 whitespace-nowrap">21일(일)</button>
+        </div>
+      </div>
+
+      <!-- League Tabs -->
+      <div class="px-4 pt-3.5 flex gap-1.5 border-b border-slate-100 overflow-x-auto pb-2 scrollbar-none select-none">
+        <button id="tab-sprout" onclick="filterLeague('새싹')" class="px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border transition-all whitespace-nowrap shrink-0 border-slate-900 text-white font-black bg-slate-900">🌱 새싹 리그</button>
+        <button id="tab-dream" onclick="filterLeague('꿈나무')" class="px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border transition-all whitespace-nowrap shrink-0 border-slate-200 text-slate-500 hover:bg-slate-50 bg-white">🌳 꿈나무 리그</button>
+        <button id="tab-youth" onclick="filterLeague('유소년')" class="px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border transition-all whitespace-nowrap shrink-0 border-slate-200 text-slate-500 hover:bg-slate-50 bg-white">⚾ 유소년 리그</button>
+        <button id="tab-all" onclick="filterLeague('전체')" class="px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border transition-all whitespace-nowrap shrink-0 border-slate-200 text-slate-500 hover:bg-slate-50 bg-white">🔍 전체 경기 보기</button>
+      </div>
+
+      <!-- Match Cards List -->
+      <div id="match-list" class="p-3 sm:p-5 space-y-3.5">
+        <!-- Injected dynamically by JS -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Info Footer -->
+  <footer class="max-w-5xl mx-auto px-4 mt-12 pt-6 border-t border-slate-200 text-center text-xs text-slate-400 space-y-1">
+    <p>© 2026 공주 공산성배 전국유소년야구대회 - 화정 유소년 야구단</p>
+    <p>📍 모든 구장 명칭 및 주소 링크는 실제 제공해주신 공식 네이버 지도로 안전하게 연동되었습니다.</p>
+  </footer>
+
+  <script>
+    // ==========================================
+    // STADIUM LINK MAPPER (User-provided links)
+    // ==========================================
+    function getStadiumLink(stadium) {
+      if (stadium.includes('천변')) return 'https://naver.me/5hoKhlRO';
+      if (stadium.includes('공주중학교') || stadium.includes('공주중')) return 'https://naver.me/5JqDo0PX';
+      if (stadium.includes('박찬호')) return 'https://naver.me/x3jVe6H0';
+      if (stadium.includes('공주고') || stadium.includes('공주고등학교')) return 'https://naver.me/x52ZgxaZ';
+      return 'https://map.naver.com';
+    }
+
+    // ==========================================
+    // STATIC DATA WITH WEATHER FORECAST
+    // ==========================================
+    const MATCH_SCHEDULE = [
+      {
+        id: 'match-1',
+        date: '2026-06-20',
+        month: '06',
+        day: '20',
+        dayOfWeek: '토요일',
+        time: '16:00 ~ 17:30',
+        league: '새싹',
+        leagueColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+        leagueDot: 'bg-emerald-500',
+        stadium: '공주중학교',
+        homeTeam: '옥천금강B',
+        awayTeam: '화정',
+        isHwajeongHome: false,
+        stadiumAddress: '충청남도 공주시 봉황로 125',
+        weather: { temp: '28°C', desc: '맑음', icon: '☀️' }
+      },
+      {
+        id: 'match-2',
+        date: '2026-06-20',
+        month: '06',
+        day: '20',
+        dayOfWeek: '토요일',
+        time: '17:30 ~ 19:00',
+        league: '꿈나무',
+        leagueColor: 'bg-blue-100 text-blue-800 border-blue-300',
+        leagueDot: 'bg-blue-500',
+        stadium: '공주중학교',
+        homeTeam: '전주HPB',
+        awayTeam: '화정',
+        isHwajeongHome: false,
+        stadiumAddress: '충청남도 공주시 봉황로 125',
+        weather: { temp: '26°C', desc: '구름조금', icon: '🌤️' }
+      },
+      {
+        id: 'match-3',
+        date: '2026-06-20',
+        month: '06',
+        day: '20',
+        dayOfWeek: '토요일',
+        time: '17:30 ~ 19:00',
+        league: '유소년',
+        leagueColor: 'bg-amber-100 text-amber-800 border-amber-300',
+        leagueDot: 'bg-amber-500',
+        stadium: '박찬호 시립야구장',
+        homeTeam: '화정',
+        awayTeam: '제주앤트',
+        isHwajeongHome: true,
+        stadiumAddress: '충청남도 공주시 쌍신동 416',
+        weather: { temp: '26°C', desc: '구름조금', icon: '🌤️' }
+      },
+      {
+        id: 'match-4',
+        date: '2026-06-21',
+        month: '06',
+        day: '21',
+        dayOfWeek: '일요일',
+        time: '08:00 ~ 09:30',
+        league: '꿈나무',
+        leagueColor: 'bg-blue-100 text-blue-800 border-blue-300',
+        leagueDot: 'bg-blue-500',
+        stadium: '공주중학교',
+        homeTeam: '화정',
+        awayTeam: '옥천금강',
+        isHwajeongHome: true,
+        stadiumAddress: '충청남도 공주시 봉황로 125',
+        weather: { temp: '22°C', desc: '맑음', icon: '☀️' }
+      },
+      {
+        id: 'match-5',
+        date: '2026-06-21',
+        month: '06',
+        day: '21',
+        dayOfWeek: '일요일',
+        time: '11:00 ~ 12:30',
+        league: '꿈나무',
+        leagueColor: 'bg-blue-100 text-blue-800 border-blue-300',
+        leagueDot: 'bg-blue-500',
+        stadium: '공주중학교',
+        homeTeam: '서천군',
+        awayTeam: '화정',
+        isHwajeongHome: false,
+        stadiumAddress: '충청남도 공주시 봉황로 125',
+        weather: { temp: '25°C', desc: '흐림', icon: '☁️' }
+      },
+      {
+        id: 'match-6',
+        date: '2026-06-21',
+        month: '06',
+        day: '21',
+        dayOfWeek: '일요일',
+        time: '13:00 ~ 14:30',
+        league: '유소년',
+        leagueColor: 'bg-amber-100 text-amber-800 border-amber-300',
+        leagueDot: 'bg-amber-500',
+        stadium: '박찬호 시립야구장',
+        homeTeam: '서천군',
+        awayTeam: '화정',
+        isHwajeongHome: false,
+        stadiumAddress: '충청남도 공주시 쌍신동 416',
+        weather: { temp: '26°C', desc: '소나기 예보', icon: '🌦️' }
+      },
+      {
+        id: 'match-7',
+        date: '2026-06-21',
+        month: '06',
+        day: '21',
+        dayOfWeek: '일요일',
+        time: '14:30 ~ 16:00',
+        league: '새싹',
+        leagueColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+        leagueDot: 'bg-emerald-500',
+        stadium: '공주중학교',
+        homeTeam: '공주시',
+        awayTeam: '화정',
+        isHwajeongHome: false,
+        stadiumAddress: '충청남도 공주시 봉황로 125',
+        weather: { temp: '27°C', desc: '흐림 뒤 맑음', icon: '🌤️' }
+      }
+    ];
+
+    // ==========================================
+    // LOGO VECTOR DATA (SVG STRING)
+    // ==========================================
+    const LOGO_SVG = `
+      <svg class="w-full h-full scale-110" viewBox="0 0 220 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="tigerEyeIris" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fffbeb" />
+            <stop offset="25%" stop-color="#fbbf24" />
+            <stop offset="70%" stop-color="#ea580c" />
+            <stop offset="100%" stop-color="#7c2d12" />
+          </radialGradient>
+          <linearGradient id="goldMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fbbf24" />
+            <stop offset="50%" stop-color="#d97706" />
+            <stop offset="100%" stop-color="#f59e0b" />
+          </linearGradient>
+          <filter id="logoShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.3"/>
+          </filter>
+          <clipPath id="hjClip">
+            <path d="M 28,30 H 54 V 78 H 82 V 30 H 108 V 140 H 82 V 104 H 54 V 140 H 28 Z" />
+            <path d="M 124,30 H 192 V 105 C 192,125 180,140 158,140 C 136,140 124,125 124,105 H 150 C 150,113 154,118 158,118 C 163,118 166,113 166,105 V 54 H 124 Z" />
+          </clipPath>
+          <radialGradient id="whiteFurGlow" cx="48%" cy="85%" r="40%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+            <stop offset="55%" stop-color="#f1f5f9" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#f97316" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <g filter="url(#logoShadow)">
+          <path d="M 15,20 L 205,20 L 205,170 C 205,205 110,250 110,250 C 110,250 15,205 15,170 Z" fill="#f8fafc" stroke="url(#goldMetal)" stroke-width="6" stroke-linejoin="round"/>
+          <g clip-path="url(#hjClip)">
+            <rect x="20" y="20" width="180" height="130" fill="#0f172a" />
+            <path d="M 20,25 L 85,25 L 75,145 L 20,145 Z" fill="#f97316" />
+            <path d="M 155,25 L 195,25 L 195,145 L 140,145 Z" fill="#ea580c" opacity="0.3" />
+            <circle cx="50" cy="85" r="50" fill="url(#whiteFurGlow)" />
+            <path d="M 15,36 Q 38,40 56,32 L 54,28 Q 36,36 15,30 Z" fill="#020617" />
+            <path d="M 15,58 Q 42,54 58,62 L 56,66 Q 40,58 15,62 Z" fill="#020617" />
+            <path d="M 15,102 Q 42,95 58,106 L 56,110 Q 40,100 15,106 Z" fill="#020617" />
+            <path d="M 15,124 Q 44,117 58,128 L 56,132 Q 42,121 15,128 Z" fill="#020617" />
+            <path d="M 115,44 Q 92,42 74,48 L 76,52 Q 92,46 115,48 Z" fill="#020617" />
+            <path d="M 115,104 Q 88,98 72,108 L 74,112 Q 88,102 115,108 Z" fill="#020617" />
+            <path d="M 195,60 Q 170,55 155,62 L 157,66 Q 170,59 195,64 Z" fill="#020617" />
+            <path d="M 195,115 Q 165,110 145,125 L 147,129 Q 165,114 195,119 Z" fill="#020617" />
+            <path d="M 24,85 C 34,63 68,63 78,85 C 68,107 34,107 24,85 Z" fill="#ffffff" stroke="#020617" stroke-width="4" />
+            <circle cx="53" cy="85" r="13" fill="url(#tigerEyeIris)" />
+            <ellipse cx="53" cy="85" rx="4" ry="11" fill="#000000" />
+            <circle cx="49" cy="80" r="2.5" fill="#ffffff" />
+            <circle cx="56" cy="89" r="1" fill="#ffffff" />
+            <path d="M 22,83 Q 53,58 80,83" stroke="#000000" stroke-width="5" fill="none" />
+            <path d="M 21,87 Q 53,108 81,87" stroke="#000000" stroke-width="3.5" fill="none" />
+            <path d="M 32,64 Q 53,52 74,56" stroke="#000000" stroke-width="5.5" fill="none" stroke-linecap="round" />
+          </g>
+          <g fill="none" stroke="url(#goldMetal)" stroke-width="3.5" stroke-linejoin="round">
+            <path d="M 28,30 H 54 V 78 H 82 V 30 H 108 V 140 H 82 V 104 H 54 V 140 H 28 Z" />
+            <path d="M 124,30 H 192 V 105 C 192,125 180,140 158,140 C 136,140 124,125 124,105 H 150 C 150,113 154,118 158,118 C 163,118 166,113 166,105 V 54 H 124 Z" />
+          </g>
+          <path d="M 22,145 L 198,145 L 198,185 C 198,205 110,234 110,234 C 110,234 22,205 22,185 Z" fill="#ffffff" stroke="url(#goldMetal)" stroke-width="4" stroke-linejoin="round"/>
+          <text x="110" y="180" text-anchor="middle" fill="#0f172a" font-weight="900" font-size="26" font-family="Impact, sans-serif" letter-spacing="1.5">TIGERS</text>
+          <text x="110" y="198" text-anchor="middle" fill="#d97706" font-weight="bold" font-size="10" font-family="system-ui, sans-serif" letter-spacing="0.8">BASEBALL TEAM</text>
+          <g transform="translate(110, 226)">
+            <circle cx="0" cy="0" r="14" fill="#ffffff" stroke="url(#goldMetal)" stroke-width="2.5" />
+            <path d="M -10,-10 C -4,-4 -4,4 -10,10" stroke="#dc2626" stroke-width="1.5" fill="none" stroke-dasharray="2,2" />
+            <path d="M 10,-10 C 4,-4 4,4 10,10" stroke="#dc2626" stroke-width="1.5" fill="none" stroke-dasharray="2,2" />
+          </g>
+        </g>
+      </svg>
+    `;
+
+    // ==========================================
+    // STADIUM GEOGRAPHIC DATA
+    // ==========================================
+    const STADIUM_DATA = [
+      { name: '공주중학교 야구장', address: '충청남도 공주시 봉황로 125', link: 'https://naver.me/5JqDo0PX' },
+      { name: '공주 천변구장', address: '충남 공주시 쌍신동 둔치 야구장', link: 'https://naver.me/5hoKhlRO' },
+      { name: '박찬호 시립야구장', address: '충청남도 공주시 쌍신동 416', link: 'https://naver.me/x3jVe6H0' },
+      { name: '공주고등학교 야구장', address: '충청남도 공주시 중동 171', link: 'https://naver.me/x52ZgxaZ' }
+    ];
+
+    // ==========================================
+    // STATE VARIABLES (Vanilla JS)
+    // ==========================================
+    let currentLeague = '새싹';
+    let currentDate = '전체';
+    let isStadiumPanelVisible = false;
+
+    // Injected elements
+    document.getElementById('header-logo').innerHTML = LOGO_SVG;
+
+    // Toast Generator
+    function showToast(message) {
+      const toastEl = document.getElementById('toast');
+      const messageEl = document.getElementById('toast-message');
+      messageEl.textContent = message;
+      toastEl.classList.remove('hidden');
+      setTimeout(() => {
+        toastEl.classList.add('hidden');
+      }, 4000);
+    }
+
+    // Toggle Stadium Folder
+    function toggleStadiumPanel(shouldShow) {
+      const panel = document.getElementById('stadium-panel');
+      const descText = document.getElementById('stat-stadium-desc');
+      const card = document.getElementById('stat-stadium');
+      
+      isStadiumPanelVisible = shouldShow;
+      
+      if (isStadiumPanelVisible) {
+        panel.classList.remove('hidden');
+        descText.textContent = '구장 패널 숨기기';
+        card.className = "rounded-2xl p-4 text-center border transition-all duration-300 transform hover:scale-[1.03] shadow-md bg-slate-900 text-white border-slate-950 ring-4 ring-slate-800/20";
+      } else {
+        panel.classList.add('hidden');
+        descText.textContent = '클릭 시 구장정보 열기';
+        card.className = "rounded-2xl p-4 text-center border transition-all duration-300 transform hover:scale-[1.03] shadow-md bg-white text-slate-800 border-slate-200/80 hover:bg-slate-50";
+      }
+    }
+
+    // Handler for Statistics Cards click
+    function handleStatCardClick(type) {
+      if (type === '새싹' || type === '꿈나무' || type === '유소년') {
+        filterLeague(type);
+        toggleStadiumPanel(false);
+        showToast(`🌱 ${type} 리그 경기 일정으로 자동 전환 및 필터링되었습니다.`);
+      } else if (type === '구장') {
+        toggleStadiumPanel(!isStadiumPanelVisible);
+        showToast(`🏟️ 공주대회 공식 경기장 정보 패널이 ${isStadiumPanelVisible ? '활성화' : '닫힘'}되었습니다.`);
+      }
+    }
+
+    // Render Stadium Information Dynamic Grid
+    function renderStadiums() {
+      const container = document.querySelector('#stadium-panel .grid');
+      container.innerHTML = STADIUM_DATA.map((stadium, index) => `
+        <div class="bg-slate-50 border border-slate-150 rounded-2xl p-4 flex flex-col justify-between hover:border-slate-300 hover:shadow-xs transition-all">
+          <div>
+            <h4 class="font-extrabold text-sm text-slate-900 flex items-center gap-1">
+              <span class="text-[11px] bg-slate-200 px-1.5 py-0.5 rounded text-slate-600 font-bold font-mono">${index + 1}</span>
+              ${stadium.name}
+            </h4>
+            <p class="text-xs text-slate-500 mt-2 font-medium leading-relaxed">${stadium.address}</p>
+          </div>
+          <button 
+            onclick="handleMapOpen(event, '${stadium.link}', '${stadium.name}')"
+            class="mt-4 w-full py-2 bg-green-600 hover:bg-green-700 text-white font-black text-xs rounded-xl transition-all shadow-sm flex items-center justify-center gap-1"
+          >
+            🧭 네이버 지도로 보기
+          </button>
+        </div>
+      `).join('');
+    }
+
+    // Interactive Iframe-safe Map Open Handler
+    function handleMapOpen(e, url, stadiumName) {
+      if (e) e.preventDefault();
+      const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        showToast(`📌 브라우저 보안으로 새 창이 막혔습니다. 아래 주소 링크로 이동해 주세요!\n[링크: ${url}]`);
+      } else {
+        showToast(`🗺️ ${stadiumName} 네이버 지도 공식 링크로 안전하게 연동되었습니다!`);
+      }
+    }
+
+    // Date Filter Implementation
+    function filterDate(dateStr) {
+      currentDate = dateStr;
+      
+      // Update toggle button states (대형화 최적화 일치)
+      const dates = { '전체': 'btn-date-all', '2026-06-20': 'btn-date-20', '2026-06-21': 'btn-date-21' };
+      Object.keys(dates).forEach(key => {
+        const btn = document.getElementById(dates[key]);
+        if (key === currentDate) {
+          btn.className = "flex-1 sm:flex-initial px-4 py-2.5 sm:py-2 rounded-xl transition-all text-center text-xs sm:text-sm md:text-base bg-white text-slate-950 shadow-sm font-black whitespace-nowrap";
+        } else {
+          btn.className = "flex-1 sm:flex-initial px-4 py-2.5 sm:py-2 rounded-xl transition-all text-center text-xs sm:text-sm md:text-base text-slate-600 hover:text-slate-800 whitespace-nowrap";
+        }
+      });
+
+      renderScheduleList();
+    }
+
+    // League Filter Implementation
+    function filterLeague(leagueStr) {
+      currentLeague = leagueStr;
+
+      // Update Tab bar states
+      const tabs = { '새싹': 'tab-sprout', '꿈나무': 'tab-dream', '유소년': 'tab-youth', '전체': 'tab-all' };
+      Object.keys(tabs).forEach(key => {
+        const btn = document.getElementById(tabs[key]);
+        if (key === currentLeague) {
+          btn.className = "px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border transition-all whitespace-nowrap shrink-0 border-slate-900 text-white font-black bg-slate-900";
+        } else {
+          btn.className = "px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border transition-all whitespace-nowrap shrink-0 border-slate-200 text-slate-500 hover:bg-slate-50 bg-white";
+        }
+      });
+
+      // Update Quick Statistic Highlight ring (색상 깨짐 & 가독성 버그 완전 해결)
+      const statIds = { '새싹': 'stat-sprout', '꿈나무': 'stat-dream', '유소년': 'stat-youth' };
+      Object.keys(statIds).forEach(key => {
+        const card = document.getElementById(statIds[key]);
+        const desc = document.getElementById(`${statIds[key]}-desc`);
+        if (key === currentLeague && !isStadiumPanelVisible) {
+          if (key === '새싹') {
+            card.className = "rounded-2xl p-4 text-center border transition-all duration-300 transform hover:scale-[1.03] shadow-md bg-emerald-600 text-white border-emerald-700 ring-4 ring-emerald-500/20";
+            if (desc) desc.className = "text-[10px] mt-1 font-bold text-emerald-100";
+          }
+          if (key === '꿈나무') {
+            card.className = "rounded-2xl p-4 text-center border transition-all duration-300 transform hover:scale-[1.03] shadow-md bg-blue-600 text-white border-blue-700 ring-4 ring-blue-500/20";
+            if (desc) desc.className = "text-[10px] mt-1 font-bold text-blue-100";
+          }
+          if (key === '유소년') {
+            card.className = "rounded-2xl p-4 text-center border transition-all duration-300 transform hover:scale-[1.03] shadow-md bg-amber-600 text-white border-amber-700 ring-4 ring-amber-500/20";
+            if (desc) desc.className = "text-[10px] mt-1 font-bold text-amber-100";
+          }
+        } else {
+          if (key === '새싹') {
+            card.className = "rounded-2xl p-4 text-center border transition-all duration-300 transform hover:scale-[1.03] shadow-md bg-white text-emerald-600 border-slate-200/80 hover:bg-slate-50";
+            if (desc) desc.className = "text-[10px] mt-1 font-bold text-slate-400";
+          }
+          if (key === '꿈나무') {
+            card.className = "rounded-2xl p-4 text-center border transition-all duration-300 transform hover:scale-[1.03] shadow-md bg-white text-blue-600 border-slate-200/80 hover:bg-slate-50";
+            if (desc) desc.className = "text-[10px] mt-1 font-bold text-slate-400";
+          }
+          if (key === '유소년') {
+            card.className = "rounded-2xl p-4 text-center border transition-all duration-300 transform hover:scale-[1.03] shadow-md bg-white text-amber-500 border-slate-200/80 hover:bg-slate-50";
+            if (desc) desc.className = "text-[10px] mt-1 font-bold text-slate-400";
+          }
+        }
+      });
+
+      renderScheduleList();
+    }
+
+    // Dynamic Team Badge Renderer
+    function getTeamBadgeHtml(teamName) {
+      if (teamName === '화정') {
+        return `
+          <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-900 px-2.5 py-1 rounded-full border border-emerald-100 text-xs sm:text-sm font-black shadow-3xs shrink-0 max-w-full">
+            <span class="relative w-5 h-5 rounded-md overflow-hidden border border-amber-500 bg-white inline-flex items-center justify-center shrink-0">
+              ${LOGO_SVG}
+            </span>
+            화정
+          </span>
+        `;
+      }
+      return `<span class="text-slate-800 font-extrabold text-xs sm:text-sm md:text-base truncate">${teamName}</span>`;
+    }
+
+    // Match Schedule Grid Render Engine
+    function renderScheduleList() {
+      const listContainer = document.getElementById('match-list');
+
+      const filtered = MATCH_SCHEDULE.filter(match => {
+        const matchLeague = currentLeague === '전체' || match.league === currentLeague;
+        const matchDate = currentDate === '전체' || match.date === currentDate;
+        return matchLeague && matchDate;
+      });
+
+      if (filtered.length === 0) {
+        listContainer.innerHTML = `
+          <div class="py-14 text-center text-slate-400 flex flex-col items-center justify-center">
+            <span class="text-4xl animate-bounce mb-2">🐯🧢</span>
+            <p class="text-xs font-black text-slate-500">선택한 조건에 해당하는 경기 일정이 없습니다.</p>
+            <button 
+              onclick="setSelectedStateAll()" 
+              class="mt-2 text-[11px] text-emerald-600 font-extrabold hover:underline"
+            >
+              필터 초기화하기
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      listContainer.innerHTML = filtered.map(match => {
+        const borderHighlight = match.league === '새싹' ? '<div class="absolute top-0 left-0 bottom-0 w-1 bg-emerald-500"></div>' : '';
+        
+        return `
+          <div class="relative rounded-2xl border border-slate-200 p-4 transition-all bg-white shadow-xs overflow-hidden">
+            ${borderHighlight}
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              
+              <!-- LEFT: DATE TIME & TEAMS (날짜 요일 및 시간 극대화 반영) -->
+              <div class="flex items-center gap-3 w-full md:w-auto">
+                <div class="flex flex-col items-center justify-center bg-slate-50 border border-slate-200 rounded-xl p-2.5 min-w-[125px] sm:min-w-[145px] text-center shrink-0 shadow-3xs">
+                  <span class="text-base sm:text-lg font-black text-slate-900">06월 ${match.day}일</span>
+                  <span class="text-base sm:text-lg font-black text-emerald-700 mt-0.5">${match.dayOfWeek}</span>
+                  
+                  <!-- 시작 시간 가독성 향상 배지 (대폭 크기 증가) -->
+                  <div class="mt-2.5 bg-amber-50 text-amber-950 border border-amber-200 rounded-xl px-2.5 py-1 text-xs sm:text-sm font-black font-mono flex items-center justify-center gap-1.5 shadow-2xs">
+                    <span>⏰</span>
+                    <span>${match.time}</span>
+                  </div>
+                </div>
+
+                <div class="space-y-3 min-w-0 flex-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <span class="text-xs sm:text-sm font-black px-3 py-1 rounded-full border-2 ${match.leagueColor}">
+                      ${match.league} 리그
+                    </span>
+                    <span class="text-slate-300 text-sm">|</span>
+                    
+                    <button
+                      onclick="handleMapOpen(event, '${getStadiumLink(match.stadium)}', '${match.stadium}')"
+                      class="text-xs sm:text-sm md:text-base font-black text-emerald-800 hover:text-white bg-emerald-50 hover:bg-emerald-600 px-3.5 py-1.5 rounded-full border-2 border-emerald-200 transition-all inline-flex items-center gap-1.5 shadow-sm"
+                    >
+                      🏟️ ${match.stadium} ↗
+                    </button>
+                  </div>
+
+                  <div class="flex items-center gap-3.5 flex-wrap min-w-0">
+                    ${getTeamBadgeHtml(match.homeTeam)}
+                    <span class="text-slate-400 font-black text-sm sm:text-base md:text-xl mx-2.5 select-none shrink-0 tracking-widest">VS</span>
+                    ${getTeamBadgeHtml(match.awayTeam)}
+                  </div>
+                </div>
+              </div>
+
+              <!-- RIGHT: WEATHER & MAP NAVIGATION -->
+              <div class="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center gap-2 pt-3 md:pt-0 border-t md:border-t-0 border-slate-100 w-full md:w-auto shrink-0">
+                <div class="bg-sky-50 text-sky-950 border border-sky-100 rounded-lg px-2.5 py-1 text-xs font-black flex items-center gap-1 whitespace-nowrap">
+                  <span>${match.weather.icon}</span> 
+                  <span>${match.weather.desc} (${match.weather.temp})</span>
+                </div>
+                <button 
+                  onclick="handleMapOpen(event, '${getStadiumLink(match.stadium)}', '${match.stadium}')"
+                  class="flex items-center justify-center gap-1 py-2 px-3.5 text-xs font-black rounded-xl bg-green-600 hover:bg-green-700 text-white transition-all shadow-xs active:scale-95 animate-pulse shrink-0"
+                >
+                  🧭 네이버 지도
+                </button>
+              </div>
+
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Reset filter states
+    function setSelectedStateAll() {
+      currentLeague = '전체';
+      currentDate = '전체';
+      filterLeague('전체');
+      filterDate('전체');
+    }
+
+    // ==========================================
+    // INITIALIZATION RUNTIME
+    // ==========================================
+    window.onload = function() {
+      renderStadiums();
+      filterLeague('새싹'); // Default to Sprout League as requested
+    };
+  </script>
+</body>
+</html>
