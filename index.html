@@ -372,13 +372,13 @@ function openGame(id){
   document.getElementById('gpTitle').textContent=`⚾ ${g.date}(${g.dow}) ${g.time} · ${g.cat}`;
   document.getElementById('gpBody').innerHTML=`
     <div class="vsbox">
-      <div class="vst"><div class="vn ${g.left==='화정'?'hw':''}">${g.left}</div><div class="vr">${g.left==='화정'?'홈':'원정'}</div></div>
+      <div class="vst"><div class="vn ${g.left==='화정'?'hw':''}">${g.left}</div><div class="vr">원정</div></div>
       <div class="vsep">:</div>
-      <div class="vst"><div class="vn ${g.right==='화정'?'hw':''}">${g.right}</div><div class="vr">${g.right==='화정'?'홈':'원정'}</div></div>
+      <div class="vst"><div class="vn ${g.right==='화정'?'hw':''}">${g.right}</div><div class="vr">홈</div></div>
     </div>
     <div class="meta">
       <a href="${vurl}" target="_blank" class="mlink" onclick="event.stopPropagation()">📍 ${g.venue}</a>
-      <span>·</span><span>화정 ${g.left==='화정'?'홈':'원정'}</span>
+      <span>·</span><span>화정 ${g.right==='화정'?'홈':'원정'}</span>
     </div>
     <div class="field">
       <div class="ftitle">수비 라인업 — 선수 이름을 클릭하면 상세 정보를 볼 수 있습니다</div>
@@ -432,7 +432,7 @@ function renderGames(){
         </div>
         <div class="brow">
           <span id="wx${g.id}" class="wx load">⏳</span>
-          <span class="sb ${g.left==='화정'?'home':'away'}">${g.left==='화정'?'홈':'원정'}</span>
+          <span class="sb ${g.right==='화정'?'home':'away'}">${g.right==='화정'?'홈':'원정'}</span>
           <span class="cb c${g.cat}">${g.cat}</span>
         </div>
       </div>`;
