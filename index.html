@@ -62,6 +62,10 @@
   .wx.load{background:#f9fafb;border-color:var(--br);color:#9ca3af;}
   .spacer{flex:1;}
   .cb{padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600;flex-shrink:0;}
+  /* 취소된 경기 */
+  .gcard.canceled{background:#fafafa;border-color:#e5e7eb;opacity:.7;}
+  .gcard.canceled .gm{color:#9ca3af;text-decoration:line-through;}
+  .cancel-tag{font-size:11px;font-weight:700;color:#fff;background:#dc2626;padding:3px 9px;border-radius:999px;flex-shrink:0;}
   .c유소년{background:#e3f2fd;color:#0d47a1;border:.5px solid #90caf9;}
   .c꿈나무{background:#fff8e1;color:#e65100;border:.5px solid #ffcc02;}
   .c새싹{background:#e8f5e9;color:#1b5e20;border:.5px solid #81c784;}
@@ -240,9 +244,9 @@ const ROSTER={
 
 const GAMES=[
   // left: 표 왼쪽팀, right: 표 오른쪽팀 (표 원본 순서 그대로)
-  {id:1,date:'6/20',dow:'토',time:'16:00~17:30',hour:16,cat:'새싹', venue:'공주중학교',        left:'옥천금강B',right:'화정'},
-  {id:2,date:'6/20',dow:'토',time:'17:30~19:00',hour:17,cat:'꿈나무',venue:'공주중학교',        left:'전주HPB',  right:'화정'},
-  {id:3,date:'6/20',dow:'토',time:'17:30~19:00',hour:17,cat:'유소년',venue:'박찬호 시립야구장',left:'화정',     right:'제주앤트'},
+  {id:1,date:'6/20',dow:'토',time:'16:00~17:30',hour:16,cat:'새싹', venue:'공주중학교',        left:'옥천금강B',right:'화정', canceled:true},
+  {id:2,date:'6/20',dow:'토',time:'20:30~22:00',hour:20,cat:'꿈나무',venue:'박찬호 시립야구장',left:'부여',     right:'화정'},
+  {id:3,date:'6/20',dow:'토',time:'17:30~19:00',hour:17,cat:'유소년',venue:'공주중학교',        left:'화정',     right:'제주앤트'},
   {id:4,date:'6/21',dow:'일',time:'08:00~09:30',hour:8, cat:'꿈나무',venue:'공주중학교',        left:'화정',     right:'SK유소년야구단'},
   {id:5,date:'6/21',dow:'일',time:'11:00~12:30',hour:11,cat:'꿈나무',venue:'공주중학교',        left:'옥천금강', right:'화정'},
   {id:6,date:'6/21',dow:'일',time:'13:00~14:30',hour:13,cat:'유소년',venue:'박찬호 시립야구장',left:'SK유소년야구단', right:'화정'},
@@ -374,8 +378,9 @@ function openGame(id){
     return`<div class="pnode ${p.cls}" style="left:${p.x}%;top:${p.y}%" onclick="showPl('${key}','${p.label}')">
       <div class="pname">${dn(key)}</div><div class="ppos">${p.label}</div></div>`;
   }).join('');
-  document.getElementById('gpTitle').textContent=`⚾ ${g.date}(${g.dow}) ${g.time} · ${g.cat}`;
+  document.getElementById('gpTitle').textContent=`⚾ ${g.date}(${g.dow}) ${g.time} · ${g.cat}${g.canceled?' · 취소됨':''}`;
   document.getElementById('gpBody').innerHTML=`
+    ${g.canceled?'<div style="background:#fef2f2;border:1px solid #fecaca;color:#dc2626;font-size:13px;font-weight:600;padding:8px 12px;border-radius:8px;margin-bottom:12px;text-align:center;">⚠️ 이 경기는 취소되었습니다</div>':''}
     <div class="vsbox">
       <div class="vst"><div class="vn ${g.left==='화정'?'hw':''}">${g.left}</div><div class="vr">원정</div></div>
       <div class="vsep">:</div>
@@ -424,20 +429,24 @@ function renderGames(){
   const games=filt==='전체'?GAMES:GAMES.filter(g=>g.cat===filt);
   const byDate={};
   games.forEach(g=>{if(!byDate[g.date])byDate[g.date]=[];byDate[g.date].push(g);});
+  // 각 날짜 내에서 시간순 정렬
+  Object.values(byDate).forEach(arr=>arr.sort((a,b)=>a.hour-b.hour));
   document.getElementById('glist').innerHTML=Object.entries(byDate).map(([date,gs])=>`
     <div class="dlbl">📅 ${date}(${gs[0].dow}요일)</div>
     <div class="gcards">${gs.map(g=>{
       const isH=g.left==='화정';
       const vurl=VENUES[g.venue]?.url||'#';
-      return`<div class="gcard" onclick="openGame(${g.id})">
+      const cc=g.canceled?' canceled':'';
+      return`<div class="gcard${cc}" onclick="openGame(${g.id})">
         <div class="gtop">
           <div class="gm">${g.left}<span class="vs"> vs </span>${g.right}</div>
+          ${g.canceled?'<span class="cancel-tag">경기 취소</span>':''}
         </div>
         <div class="gbot">
           <div class="tbadge"><span>${g.time}</span></div>
           <a class="vlink" href="${vurl}" target="_blank" onclick="event.stopPropagation()">📍 ${g.venue}</a>
           <span class="spacer"></span>
-          <span id="wx${g.id}" class="wx load">⏳</span>
+          ${g.canceled?'':`<span id="wx${g.id}" class="wx load">⏳</span>`}
           <span class="sb ${g.right==='화정'?'home':'away'}">${g.right==='화정'?'홈':'원정'}</span>
           <span class="cb c${g.cat}">${g.cat}</span>
         </div>
