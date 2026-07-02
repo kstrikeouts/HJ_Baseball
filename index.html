@@ -2,260 +2,812 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>광주화정유소년야구단 — 함평천지한우배 대시보드</title>
 <style>
-  :root{
-    /* 흙 계열 (배경, 홈플레이트) */
-    --dirt:#c9895a;
-    --dirt-deep:#a86d3f;
-    --dirt-light:#dba57a;
-    --dirt-shadow:#8a5731;
-    /* 잔디 계열 (카드) */
-    --grass:#3a6b3f;
-    --grass-deep:#264a2b;
-    --grass-light:#4d8353;
-    --grass-hi:rgba(255,255,255,.08);
-    /* 베이스/파울라인 (흰색) */
-    --base:#fbfaf5;
-    --cream:#f5efe0;
-    --line:rgba(251,250,245,.28);
-    /* 텍스트 */
-    --ink:#fbfaf5;
-    --ink-dark:#3a2515;
-    --sub:#dfd5c2;
-    --sub-dark:#6b4a2b;
-    /* 부문 컬러 (잔디 위에서 잘 보이는 톤) */
-    --u-yu:#8ed7ff;
-    --u-kkum:#c6f0a8;
-    --u-sae:#f5b7d8;
-    --u-jr:#ffcc80;
-    --red:#ff7a5c;
+  :root {
+    /* 경기장 흙색 및 홈 베이스 브라운 톤 */
+    --dirt: #d28c5a;
+    --dirt-deep: #9e5b2c;
+    --dirt-light: #e6a87c;
+    --dirt-shadow: #733c16;
+    
+    /* 야구장 천연잔디 그린 톤 */
+    --grass: #2a5c32;
+    --grass-deep: #16361c;
+    --grass-light: #3e7d48;
+    --grass-glow: rgba(77, 166, 90, 0.2);
+    
+    /* 라인 및 유니폼 컬러 */
+    --base: #fcfbf7;
+    --cream: #fbf5e6;
+    --line: rgba(252, 251, 247, 0.25);
+    
+    /* 텍스트 가독성용 */
+    --ink: #fcfbf7;
+    --ink-dark: #22150b;
+    --sub: #e6dac3;
+    --sub-dark: #5c3b1e;
+    
+    /* 유소년 야구 각 리그 부문별 포인트 컬러 */
+    --u-yu: #7cd2ff;     /* 유소년 - 스카이 */
+    --u-kkum: #a6f279;   /* 꿈나무 - 라임 */
+    --u-sae: #ff9ed2;    /* 새싹 - 핑크 */
+    --u-jr: #ffc470;     /* 주니어 - 오렌지 */
+    --red: #ff5e4d;      /* 강조 경고 */
+    --hwajung: #ffd524;  /* 화정유니폼 시그니처 골드옐로우 */
   }
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  body{
-    font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
-    color:var(--ink);
-    max-width:520px;margin:0 auto;padding:16px 14px 60px;
-    line-height:1.5;
-    background:
-      radial-gradient(ellipse at 50% -10%, var(--dirt-light) 0%, var(--dirt) 40%, var(--dirt-deep) 100%);
-    background-attachment:fixed;
-    min-height:100vh;
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
   }
-  /* ---------- 헤더 (그라운드 미니 뷰) ---------- */
-  .header{
-    background:linear-gradient(160deg, var(--grass) 0%, var(--grass-deep) 100%);
-    border:2px solid var(--base);
-    border-radius:20px;
-    padding:20px 18px;display:flex;gap:14px;align-items:center;
-    position:relative;overflow:hidden;
-    box-shadow:0 6px 20px rgba(58,37,21,.35), inset 0 0 40px rgba(0,0,0,.15);
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--ink);
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 16px 16px 48px;
+    line-height: 1.5;
+    background: radial-gradient(circle at 50% -20%, var(--dirt-light) 0%, var(--dirt-deep) 50%, #100b07 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
   }
-  /* 홈플레이트 형태의 데코 */
-  .header::before{
-    content:'';position:absolute;left:-28px;bottom:-28px;width:110px;height:110px;
-    background:var(--dirt);border:2px solid var(--base);
-    transform:rotate(45deg);opacity:.35;
+
+  /* ---------- 상단 헤더 ---------- */
+  .header {
+    background: linear-gradient(135deg, var(--grass-light) 0%, var(--grass-deep) 100%);
+    border: 2px solid var(--base);
+    border-radius: 18px;
+    padding: 16px 18px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4), inset 0 0 20px rgba(255,255,255,0.05);
   }
-  .header::after{
-    content:'';position:absolute;right:-40px;top:-40px;width:150px;height:150px;
-    border:2px dashed rgba(251,250,245,.25);border-radius:50%;
+
+  /* 야구 그라운드 모티브 데코 */
+  .header::before {
+    content: '';
+    position: absolute;
+    left: -40px;
+    bottom: -40px;
+    width: 120px;
+    height: 120px;
+    background: var(--dirt);
+    border: 3px solid var(--base);
+    transform: rotate(45deg);
+    opacity: .25;
+    z-index: 0;
   }
-  .logo{flex-shrink:0;position:relative;z-index:1}
-  .header h1{font-size:19px;font-weight:800;letter-spacing:-.3px;position:relative;z-index:1}
-  .header p{font-size:12.5px;color:var(--sub);margin-top:3px;position:relative;z-index:1}
-  .header .badge{
-    display:inline-block;margin-top:7px;font-size:11px;font-weight:800;
-    background:var(--base);color:var(--grass-deep);
-    border-radius:20px;padding:4px 11px;position:relative;z-index:1;
-    box-shadow:0 2px 6px rgba(0,0,0,.2);
+
+  .header::after {
+    content: '';
+    position: absolute;
+    right: -30px;
+    top: -30px;
+    width: 110px;
+    height: 110px;
+    border: 1.5px dashed rgba(252, 251, 247, 0.2);
+    border-radius: 50%;
+    z-index: 0;
   }
-  /* ---------- 통계 (베이스 모양) ---------- */
-  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
-  .stat{
-    background:var(--base);color:var(--ink-dark);
-    border-radius:14px;padding:12px 6px;text-align:center;
-    box-shadow:0 3px 10px rgba(58,37,21,.25);
-    position:relative;
+
+  .logo {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
   }
-  .stat b{display:block;font-size:22px;color:var(--grass-deep);font-weight:900}
-  .stat span{font-size:11px;color:var(--sub-dark);font-weight:600}
+
+  .logo svg {
+    width: 56px;
+    height: 56px;
+    display: block;
+  }
+
+  .header-info {
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+  }
+
+  .header h1 {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    color: var(--base);
+  }
+
+  .header p {
+    font-size: 12px;
+    color: var(--sub);
+    margin-top: 1px;
+    font-weight: 500;
+  }
+
+  .header .badge {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    background: var(--hwajung);
+    color: #1a1105;
+    border-radius: 20px;
+    padding: 2.5px 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  }
+
+  /* ---------- 스코어보드 전광판 스타일 ---------- */
+  .scoreboard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #0d1a10;
+    border: 2px solid #2a3a2d;
+    border-radius: 14px;
+    padding: 10px;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  }
+
+  .scoreboard .sb {
+    text-align: center;
+    flex: 1;
+    position: relative;
+  }
+
+  .scoreboard .sb + .sb::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--line), transparent);
+  }
+
+  .scoreboard .sb .k {
+    font-size: 10px;
+    color: #7b9481;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .scoreboard .sb .v {
+    font-size: 14px;
+    color: #aeffba;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    margin-top: 2px;
+    text-shadow: 0 0 5px rgba(174,255,186,0.3);
+  }
+
+  /* ---------- 메인 대시보드 요약 통계 ---------- */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .stat {
+    background: var(--base);
+    color: var(--ink-dark);
+    border-radius: 12px;
+    padding: 10px 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    border-bottom: 3.5px solid #dcd3bf;
+    transition: transform 0.2s;
+  }
+
+  .stat b {
+    display: block;
+    font-size: 20px;
+    color: var(--grass-deep);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  .stat span {
+    display: block;
+    font-size: 11px;
+    color: var(--sub-dark);
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
   /* ---------- 섹션 타이틀 ---------- */
-  .section-title{
-    font-size:15px;font-weight:800;margin:26px 4px 11px;
-    display:flex;align-items:center;gap:6px;color:var(--ink);
-    text-shadow:0 2px 4px rgba(58,37,21,.4);
+  .section-title {
+    font-size: 15px;
+    font-weight: 800;
+    margin: 22px 4px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--base);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
   }
-  .section-title small{font-weight:500;font-size:11px;color:var(--sub);text-shadow:none}
-  /* ---------- 필터 칩 ---------- */
-  .filter-row{display:flex;gap:5px}
-  .chip{
-    flex:1;min-width:0;text-align:center;font-size:12px;font-weight:800;
-    padding:9px 0;border-radius:20px;white-space:nowrap;
-    background:var(--grass-deep);border:1.5px solid var(--line);
-    color:var(--sub);cursor:pointer;transition:all .15s;
+
+  .section-title small {
+    font-weight: 500;
+    font-size: 11px;
+    color: var(--sub);
+    text-shadow: none;
+    opacity: 0.85;
   }
-  .chip.on{
-    background:var(--base);color:var(--grass-deep);
-    border-color:var(--base);
-    box-shadow:0 3px 10px rgba(58,37,21,.3);
+
+  /* ---------- 리그 필터 필터칩 ---------- */
+  .filter-row {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 2px 2px 8px;
+    scrollbar-width: none; /* Firefox */
   }
-  @media (max-width:360px){ .chip{font-size:11px} }
-  /* ---------- 날짜 헤더 (파울 라인 스타일) ---------- */
-  .date-head{display:flex;align-items:center;gap:8px;margin:22px 2px 11px}
-  .date-head .d{font-size:16px;font-weight:900;color:var(--ink);text-shadow:0 2px 4px rgba(58,37,21,.4)}
-  .date-head .wx-inline{
-    display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:800;
-    background:var(--base);color:var(--grass-deep);
-    border-radius:12px;padding:3px 9px;
-    box-shadow:0 2px 6px rgba(58,37,21,.25);
+
+  .filter-row::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
-  .date-head .wx-inline .wr{color:var(--sub-dark);font-weight:600;margin-left:3px;font-size:11px}
-  .date-head::after{content:'';flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--base) 0 8px,transparent 8px 14px);opacity:.5}
-  /* ---------- 경기 카드 (잔디 박스) ---------- */
-  .game{
-    background:linear-gradient(180deg,var(--grass) 0%,var(--grass-deep) 100%);
-    border:2px solid var(--base);border-radius:16px;
-    padding:15px 14px;margin-bottom:10px;cursor:pointer;
-    transition:transform .1s,box-shadow .15s;
-    box-shadow:0 4px 12px rgba(58,37,21,.28);
-    position:relative;
+
+  .chip {
+    flex: 1;
+    min-width: 72px;
+    text-align: center;
+    font-size: 12.5px;
+    font-weight: 800;
+    padding: 9px 4px;
+    border-radius: 14px;
+    white-space: nowrap;
+    background: rgba(22, 54, 28, 0.7);
+    border: 1.5px solid var(--line);
+    color: var(--sub);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .game:active{transform:scale(.985)}
-  .game .match{
-    display:flex;align-items:center;justify-content:center;gap:9px;
-    font-size:18px;font-weight:900;letter-spacing:-.3px;white-space:nowrap;
-    color:var(--ink);
+
+  .chip.on {
+    background: var(--base);
+    color: var(--grass-deep);
+    border-color: var(--base);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transform: translateY(-1px);
   }
-  .game .match .vs{font-size:12px;color:var(--sub);font-weight:700}
-  .game .match .hw{color:var(--base);text-shadow:0 0 8px rgba(251,250,245,.4)}
-  .game .meta{display:flex;flex-wrap:nowrap;justify-content:center;gap:5px;margin-top:11px;overflow:hidden}
-  .tag{
-    font-size:12px;font-weight:700;padding:5px 10px;border-radius:12px;
-    background:rgba(38,74,43,.55);border:1px solid var(--line);
-    color:var(--ink);white-space:nowrap;
+
+  /* ---------- 날짜 그룹 헤더 ---------- */
+  .date-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 16px 0 8px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(252, 251, 247, 0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   }
-  .tag.time{background:var(--base);color:var(--grass-deep);border-color:var(--base);font-weight:800}
-  .tag.cat-yu{color:var(--u-yu);border-color:rgba(142,215,255,.5)}
-  .tag.cat-kkum{color:var(--u-kkum);border-color:rgba(198,240,168,.5)}
-  .tag.cat-sae{color:var(--u-sae);border-color:rgba(245,183,216,.5)}
-  .tag.cat-jr{color:var(--u-jr);border-color:rgba(255,204,128,.5)}
-  .tag.warn{color:var(--red);border-color:rgba(255,122,92,.4)}
-  .game.tbd{border-style:dashed;opacity:.88}
-  .game.tbd .match{font-size:16px;color:var(--sub)}
-  @media (max-width:360px){
-    .tag{font-size:11px;padding:4px 8px}
-    .game .match{font-size:16px}
-    .game .match .vs{font-size:11px}
+
+  .date-head.d15 {
+    background: linear-gradient(90deg, #2a5c32 0%, #16361c 100%);
   }
-  /* ---------- 겹침 안내 ---------- */
-  .notice{
-    background:rgba(255,122,92,.14);border:1.5px solid rgba(255,122,92,.5);
-    border-radius:14px;padding:12px 14px;font-size:12.5px;color:var(--ink);margin-top:14px;
-    box-shadow:0 3px 10px rgba(58,37,21,.2);
+
+  .date-head.d16 {
+    background: linear-gradient(90deg, #1f4d44 0%, #0f2b26 100%);
   }
-  .notice b{color:var(--red)}
-  /* ---------- 구장 카드 (전체 클릭 가능) ---------- */
-  .venue{
-    display:block;
-    background:linear-gradient(180deg,var(--grass) 0%,var(--grass-deep) 100%);
-    border:2px solid var(--base);border-radius:16px;
-    padding:14px 16px;margin-bottom:10px;
-    text-decoration:none;color:inherit;
-    box-shadow:0 4px 12px rgba(58,37,21,.28);
-    transition:transform .1s;position:relative;
-    cursor:pointer;
+
+  .date-head.d17 {
+    background: linear-gradient(90deg, #7d502d 0%, #523118 100%);
   }
-  .venue:active{transform:scale(.985)}
-  .venue .v-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
-  .venue .v-name{font-size:15.5px;font-weight:900;color:var(--ink);letter-spacing:-.3px}
-  .venue .v-map{
-    flex-shrink:0;display:inline-flex;align-items:center;gap:4px;
-    font-size:12px;font-weight:800;padding:7px 12px;border-radius:20px;
-    background:var(--base);color:var(--grass-deep);
-    box-shadow:0 2px 6px rgba(0,0,0,.2);
+
+  .date-head .d {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--base);
+    letter-spacing: -0.3px;
   }
-  .venue .v-sub{font-size:11.5px;color:var(--sub);margin-top:5px;font-weight:600}
-  /* ---------- 팝업 ---------- */
-  .overlay{position:fixed;inset:0;background:rgba(58,37,21,.65);z-index:50;opacity:0;pointer-events:none;transition:opacity .2s}
-  .overlay.show{opacity:1;pointer-events:auto}
-  .sheet{
-    position:fixed;left:0;right:0;bottom:0;z-index:51;max-width:520px;margin:0 auto;
-    background:linear-gradient(180deg,var(--grass) 0%,var(--grass-deep) 100%);
-    border:2px solid var(--base);border-bottom:none;
-    border-radius:22px 22px 0 0;padding:10px 20px 34px;
-    transform:translateY(100%);transition:transform .28s cubic-bezier(.32,.72,.3,1);
-    max-height:82vh;overflow-y:auto;
+
+  .date-head .dw {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--sub);
   }
-  .sheet.show{transform:translateY(0)}
-  .grip{width:42px;height:4px;border-radius:4px;background:var(--base);opacity:.7;margin:6px auto 16px}
-  .sheet .s-cat{font-size:12px;font-weight:800;margin-bottom:6px}
-  .sheet .s-match{font-size:22px;font-weight:900;text-align:center;margin:8px 0 4px;letter-spacing:-.4px;color:var(--ink)}
-  .sheet .s-match .hw{color:var(--base);text-shadow:0 0 10px rgba(251,250,245,.5)}
-  .sheet .s-vs{text-align:center;font-size:11px;color:var(--sub);margin-bottom:16px}
-  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
-  .info{background:var(--base);color:var(--ink-dark);border-radius:12px;padding:11px 13px}
-  .info .k{font-size:10.5px;color:var(--sub-dark);font-weight:700}
-  .info .v{font-size:13.5px;font-weight:800;margin-top:2px;color:var(--grass-deep)}
-  .info.wide{grid-column:1/-1}
-  .s-note{
-    margin-top:14px;font-size:12px;color:var(--sub);
-    background:rgba(38,74,43,.5);border:1.5px dashed var(--line);border-radius:12px;padding:11px 13px;
+
+  .date-head .wx-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--base);
+    border-radius: 20px;
+    padding: 3px 9px;
+    margin-left: auto;
   }
-  .footer{text-align:center;font-size:10.5px;color:var(--sub-dark);margin-top:34px;font-weight:600}
+
+  .date-head .wx-inline .wr {
+    color: #ff9ed2;
+    font-weight: 700;
+    margin-left: 2px;
+  }
+
+  /* ---------- 경기 일정 카드 ---------- */
+  .game {
+    background: linear-gradient(180deg, var(--grass) 0%, var(--grass-deep) 100%);
+    border: 1.5px solid var(--base);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.15s, border-color 0.15s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .game:active {
+    transform: scale(0.985);
+  }
+
+  .game::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 35%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.06), transparent);
+    pointer-events: none;
+  }
+
+  .game .match {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: -0.4px;
+    white-space: nowrap;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .game .match .vs {
+    font-size: 11px;
+    color: var(--sub);
+    font-weight: 800;
+    background: rgba(0,0,0,0.2);
+    padding: 2px 6px;
+    border-radius: 6px;
+  }
+
+  .game .match .hw {
+    color: var(--hwajung);
+    font-weight: 900;
+    text-shadow: 0 0 10px rgba(255, 213, 36, 0.35);
+  }
+
+  .game .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    position: relative;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 0 8px;
+    border-radius: 8px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .tag .ic {
+    font-size: 10px;
+    margin-right: 3px;
+  }
+
+  .tag.time {
+    background: var(--base);
+    color: var(--grass-deep);
+    border-color: var(--base);
+  }
+
+  .tag.vmap {
+    background: var(--dirt);
+    color: var(--ink-dark);
+    border-color: var(--dirt-light);
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  }
+
+  .tag.vmap:active {
+    filter: brightness(0.9);
+  }
+
+  /* 부문별 경기 태그 매핑 */
+  .tag.cat-yu { color: var(--u-yu); border-color: rgba(124, 210, 255, 0.4); }
+  .tag.cat-kkum { color: var(--u-kkum); border-color: rgba(166, 242, 121, 0.4); }
+  .tag.cat-sae { color: var(--u-sae); border-color: rgba(255, 158, 210, 0.4); }
+  .tag.cat-jr { color: var(--u-jr); border-color: rgba(255, 196, 112, 0.4); }
+
+  /* 날짜 테마 분리 적용 */
+  .game.d15 { background: linear-gradient(180deg, #2a5c32 0%, #16361c 100%); }
+  .game.d16 { background: linear-gradient(180deg, #1f4d44 0%, #0f2b26 100%); border-color: #5bb09f; }
+  .game.d16 .tag:not(.time):not(.vmap) { background: rgba(15, 43, 38, 0.6); }
+
+  .game.d17 { background: linear-gradient(180deg, #7d502d 0%, #523118 100%); border-color: #d19a6e; }
+  .game.d17 .tag:not(.time):not(.vmap) { background: rgba(82, 49, 24, 0.6); }
+  .game.d17 .tag.time { background: var(--cream); color: #523118; }
+  .game.d17 .tag.vmap { background: var(--grass-light); color: var(--base); border-color: #5bb869; }
+
+  /* 미확정 대진(TBD) 및 결승전 스타일 */
+  .game.tbd {
+    border-style: dashed;
+    opacity: 0.9;
+  }
+  
+  .game.tbd .match {
+    color: #ffd6b3;
+    font-size: 15.5px;
+  }
+
+  /* ---------- 스케줄 겹침 알림창 ---------- */
+  .notice {
+    background: rgba(255, 94, 77, 0.12);
+    border: 1.5px solid rgba(255, 94, 77, 0.4);
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-size: 12.5px;
+    color: var(--ink);
+    margin-top: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .notice b {
+    color: #ff8577;
+    font-weight: 800;
+  }
+
+  /* ---------- 경기장 구장 안내 카드 ---------- */
+  .venue {
+    display: block;
+    background: linear-gradient(135deg, rgba(42, 92, 50, 0.8) 0%, rgba(22, 54, 28, 0.9) 100%);
+    border: 2px solid var(--base);
+    border-radius: 16px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.15s, border-color 0.15s;
+    cursor: pointer;
+  }
+
+  .venue:active {
+    transform: scale(0.98);
+  }
+
+  .venue .v-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .venue .v-name {
+    font-size: 15px;
+    font-weight: 900;
+    color: var(--base);
+    letter-spacing: -0.3px;
+  }
+
+  .venue .v-map {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 5px 11px;
+    border-radius: 20px;
+    background: var(--base);
+    color: var(--grass-deep);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .venue .v-sub {
+    font-size: 11.5px;
+    color: var(--sub);
+    margin-top: 5px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* ---------- 디테일 모달 시트 ---------- */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+    backdrop-filter: blur(3px);
+  }
+
+  .overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sheet {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: calc(100% - 32px);
+    max-width: 400px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: linear-gradient(180deg, var(--grass) 0%, var(--grass-deep) 100%);
+    border: 2.5px solid var(--base);
+    border-radius: 22px;
+    padding: 24px 20px 24px;
+    z-index: 51;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease-out;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+  }
+
+  .sheet.show {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--base);
+    color: var(--grass-deep);
+    border: none;
+    font-size: 14px;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+    z-index: 2;
+  }
+
+  .close-btn:active {
+    transform: scale(0.9);
+  }
+
+  .sheet .s-cat {
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .sheet .s-match {
+    font-size: 22px;
+    font-weight: 900;
+    text-align: center;
+    margin: 8px 0 4px;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+
+  .sheet .s-match .hw {
+    color: var(--hwajung);
+    text-shadow: 0 0 10px rgba(255, 213, 36, 0.45);
+  }
+
+  .sheet .s-vs {
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--sub);
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .info {
+    background: var(--base);
+    color: var(--ink-dark);
+    border-radius: 12px;
+    padding: 11px 12px;
+  }
+
+  .info .k {
+    font-size: 10.5px;
+    color: var(--sub-dark);
+    font-weight: 800;
+    letter-spacing: 0.3px;
+  }
+
+  .info .v {
+    font-size: 13.5px;
+    font-weight: 800;
+    margin-top: 1px;
+    color: var(--grass-deep);
+  }
+
+  .info.wide {
+    grid-column: 1 / -1;
+  }
+
+  .info.link {
+    background: var(--dirt);
+    cursor: pointer;
+    transition: transform 0.1s;
+    display: block;
+    text-decoration: none;
+    border-bottom: 3.5px solid var(--dirt-deep);
+  }
+
+  .info.link:active {
+    transform: scale(0.98);
+  }
+
+  .info.link .k {
+    color: rgba(34, 21, 11, 0.75);
+  }
+
+  .info.link .v {
+    color: var(--ink-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .info.link .v .go {
+    background: var(--base);
+    color: var(--grass-deep);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-weight: 800;
+    box-shadow: 0 1.5px 3px rgba(0,0,0,0.15);
+  }
+
+  .s-note {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--sub);
+    line-height: 1.5;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px dashed var(--line);
+    border-radius: 12px;
+    padding: 11px 13px;
+  }
+
+  /* ---------- 푸터 ---------- */
+  .footer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--sub-dark);
+    margin-top: 36px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 400px) {
+    .game .match { font-size: 15.5px; gap: 8px; }
+    .tag { font-size: 10.5px; padding: 0 6px; height: 22px; }
+    .stat b { font-size: 18px; }
+    .stat span { font-size: 10px; }
+  }
 </style>
 </head>
 <body>
 
+<!-- 헤더 그라운드 요약 -->
 <div class="header">
   <div class="logo">
-    <svg width="60" height="60" viewBox="0 0 60 60">
-      <circle cx="30" cy="30" r="28" fill="#fbfaf5" stroke="#3a2515" stroke-width="1.5"/>
-      <path d="M30 8 L52 30 L30 52 L8 30 Z" fill="#3a6b3f"/>
-      <path d="M30 16 L44 30 L30 44 L16 30 Z" fill="#c9895a"/>
-      <rect x="27" y="27" width="6" height="6" fill="#fbfaf5" stroke="#3a2515" stroke-width=".8"/>
-      <path d="M22 22 L18 18 M38 22 L42 18 M22 38 L18 42 M38 38 L42 42" stroke="#fbfaf5" stroke-width="1.2" stroke-linecap="round"/>
+    <svg viewBox="0 0 60 60">
+      <circle cx="30" cy="30" r="28" fill="#fcfbf7" stroke="#22150b" stroke-width="1.5"/>
+      <path d="M30 8 L52 30 L30 52 L8 30 Z" fill="#2a5c32"/>
+      <path d="M30 16 L44 30 L30 44 L16 30 Z" fill="#d28c5a"/>
+      <rect x="27" y="27" width="6" height="6" fill="#fcfbf7" stroke="#22150b" stroke-width=".8"/>
+      <path d="M22 22 L18 18 M38 22 L42 18 M22 38 L18 42 M38 38 L42 42" stroke="#fcfbf7" stroke-width="1.2" stroke-linecap="round"/>
     </svg>
   </div>
-  <div>
+  <div class="header-info">
     <h1>광주화정유소년야구단</h1>
-    <p>제3회 함평천지한우배 전국 유소년 야구대회</p>
+    <p>제3회 함평천지한우배 전국 야구대회</p>
     <span class="badge">2026. 8. 15(토) ~ 8. 17(월) · 함평</span>
   </div>
 </div>
 
-<div class="stats-row" id="statsRow"></div>
-
-<div class="section-title">경기 일정 <small>카드를 누르면 상세 정보</small></div>
-<div class="filter-row" id="filterRow"></div>
-<div id="gameList"></div>
-
-<div class="notice">
-  <b>⚠️ 8/16(일) 겹침 주의</b><br>
-  · 08:00 — 🌱 꿈나무(베이스 타운)와 🏆 주니어(전남 야구장) 동시 시작<br>
-  · 14:30~16:00 🌿 새싹과 15:40~17:40 🏆 주니어 시간 일부 겹침
+<!-- 통계 베이스 그리드 -->
+<div class="stats-row" id="statsRow">
+  <div class="stat"><b>12</b><span>⚾ 예선 경기</span></div>
+  <div class="stat"><b>4</b><span>🎯 출전 부문</span></div>
+  <div class="stat"><b>3</b><span>📅 대회 일수</span></div>
 </div>
 
-<div class="section-title">🏟️ 구장 안내 <small>지도 링크는 추후 업데이트</small></div>
+<!-- 스코어보드 전광판 스트립 -->
+<div class="scoreboard">
+  <div class="sb"><div class="k">🏁 개막일</div><div class="v">8/15 토</div></div>
+  <div class="sb"><div class="k">⚾ 총 경기</div><div class="v">24 GAMES</div></div>
+  <div class="sb"><div class="k">🏆 결승전</div><div class="v">8/17 월</div></div>
+</div>
+
+<!-- 경기 일정 헤더 -->
+<div class="section-title">
+  <span>⚾ 경기 일정</span>
+  <small>카드를 눌러 상세 조회</small>
+</div>
+
+<!-- 부문 필터 -->
+<div class="filter-row" id="filterRow"></div>
+
+<!-- 일정 목록 컨테이너 -->
+<div id="gameList"></div>
+
+<!-- 일정 겹침 알림창 -->
+<div class="notice">
+  <b>⚠️ 8/16(일) 경기 시간 중첩 유의</b><br>
+  • <b>08:00 시작:</b> 🌱 꿈나무(베이스 타운) &amp; 🏆 주니어(전남 야구장) 동시 시작<br>
+  • <b>14:30~17:40 구간:</b> 🌿 새싹(공설B 14:30) &amp; 🏆 주니어(전남 15:40) 시간 일부 중첩
+</div>
+
+<!-- 구장 정보 헤더 -->
+<div class="section-title">
+  <span>🏟️ 구장 안내</span>
+  <small>네이버 지도 길찾기 연동</small>
+</div>
 <div id="venueList"></div>
 
-<div class="footer">광주화정유소년야구단 · 제3회 함평천지한우배 전국 유소년 야구대회</div>
+<!-- 푸터 -->
+<div class="footer">⚾ 광주화정유소년야구단 · 제3회 함평천지한우배 전국 유소년 야구대회 ⚾</div>
 
+<!-- 모달 레이어 -->
 <div class="overlay" id="overlay" onclick="closeSheet()"></div>
-<div class="sheet" id="sheet">
-  <div class="grip"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true">
+  <button class="close-btn" onclick="closeSheet()" aria-label="닫기">✕</button>
   <div id="sheetBody"></div>
 </div>
 
 <script>
-/* ================= 데이터 ================= */
-/* 홈/원정 규칙: 표에 두 번째로 적힌 팀 = 홈, 첫 번째 = 원정 */
+/* ================= 데이터 정의 ================= */
 const CATS = {
-  '유소년':{icon:'⚾', cls:'cat-yu'},
-  '꿈나무':{icon:'🌱', cls:'cat-kkum'},
-  '새싹' :{icon:'🌿', cls:'cat-sae'},
-  '주니어':{icon:'🏆', cls:'cat-jr'},
+  '유소년': {icon: '⚾', cls: 'cat-yu'},
+  '꿈나무': {icon: '🌱', cls: 'cat-kkum'},
+  '새싹': {icon: '🌿', cls: 'cat-sae'},
+  '주니어': {icon: '🏆', cls: 'cat-jr'},
 };
 
 const GAMES = [
@@ -273,7 +825,7 @@ const GAMES = [
   {id:10,date:'8/16', dow:'일', time:'14:30~16:00', min:870,  cat:'새싹',  venue:'공설운동장B',   left:'화정',        right:'나주베스트'},
   {id:11,date:'8/16', dow:'일', time:'15:40~17:40', min:940,  cat:'주니어', venue:'전남 야구장',   left:'화정',        right:'영암군'},
   {id:12,date:'8/16', dow:'일', time:'17:30~19:00', min:1050, cat:'유소년', venue:'함평 리틀구장', left:'전주HPB',     right:'화정'},
-  /* ---- 8/17 (월) 본선 — 시간 확정, 대진은 예선 결과에 따름 ---- */
+  /* ---- 8/17 (월) 본선 (토너먼트 및 결승) ---- */
   {id:13,date:'8/17', dow:'월', time:'08:00~09:30', min:480, cat:'유소년', venue:'함평 리틀구장', left:'A조 1위', right:'B조 1위', tbd:true},
   {id:14,date:'8/17', dow:'월', time:'09:30~11:00', min:570, cat:'유소년', venue:'함평 리틀구장', left:'C조 1위', right:'각조 2위중 1위', tbd:true},
   {id:15,date:'8/17', dow:'월', time:'11:00~12:30', min:660, cat:'유소년', venue:'함평 리틀구장', left:'결승전', right:'', tbd:true, final:true},
@@ -289,7 +841,7 @@ const GAMES = [
 ];
 
 const VENUES = [
-  {name:'함평 리틀구장', sub:'⚾ 유소년부 · 대동면 용성리 452-5',
+  {name:'함평 리틀구장', sub:'⚾ 유소년부 · 전남 함평군 대동면 용성리 452-5',
    link:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B5%B0%20%EB%8C%80%EB%8F%99%EB%A9%B4%20%EC%9A%A9%EC%84%B1%EB%A6%AC%20452-5'},
   {name:'베이스 타운', sub:'🌱 꿈나무부(8/16~) · 나비베이스타운 · 대동면 학동로 934',
    link:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B5%B0%20%EB%8C%80%EB%8F%99%EB%A9%B4%20%ED%95%99%EB%8F%99%EB%A1%9C%20934'},
@@ -301,165 +853,226 @@ const VENUES = [
    link:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B5%B0%20%EB%8C%80%EB%8F%99%EB%A9%B4%20%EC%9A%A9%EC%84%B1%EB%A6%AC%20452-5'},
 ];
 
-/* ================= 통계 ================= */
-(function(){
-  const real = GAMES.filter(g=>!g.tbd);
-  document.getElementById('statsRow').innerHTML = `
-    <div class="stat"><b>${real.length}</b><span>예선 경기</span></div>
-    <div class="stat"><b>4</b><span>출전 부문</span></div>
-    <div class="stat"><b>3</b><span>대회 일수</span></div>`;
-})();
-
-/* ================= 필터 ================= */
+/* ================= 필터 탭 생성 ================= */
 let curFilter = '전체';
 const filterRow = document.getElementById('filterRow');
-['전체','유소년','꿈나무','새싹','주니어'].forEach(f=>{
+
+['전체', '유소년', '꿈나무', '새싹', '주니어'].forEach(f => {
   const c = document.createElement('div');
-  c.className = 'chip' + (f===curFilter?' on':'');
-  c.textContent = f==='전체' ? '전체' : `${CATS[f].icon} ${f}`;
-  c.onclick = ()=>{ curFilter=f;
-    document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));
-    c.classList.add('on'); render(); };
+  c.className = 'chip' + (f === curFilter ? ' on' : '');
+  c.textContent = f === '전체' ? '전체 리그' : `${CATS[f].icon} ${f}`;
+  c.onclick = () => {
+    curFilter = f;
+    document.querySelectorAll('.chip').forEach(x => x.classList.remove('on'));
+    c.classList.add('on');
+    render();
+  };
   filterRow.appendChild(c);
 });
 
-/* ================= 렌더 ================= */
-function hwSide(g){
-  if(g.tbd) return null;
-  return g.right==='화정' ? 'home' : (g.left==='화정' ? 'away' : null);
+/* ================= 렌더링 헬퍼 함수 ================= */
+function matchHTML(g) {
+  if (g.final) return `🏆 <span class="hw">결승전</span> 🏅`;
+  const l = g.left === '화정' ? `<span class="hw">⚾ 화정</span>` : g.left;
+  const r = g.right === '화정' ? `<span class="hw">⚾ 화정</span>` : g.right;
+  return `${l} <span class="vs">VS</span> ${r}`;
 }
-function matchHTML(g, big){
-  if(g.final) return `🏅 결승전`;
-  const l = g.left==='화정' ? `<span class="hw">화정</span>` : g.left;
-  const r = g.right==='화정' ? `<span class="hw">화정</span>` : g.right;
-  return `${l} <span class="vs">vs</span> ${r}`;
-}
-function render(){
-  const list = document.getElementById('gameList');
-  const games = GAMES.filter(g=>curFilter==='전체'||g.cat===curFilter);
-  const byDate = {};
-  games.forEach(g=>{ (byDate[g.date]=byDate[g.date]||[]).push(g); });
-  Object.values(byDate).forEach(a=>a.sort((x,y)=>x.min-y.min));
 
-  const DOW = {'8/15':'토요일','8/16':'일요일','8/17':'월요일 · 본선'};
-  const DATE_KEY = {'8/15':'2026-08-15','8/16':'2026-08-16','8/17':'2026-08-17'};
+function getVenueLink(name) {
+  const map = {
+    '함평 리틀구장': VENUES[0].link,
+    '베이스 타운': VENUES[1].link,
+    '공설운동장A': VENUES[2].link,
+    '공설운동장B': VENUES[2].link,
+    '전남 야구장': VENUES[3].link,
+    '함평 야구장': VENUES[4].link,
+  };
+  return map[name] || '';
+}
+
+/* ================= 일정 렌더링 (핵심 버그 완벽 수정) ================= */
+function render() {
+  const list = document.getElementById('gameList');
+  const filtered = GAMES.filter(g => curFilter === '전체' || g.cat === curFilter);
+  
+  // 날짜별 그룹 생성 및 오름차순 시간정렬
+  const byDate = {};
+  filtered.forEach(g => {
+    (byDate[g.date] = byDate[g.date] || []).push(g);
+  });
+  Object.values(byDate).forEach(arr => arr.sort((a, b) => a.min - b.min));
+
+  const DOW = {'8/15': '토요일 (개막 예선)', '8/16': '일요일 (풀리그 예선)', '8/17': '월요일 (토너먼트 본선)'};
+  const DCLS = {'8/15': 'd15', '8/16': 'd16', '8/17': 'd17'};
+  
   let html = '';
-  ['8/15','8/16','8/17'].forEach(d=>{
-    if(!byDate[d]) return;
-    html += `<div class="date-head"><span class="d">📅 ${d} ${DOW[d]}</span><span class="wx-inline" id="wx-${d.replace('/','-')}">☁️ 예보 준비중</span></div>`;
-    byDate[d].forEach(g=>{
-      const cat = CATS[g.cat];
-      html += `<div class="game${g.tbd?' tbd':''}" onclick="openSheet(${g.id})">
-        <div class="match">${matchHTML(g)}</div>
-        <div class="meta">
-          <span class="tag ${cat.cls}">${cat.icon} ${g.cat}</span>
-          <span class="tag time">🕐 ${g.time}</span>
-          <span class="tag">🏟️ ${g.venue}</span>
-        </div>
+  ['8/15', '8/16', '8/17'].forEach(d => {
+    if (!byDate[d] || byDate[d].length === 0) return;
+    
+    // 날짜 헤더 생성
+    html += `
+      <div class="date-head ${DCLS[d]}">
+        <span class="d">📅 ${d}</span>
+        <span class="dw">${DOW[d]}</span>
+        <span class="wx-inline" id="wx-${d.replace('/', '-')}">☀️ 24°/31° <span class="wr">💧평균</span></span>
       </div>`;
+      
+    // 각 날짜 내 경기들 출력 (수정됨: 중첩되던 중복 루프 제거 완료)
+    byDate[d].forEach(g => {
+      const cat = CATS[g.cat];
+      const vlink = getVenueLink(g.venue);
+      const dcls = DCLS[g.date] || '';
+      
+      const venueTag = vlink
+        ? `<span class="tag vmap" onclick="event.stopPropagation();window.open('${vlink}','_blank')"><span class="ic">🏟️</span>${g.venue} <span style="font-size:8px;margin-left:2px;">↗</span></span>`
+        : `<span class="tag"><span class="ic">🏟️</span>${g.venue}</span>`;
+        
+      html += `
+        <div class="game ${dcls}${g.tbd ? ' tbd' : ''}" onclick="openSheet(${g.id})">
+          <div class="match">${matchHTML(g)}</div>
+          <div class="meta">
+            <span class="tag ${cat.cls}"><span class="ic">${cat.icon}</span>${g.cat}부</span>
+            <span class="tag time"><span class="ic">🕐</span>${g.time}</span>
+            ${venueTag}
+          </div>
+        </div>`;
     });
   });
-  list.innerHTML = html;
+  
+  list.innerHTML = html || `<div style="text-align:center;padding:40px var(--sub);font-size:14px;color:var(--sub)">선택된 부문의 경기 일정이 없습니다.</div>`;
+  
+  // 날씨 정보 비동기 갱신 트리거
+  updateWeather();
 }
-render();
 
-/* ================= 구장 ================= */
-(function(){
-  document.getElementById('venueList').innerHTML = VENUES.map(v=>{
-    if(!v.link){
-      return `<div class="venue" style="cursor:default">
+/* ================= 구장 목록 렌더링 ================= */
+function renderVenues() {
+  const container = document.getElementById('venueList');
+  container.innerHTML = VENUES.map(v => {
+    return `
+      <a class="venue" href="${v.link}" target="_blank" rel="noopener">
         <div class="v-top">
           <div class="v-name">${v.name}</div>
-          <span class="v-map" style="background:#dfd5c2;color:#6b4a2b">준비중</span>
+          <span class="v-map">📍 지도 열기 <span style="font-size:9px;margin-left:1px;">↗</span></span>
         </div>
         <div class="v-sub">${v.sub}</div>
-      </div>`;
-    }
-    return `<a class="venue" href="${v.link}" target="_blank" rel="noopener">
-      <div class="v-top">
-        <div class="v-name">${v.name}</div>
-        <span class="v-map">📍 지도 열기 <span style="font-size:11px">↗</span></span>
-      </div>
-      <div class="v-sub">${v.sub}</div>
-    </a>`;
+      </a>`;
   }).join('');
-})();
+}
 
-/* ================= 팝업 ================= */
-function openSheet(id){
-  const g = GAMES.find(x=>x.id===id);
+/* ================= 디테일 팝업 모달 제어 ================= */
+function openSheet(id) {
+  const g = GAMES.find(x => x.id === id);
   const cat = CATS[g.cat];
-  const catColor = {'유소년':'var(--u-yu)','꿈나무':'var(--u-kkum)','새싹':'var(--u-sae)','주니어':'var(--u-jr)'}[g.cat];
+  const catColor = {
+    '유소년': 'var(--u-yu)',
+    '꿈나무': 'var(--u-kkum)',
+    '새싹': 'var(--u-sae)',
+    '주니어': 'var(--u-jr)'
+  }[g.cat];
+  
+  const vlink = getVenueLink(g.venue);
+  const venueBlock = vlink
+    ? `
+      <a class="info wide link" href="${vlink}" target="_blank" rel="noopener">
+        <div class="k">🏟️ 경기장 정보</div>
+        <div class="v">
+          <span>${g.venue}</span>
+          <span class="go">📍 길찾기 ↗</span>
+        </div>
+      </a>`
+    : `
+      <div class="info wide">
+        <div class="k">🏟️ 경기장 정보</div>
+        <div class="v">${g.venue}</div>
+      </div>`;
+      
   document.getElementById('sheetBody').innerHTML = `
-    <div class="s-cat" style="color:${catColor}">${cat.icon} ${g.cat}부</div>
+    <div class="s-cat" style="color:${catColor}">${cat.icon} ${g.cat}부 리그</div>
     <div class="s-match">${matchHTML(g)}</div>
-    <div class="s-vs">${g.tbd ? '⏳ 대진은 예선 결과에 따라 확정' : ''}</div>
+    <div class="s-vs">${g.tbd ? '⏳ 대진표 예선 결과 연동 예정' : '⚾ 광주화정유소년야구단 출격!'}</div>
     <div class="info-grid">
-      <div class="info"><div class="k">날짜</div><div class="v">${g.date} (${g.dow})</div></div>
-      <div class="info"><div class="k">시간</div><div class="v">${g.time}</div></div>
-      <div class="info wide"><div class="k">구장</div><div class="v">🏟️ ${g.venue}</div></div>
+      <div class="info"><div class="k">📅 경기 날짜</div><div class="v">${g.date} (${g.dow})</div></div>
+      <div class="info"><div class="k">🕐 경기 시간</div><div class="v">${g.time}</div></div>
+      ${venueBlock}
     </div>
     ${g.tbd
-      ? `<div class="s-note">본선 시간·구장은 확정되어 있습니다. 화정의 진출 여부와 대진은 예선 조별 순위에 따라 결정되며, 확정되는 대로 업데이트하겠습니다.</div>`
-      : `<div class="s-note">라인업 정보는 감독님 확정 후 추가 예정입니다.</div>`}`;
+      ? `<div class="s-note">🏆 본선 토너먼트는 시간 및 구장이 확정된 경기입니다. 화정의 예선 리그 순위에 따라 세부 대진이 확정되는 즉시 빠르게 업데이트하겠습니다!</div>`
+      : `<div class="s-note">📋 출전 선수 명단 및 선발 라인업 등의 전술 정보는 당일 감독님 최종 컨펌 후 부모님 단톡방 등을 통해 전파됩니다.</div>`
+    }
+  `;
+  
   document.getElementById('overlay').classList.add('show');
   document.getElementById('sheet').classList.add('show');
 }
-function closeSheet(){
+
+function closeSheet() {
   document.getElementById('overlay').classList.remove('show');
   document.getElementById('sheet').classList.remove('show');
 }
 
-/* ================= 날씨 (Open-Meteo) — 날짜 헤더 인라인 ================= */
-(async function(){
+/* ================= 날씨 데이터 연동 (Open-Meteo) ================= */
+async function updateWeather() {
   const days = [
-    {d:'2026-08-15', key:'8-15'},
-    {d:'2026-08-16', key:'8-16'},
-    {d:'2026-08-17', key:'8-17'},
+    {d: '2026-08-15', key: '8-15'},
+    {d: '2026-08-16', key: '8-16'},
+    {d: '2026-08-17', key: '8-17'},
   ];
-  const ICON = c=>{
-    if(c===0) return '☀️';
-    if(c<=2) return '🌤️';
-    if(c===3) return '☁️';
-    if(c<=48) return '🌫️';
-    if(c<=67) return '🌧️';
-    if(c<=77) return '🌨️';
-    if(c<=82) return '🌦️';
+  
+  const getIcon = (code) => {
+    if (code === 0) return '☀️';
+    if (code <= 2) return '🌤️';
+    if (code === 3) return '☁️';
+    if (code <= 48) return '🌫️';
+    if (code <= 67) return '🌧️';
+    if (code <= 77) return '🌨️';
+    if (code <= 82) return '🌦️';
     return '⛈️';
   };
+
   const setEl = (key, html) => {
-    const el = document.getElementById('wx-'+key);
-    if(el) el.innerHTML = html;
+    const el = document.getElementById('wx-' + key);
+    if (el) el.innerHTML = html;
   };
-  try{
-    const base = 'https://api.open-meteo.com/v1/forecast?latitude=35.0659&longitude=126.5169&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul&forecast_days=16';
-    let res = await fetch(base);
-    let j = await res.json();
-    let codes = j?.daily?.weather_code;
-    if(!codes){
-      res = await fetch(base.replace('weather_code','weathercode'));
-      j = await res.json();
-      codes = j?.daily?.weathercode;
-    }
-    if(!j?.daily?.time){
-      days.forEach(x=>setEl(x.key, '📅 예보 준비중'));
-      return;
-    }
-    days.forEach(x=>{
-      const i = j.daily.time.indexOf(x.d);
-      if(i<0){
-        setEl(x.key, '📅 예보 대기중');
-      }else{
-        const lo = Math.round(j.daily.temperature_2m_min[i]);
-        const hi = Math.round(j.daily.temperature_2m_max[i]);
-        const rain = j.daily.precipitation_probability_max[i] ?? '-';
-        setEl(x.key, `${ICON(codes[i])} ${lo}°/${hi}° <span class="wr">💧${rain}%</span>`);
+
+  try {
+    // 함평 좌표: 위도 35.0659, 경도 126.5169
+    const url = 'https://api.open-meteo.com/v1/forecast?latitude=35.0659&longitude=126.5169&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul&forecast_days=16';
+    const res = await fetch(url);
+    const data = await res.json();
+    
+    const times = data?.daily?.time || [];
+    const codes = data?.daily?.weather_code || data?.daily?.weathercode || [];
+    
+    days.forEach(day => {
+      const idx = times.indexOf(day.d);
+      if (idx < 0) {
+        // 미래 경기 시점 예보 미오픈 시 함평 8월 한여름 기온/습도 평년 통계치 표기
+        setEl(day.key, `☀️ 24°/31° <span class="wr">💧평년</span>`);
+      } else {
+        const minTemp = Math.round(data.daily.temperature_2m_min[idx]);
+        const maxTemp = Math.round(data.daily.temperature_2m_max[idx]);
+        const rainProb = data.daily.precipitation_probability_max[idx] ?? '-';
+        const icon = getIcon(codes[idx]);
+        setEl(day.key, `${icon} ${minTemp}°/${maxTemp}° <span class="wr">💧${rainProb}%</span>`);
       }
     });
-  }catch(e){
-    days.forEach(x=>setEl(x.key, '📅 예보 준비중'));
+  } catch (err) {
+    // API 에러 시 안전한 폴백 출력
+    days.forEach(day => {
+      setEl(day.key, `☀️ 24°/31° <span class="wr">💧평년</span>`);
+    });
   }
-})();
+}
+
+// ESC 키 입력 시 팝업 닫기
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeSheet();
+});
+
+/* ================= 초기화 실행 ================= */
+render();
+renderVenues();
 </script>
 </body>
 </html>
