@@ -1,3 +1,8 @@
+Ctrl+K
+Ctrl+J
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,7 +21,6 @@
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:var(--bg2);color:var(--tx);min-height:100vh;}
   .wrap{max-width:640px;margin:0 auto;padding:1rem;}
-
   /* 헤더 */
   .hdr{border-radius:var(--rl);padding:1.1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:14px;transition:background .3s;}
   .hdr.hp{background:var(--hp-main);box-shadow:0 2px 10px rgba(139,69,19,.35);}
@@ -24,7 +28,6 @@
   .logo-svg{width:56px;height:56px;flex-shrink:0;}
   .hdr h1{font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;}
   .hdr p{font-size:12px;color:rgba(255,255,255,.75);}
-
   /* 대회 탭 */
   .tour-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
   .ttab{padding:12px 8px;border-radius:var(--rm);text-align:center;cursor:pointer;border:1.5px solid var(--br);background:var(--bg);transition:all .2s;}
@@ -36,19 +39,16 @@
   .ttab.on-hs{background:var(--hs-light);border-color:var(--hs-main);}
   .ttab.on-hs .tt-name{color:var(--hs-main);}
   .ttab.on-hs .tt-date{color:var(--hs-mid);}
-
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1rem;}
   .stat{background:var(--bg);border-radius:var(--rm);padding:.8rem .5rem;text-align:center;border:.5px solid var(--br);}
   .stat .n{font-size:22px;font-weight:700;}
   .hp-theme .stat .n{color:var(--hp-mid);}
   .hs-theme .stat .n{color:var(--hs-mid);}
   .stat .l{font-size:11px;color:var(--t2);margin-top:2px;}
-
   .sec{font-size:11px;font-weight:600;color:var(--t2);margin-bottom:8px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.06em;}
   .sec::before{content:'';width:3px;height:13px;border-radius:2px;}
   .hp-theme .sec::before{background:var(--hp-mid);}
   .hs-theme .sec::before{background:var(--hs-mid);}
-
   .vrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
   .vcard{background:var(--bg);border:.5px solid var(--br);border-radius:var(--rl);padding:.85rem 1rem;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color .15s;}
   .hp-theme .vcard:hover{border-color:var(--hp-mid);}
@@ -58,16 +58,13 @@
   .vc-link{font-size:11px;margin-top:4px;font-weight:500;}
   .hp-theme .vc-link{color:var(--hp-mid);}
   .hs-theme .vc-link{color:var(--hs-mid);}
-
   .filters{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap;}
   .fbtn{padding:5px 14px;border-radius:999px;font-size:13px;cursor:pointer;border:.5px solid var(--b2);background:var(--bg);color:var(--t2);font-weight:500;}
   .hp-theme .fbtn.on{background:var(--hp-main);color:#fff3e0;border-color:var(--hp-main);}
   .hs-theme .fbtn.on{background:var(--hs-main);color:#e8f1f8;border-color:var(--hs-main);}
-
   .dlbl{font-size:12px;font-weight:600;border-radius:var(--rs);padding:4px 12px;display:inline-block;margin-bottom:8px;}
   .hp-theme .dlbl{color:var(--hp-txt);background:var(--hp-light);border:.5px solid var(--hp-border);}
   .hs-theme .dlbl{color:var(--hs-txt);background:var(--hs-light);border:.5px solid var(--hs-border);}
-
   .gcards{display:flex;flex-direction:column;gap:8px;margin-bottom:1.25rem;}
   .gcard{background:var(--bg);border:.5px solid var(--br);border-radius:var(--rl);padding:.85rem 1rem;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:border-color .15s,box-shadow .15s;}
   .hp-theme .gcard:hover{border-color:var(--hp-mid);box-shadow:0 2px 8px rgba(160,82,45,.1);}
@@ -102,7 +99,6 @@
   .wx.rain{background:#fef3c7;border-color:#fcd34d;color:#92400e;}
   .wx.cloud{background:#f3f4f6;border-color:var(--b2);color:#374151;}
   .wx.load{background:#f9fafb;border-color:var(--br);color:#9ca3af;}
-
   /* 경기 팝업 */
   .gov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:800;align-items:flex-end;justify-content:center;}
   .gov.open{display:flex;}
@@ -139,7 +135,6 @@
   .pnode.extra{background:#f3e5f5;border-color:#8e24aa;}
   .pname{font-size:12px;font-weight:600;color:#1a1a1a;}
   .ppos{font-size:9px;color:#666;margin-top:1px;}
-
   /* 선수/경기장 팝업 */
   .plov,.vpov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1100;align-items:center;justify-content:center;padding:1rem;}
   .plov.open,.vpov.open{display:flex;}
@@ -157,19 +152,16 @@
   .vptags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
   .vptag{font-size:11px;padding:3px 9px;border-radius:999px;background:#f1f5f9;color:#334155;border:.5px solid var(--b2);}
   .nbtn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border-radius:var(--rm);background:#03C75A;color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:8px;text-decoration:none;}
-
   @media(max-width:400px){.stats{grid-template-columns:repeat(2,1fr);}.vrow{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
-
 <div class="gov" id="gov" onclick="closeGame(event)">
   <div class="gpop" id="gpop" onclick="event.stopPropagation()">
     <div class="gph"><h3 id="gpTitle"></h3><button class="xbtn" onclick="closeGame()">✕</button></div>
     <div class="gpb" id="gpBody"></div>
   </div>
 </div>
-
 <div class="plov" id="plov" onclick="closePl()">
   <div class="plpop" onclick="event.stopPropagation()">
     <div class="mhd"><div class="mav" id="mAv"></div><div><div class="mname" id="mName"></div><div class="mnum" id="mNum"></div></div></div>
@@ -177,7 +169,6 @@
     <button class="mcls" onclick="closePl()">닫기</button>
   </div>
 </div>
-
 <div class="vpov" id="vpov" onclick="closeVp()">
   <div class="vppop" onclick="event.stopPropagation()">
     <div class="mhd"><span style="font-size:26px">🏟️</span><div class="mname" id="vpName"></div></div>
@@ -190,7 +181,6 @@
     </div>
   </div>
 </div>
-
 <div class="wrap" id="mainWrap">
   <div class="hdr" id="hdr">
     <svg class="logo-svg" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
@@ -210,7 +200,6 @@
       <p id="hdrSub">8월 대회 통합 대시보드</p>
     </div>
   </div>
-
   <div class="tour-tabs">
     <div class="ttab" id="tab-hp" onclick="setTour('hp')">
       <div class="tt-name">🥩 함평천지한우배</div>
@@ -221,7 +210,6 @@
       <div class="tt-date">8/14(금)~16(일) · 고·저학년</div>
     </div>
   </div>
-
   <div class="stats" id="stats"></div>
   <div class="sec">경기장 안내</div>
   <div class="vrow" id="venues"></div>
@@ -229,7 +217,6 @@
   <div class="filters" id="filters"></div>
   <div id="glist"></div>
 </div>
-
 <script>
 /* ═══════════ 데이터 ═══════════ */
 const ROSTER = {
@@ -281,7 +268,6 @@ const ROSTER = {
   '하유성':{num:'87',school:'화정남초',birth:'17.07.13'},
   '하준우':{num:'92',school:'화정남초',birth:'17.01.11'},
 };
-
 const TOURS = {
   hp: {
     name:'제3회 함평천지한우배 전국유소년야구대회',
@@ -290,8 +276,8 @@ const TOURS = {
     lat:35.0656, lon:126.5167,
     dates:{'8/15':'2026-08-15','8/16':'2026-08-16'},
     venues:{
-      '함평리틀구장':{addr:'전남광주 함평군 대동면 용성리 452-5',url:'https://naver.me/FaOSTpiY',games:['8/15 유소년','8/16 유소년×2']},
-      '베이스타운':{addr:'전남 함평군 대동면 학동로 934',url:'https://map.naver.com/p/search/%EB%82%98%EB%B9%84%EB%B2%A0%EC%9D%B4%EC%8A%A4%ED%83%80%EC%9A%B4',games:['8/16 꿈나무']},
+      '함평리틀구장':{addr:'전남 함평군 대동면 용성리 452-5',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EB%A6%AC%ED%8B%80%EC%95%BC%EA%B5%AC%EC%9E%A5',games:['8/15 유소년','8/16 유소년×2']},
+      '베어스타운':{addr:'전남 함평군 대동면 학동로 934',url:'https://map.naver.com/p/search/%EB%82%98%EB%B9%84%EB%B2%A0%EC%9D%B4%EC%8A%A4%ED%83%80%EC%9A%B4',games:['8/16 꿈나무']},
       '공설운동장A':{addr:'전남 함평군 함장로 1377',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B3%B5%EC%84%A4%EC%9A%B4%EB%8F%99%EC%9E%A5',games:['8/15 꿈나무×2']},
       '공설운동장B':{addr:'전남 함평군 함장로 1377',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B3%B5%EC%84%A4%EC%9A%B4%EB%8F%99%EC%9E%A5',games:['8/15 새싹','8/16 새싹×2']},
     },
@@ -300,7 +286,7 @@ const TOURS = {
       {id:'hp2',date:'8/15',dow:'토',time:'11:00~12:30',hour:11,cat:'꿈나무',venue:'공설운동장A',left:'지누',right:'화정'},
       {id:'hp3',date:'8/15',dow:'토',time:'13:00~14:30',hour:13,cat:'새싹', venue:'공설운동장B',left:'화정',right:'SB'},
       {id:'hp4',date:'8/15',dow:'토',time:'14:30~16:00',hour:14,cat:'꿈나무',venue:'공설운동장A',left:'전주HPB',right:'화정'},
-      {id:'hp5',date:'8/16',dow:'일',time:'08:00~09:30',hour:8, cat:'꿈나무',venue:'베이스타운',left:'SB',right:'화정'},
+      {id:'hp5',date:'8/16',dow:'일',time:'08:00~09:30',hour:8, cat:'꿈나무',venue:'베어스타운',left:'SB',right:'화정'},
       {id:'hp6',date:'8/16',dow:'일',time:'11:00~12:30',hour:11,cat:'유소년',venue:'함평리틀구장',left:'제주야구학교',right:'화정'},
       {id:'hp7',date:'8/16',dow:'일',time:'13:00~14:30',hour:13,cat:'새싹', venue:'공설운동장B',left:'원더베이스볼',right:'화정'},
       {id:'hp8',date:'8/16',dow:'일',time:'14:30~16:00',hour:14,cat:'새싹', venue:'공설운동장B',left:'화정',right:'나주베스트'},
@@ -309,7 +295,7 @@ const TOURS = {
     lineups:{
       hp1:{CF:'노현서',LF:'김세린',RF:'장민준',SS:'김강우',SP:'김선균',B2:'석훈빈',B3:'송지율',B1:'장호준',EH:'',C:'이우영'},
       hp2:{CF:'이서준',LF:'정현우',RF:'오유찬(54)',SS:'신수호',SP:'석훈빈',B2:'심연후',B3:'노현우',B1:'강주찬',EH:'김세린',C:'백건후'},
-      hp3:{CF:'강은찬',LF:'고준석',RF:'오유찬(54)',SS:'임서준',SP:'변지성',B2:'나준완',B3:'정은우',B1:'신수호',EH:'',C:'정지후'},
+      hp3:{CF:'강은찬',LF:'고준석',RF:'오유찬(54)',SS:'임서준',SP:'변지성',B2:'나준완',B3:'정은우',B1:'하준우',EH:'신수호',C:'정지후'},
       hp4:{CF:'김세린',LF:'이서준',RF:'심연후',SS:'석훈빈',SP:'정현우',B2:'신수호',B3:'노현우',B1:'백건후',EH:'오유찬(54)',C:'강주찬'},
       hp5:{CF:'이서준',LF:'정현우',RF:'강주찬',SS:'김세린',SP:'석훈빈',B2:'심연후',B3:'노현우',B1:'백건후',EH:'신수호',C:'오유찬(54)'},
       hp6:{CF:'김세린',LF:'이우영',RF:'장민준',SS:'김강우',SP:'송지율',B2:'석훈빈',B3:'노현서',B1:'장호준',EH:'',C:'김선균'},
@@ -346,7 +332,6 @@ const TOURS = {
     }
   }
 };
-
 const POS = [
   {key:'CF',label:'CF 중견',x:50,y:6, cls:''},
   {key:'LF',label:'LF 좌익',x:14,y:22,cls:''},
@@ -359,14 +344,11 @@ const POS = [
   {key:'EH',label:'',x:86,y:84,cls:'extra'},
   {key:'C', label:'C 포수', x:50,y:87,cls:'catcher'},
 ];
-
 let tour='hp', filt='전체', wxCache={};
-
 /* ═══════════ 팝업 ═══════════ */
 function closeGame(e){if(e&&e.target!==document.getElementById('gov'))return;document.getElementById('gov').classList.remove('open');}
 function closePl(){document.getElementById('plov').classList.remove('open');}
 function closeVp(){document.getElementById('vpov').classList.remove('open');}
-
 function openVp(name,e){
   if(e)e.stopPropagation();
   const v=TOURS[tour].venues[name];if(!v)return;
@@ -376,7 +358,6 @@ function openVp(name,e){
   document.getElementById('vpLink').href=v.url;
   document.getElementById('vpov').classList.add('open');
 }
-
 function showPl(key,posLabel){
   const p=ROSTER[key];
   document.getElementById('mAv').textContent=key.slice(0,1);
@@ -390,7 +371,6 @@ function showPl(key,posLabel){
   document.getElementById('mRows').innerHTML=rows.map(r=>`<div class="mrow"><span class="ml">${r.l}</span><span class="mv">${r.v}</span></div>`).join('');
   document.getElementById('plov').classList.add('open');
 }
-
 /* ═══════════ 날씨 ═══════════ */
 function wxInfo(code,temp){
   if(code<=1) return{icon:'☀️',label:`맑음 ${temp}°`,cls:''};
@@ -401,7 +381,6 @@ function wxInfo(code,temp){
   if(code<=82)return{icon:'🌦️',label:`소나기 ${temp}°`,cls:'rain'};
   return{icon:'⛈️',label:`뇌우 ${temp}°`,cls:'rain'};
 }
-
 async function fetchWeather(tKey){
   const T=TOURS[tKey];
   try{
@@ -431,7 +410,6 @@ async function fetchWeather(tKey){
     });
   }
 }
-
 function applyWx(){
   TOURS[tour].games.forEach(g=>{
     const el=document.getElementById('wx'+g.id); if(!el)return;
@@ -440,7 +418,6 @@ function applyWx(){
     el.className='wx '+cls; el.textContent=`${icon} ${label}`;
   });
 }
-
 /* ═══════════ 렌더링 ═══════════ */
 function setTour(t){
   tour=t; filt='전체';
@@ -448,7 +425,6 @@ function setTour(t){
   if(!Object.keys(wxCache).some(k=>k.startsWith(t))) fetchWeather(t);
   else applyWx();
 }
-
 function renderAll(){
   const T=TOURS[tour];
   const wrap=document.getElementById('mainWrap');
@@ -458,33 +434,617 @@ function renderAll(){
   document.getElementById('hdrSub').textContent=T.name;
   document.getElementById('tab-hp').className='ttab'+(tour==='hp'?' on-hp':'');
   document.getElementById('tab-hs').className='ttab'+(tour==='hs'?' on-hs':'');
-
   const days=[...new Set(T.games.map(g=>g.date))].length;
   const cats=[...new Set(T.games.map(g=>g.cat))].length;
   const venues=Object.keys(T.venues).length;
   document.getElementById('stats').innerHTML=[
     {n:T.games.length,l:'총 경기 수'},{n:days,l:'경기 일수'},{n:cats,l:'참가 부문'},{n:venues,l:'경기장 수'}
   ].map(s=>`<div class="stat"><div class="n">${s.n}</div><div class="l">${s.l}</div></div>`).join('');
-
   document.getElementById('venues').innerHTML=Object.entries(T.venues).map(([name,v])=>`
     <div class="vcard" onclick="openVp('${name}',event)">
       <span style="font-size:22px">🏟️</span>
-      <div><div class="vc-name">${name}</div><div class="vc-addr">${v.addr}</div><div class="vc-link">📍 지도 보기</div></div>
+      <div><div class="vc-name">$$   {name}</div><div class="vc-addr">   $${v.addr}</div><div class="vc-link">📍 지도 보기</div></div>
     </div>`).join('');
-
   renderFilters();
   renderGames();
 }
-
 function renderFilters(){
   document.getElementById('filters').innerHTML=TOURS[tour].cats.map(f=>
     `<button class="fbtn ${filt===f?'on':''}" onclick="setFilt('${f}')">${f}</button>`).join('');
 }
 function setFilt(f){filt=f;renderFilters();renderGames();}
-
 function renderGames(){
   const T=TOURS[tour];
   const games=filt==='전체'?T.games:T.games.filter(g=>g.cat===filt);
+  const byDate={};
+  games.forEach(g=>{if(!byDate[g.date])byDate[g.date]=[];byDate[g.date].push(g);});
+  Object.values(byDate).forEach(arr=>arr.sort((a,b)=>a.time.localeCompare(b.time)));
+  document.getElementById('glist').innerHTML=Object.entries(byDate).map(([date,gs])=>`
+    <div class="dlbl">📅 $$   {date}(   $${gs[0].dow}요일)</div>
+    <div class="gcards">${gs.map(g=>{
+      const isH=g.right==='화정';
+      const vurl=T.venues[g.venue]?.url||'#';
+      return`<div class="gcard" onclick="openGame('${g.id}')">
+        <div class="gtop"><div class="gm">$$   {g.left}<span class="vs"> vs </span>   $${g.right}</div></div>
+        <div class="gbot">
+          <div class="tbadge"><span>${g.time}</span></div>
+          <a class="vlink" href="${vurl}" target="_blank" onclick="event.stopPropagation()">📍 ${g.venue}</a>
+          <span class="spacer"></span>
+          <span id="wx${g.id}" class="wx load">⏳</span>
+          <span class="sb $$   {isH?'home':'away'}">   $${isH?'홈':'원정'}</span>
+          <span class="cb c$$   {g.cat}">   $${g.cat}</span>
+        </div>
+      </div>`;
+    }).join('')}</div>`).join('');
+  applyWx();
+}
+function openGame(id){
+  const T=TOURS[tour];
+  const g=T.games.find(x=>x.id===id);if(!g)return;
+  const lu=T.lineups[g.id]||{};
+  const vurl=T.venues[g.venue]?.url||'#';
+  const nodes=POS.filter(p=>!(p.key==='EH'&&!lu[p.key])).map(p=>{
+    const key=lu[p.key]||'';
+    return`<div class="pnode $$   {p.cls}" style="left:   $${p.x}%;top:$$   {p.y}%" onclick="showPl('   $${key}','${p.label}')">
+      <div class="pname">$$   {key}</div><div class="ppos">   $${p.label}</div></div>`;
+  }).join('');
+  document.getElementById('gpop').className='gpop '+(tour==='hp'?'hp-pop':'hs-pop');
+  document.getElementById('gpTitle').textContent=`⚾ ${g.date}(${g.dow}) ${g.time} · ${g.cat}`;
+  document.getElementById('gpBody').innerHTML=`
+    <div class="vsbox">
+      <div class="vst"><div class="vn $$   {g.left==='화정'?'hw':''}">   $${g.left}</div><div class="vr">원정</div></div>
+      <div class="vsep">:</div>
+      <div class="vst"><div class="vn $$   {g.right==='화정'?'hw':''}">   $${g.right}</div><div class="vr">홈</div></div>
+    </div>
+    <div class="meta">
+      <a href="${vurl}" target="_blank" class="mlink" onclick="event.stopPropagation()">📍 ${g.venue}</a>
+      <span>·</span><span>화정 ${g.right==='화정'?'홈':'원정'}</span>
+    </div>
+    <div class="field">
+      <div class="ftitle">수비 라인업 — 선수 이름을 클릭하면 상세 정보를 볼 수 있습니다</div>
+      <div class="diamond">
+        <svg viewBox="0 0 380 340" xmlns="http://www.w3.org/2000/svg">
+          <line x1="53" y1="75" x2="190" y2="296" stroke="#999" stroke-width="1" opacity=".4"/>
+          <line x1="327" y1="75" x2="190" y2="296" stroke="#999" stroke-width="1" opacity=".4"/>
+          <path d="M53 75 Q190 10 327 75" fill="none" stroke="#999" stroke-width="1" opacity=".3"/>
+          <polygon points="190,150 120,210 190,265 260,210" fill="rgba(210,166,121,.18)" stroke="#c8a84b" stroke-width="1.5"/>
+        </svg>
+        ${nodes}
+      </div>
+    </div>`;
+  document.getElementById('gov').classList.add('open');
+}
+/* ═══════════ 초기화 ═══════════ */
+setTour('hp');
+</script>
+</body>
+</html>
+ 
+ 
+ 
+이 html을 분석하고, 상단에 선수 이름을 검색하면 해당 선수가 라인업에 포함된 경기만 리스트업에 되는 검색 옵션을 추가해보자.
+
+
+4m 18s동안 생각함
+분석 요약
+
+이 HTML은 광주화정유소년야구단 8월 대회 통합 대시보드입니다.
+
+두 대회 탭 (함평천지한우배 / 화순대회)으로 테마 색상·데이터 전환
+각 대회별 경기장, 일정, 카테고리 필터, 라인업(수비 다이어그램) 지원
+선수 클릭 시 등번호·학교·생년월일 팝업
+Open-Meteo 날씨 API 연동
+추가한 기능
+상단에 선수 이름 검색창을 넣었습니다.
+검색어를 입력하면 현재 선택된 대회의 라인업에 해당 선수가 포함된 경기만 리스트에 표시됩니다.
+부분 일치(예: 오유찬, 김세린)도 가능하고, 초기화 버튼으로 바로 전체 보기로 돌아갈 수 있습니다.
+
+아래가 수정된 전체 HTML입니다. 그대로 복사해서 사용하시면 됩니다.
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>광주화정유소년야구단 - 8월 대회 통합 대시보드</title>
+<style>
+  :root{
+    /* 함평: 흙빛 브라운 */
+    --hp-main:#8B4513;--hp-mid:#a0522d;--hp-light:#fff3e0;--hp-border:#d2a679;--hp-field:#3d2817;--hp-txt:#6b3410;
+    /* 화순: 네이비 블루 */
+    --hs-main:#1a3a5c;--hs-mid:#2c5f8a;--hs-light:#e8f1f8;--hs-border:#9dc0dd;--hs-field:#152b42;--hs-txt:#1a3a5c;
+    --bg:#fff;--bg2:#f7f8fa;--tx:#1a1a1a;--t2:#6b7280;--br:#e5e7eb;--b2:#d1d5db;
+    --rs:6px;--rm:10px;--rl:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:var(--bg2);color:var(--tx);min-height:100vh;}
+  .wrap{max-width:640px;margin:0 auto;padding:1rem;}
+  /* 헤더 */
+  .hdr{border-radius:var(--rl);padding:1.1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:14px;transition:background .3s;}
+  .hdr.hp{background:var(--hp-main);box-shadow:0 2px 10px rgba(139,69,19,.35);}
+  .hdr.hs{background:var(--hs-main);box-shadow:0 2px 10px rgba(26,58,92,.35);}
+  .logo-svg{width:56px;height:56px;flex-shrink:0;}
+  .hdr h1{font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;}
+  .hdr p{font-size:12px;color:rgba(255,255,255,.75);}
+  /* 대회 탭 */
+  .tour-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
+  .ttab{padding:12px 8px;border-radius:var(--rm);text-align:center;cursor:pointer;border:1.5px solid var(--br);background:var(--bg);transition:all .2s;}
+  .ttab .tt-name{font-size:14px;font-weight:700;color:var(--t2);}
+  .ttab .tt-date{font-size:11px;color:var(--t2);margin-top:3px;}
+  .ttab.on-hp{background:var(--hp-light);border-color:var(--hp-main);}
+  .ttab.on-hp .tt-name{color:var(--hp-main);}
+  .ttab.on-hp .tt-date{color:var(--hp-mid);}
+  .ttab.on-hs{background:var(--hs-light);border-color:var(--hs-main);}
+  .ttab.on-hs .tt-name{color:var(--hs-main);}
+  .ttab.on-hs .tt-date{color:var(--hs-mid);}
+  /* 검색바 */
+  .search-bar{display:flex;gap:8px;margin-bottom:1rem;align-items:center;}
+  .search-bar input{
+    flex:1;padding:11px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
+    font-size:14px;background:var(--bg);outline:none;transition:border-color .2s;
+    font-family:inherit;
+  }
+  .hp-theme .search-bar input:focus{border-color:var(--hp-main);}
+  .hs-theme .search-bar input:focus{border-color:var(--hs-main);}
+  .search-bar button{
+    padding:11px 16px;border-radius:var(--rm);border:none;background:var(--t2);
+    color:#fff;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;
+    font-family:inherit;
+  }
+  .search-bar button:hover{opacity:.9;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1rem;}
+  .stat{background:var(--bg);border-radius:var(--rm);padding:.8rem .5rem;text-align:center;border:.5px solid var(--br);}
+  .stat .n{font-size:22px;font-weight:700;}
+  .hp-theme .stat .n{color:var(--hp-mid);}
+  .hs-theme .stat .n{color:var(--hs-mid);}
+  .stat .l{font-size:11px;color:var(--t2);margin-top:2px;}
+  .sec{font-size:11px;font-weight:600;color:var(--t2);margin-bottom:8px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.06em;}
+  .sec::before{content:'';width:3px;height:13px;border-radius:2px;}
+  .hp-theme .sec::before{background:var(--hp-mid);}
+  .hs-theme .sec::before{background:var(--hs-mid);}
+  .vrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
+  .vcard{background:var(--bg);border:.5px solid var(--br);border-radius:var(--rl);padding:.85rem 1rem;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color .15s;}
+  .hp-theme .vcard:hover{border-color:var(--hp-mid);}
+  .hs-theme .vcard:hover{border-color:var(--hs-mid);}
+  .vc-name{font-size:13px;font-weight:600;color:var(--tx);}
+  .vc-addr{font-size:11px;color:var(--t2);margin-top:2px;line-height:1.4;}
+  .vc-link{font-size:11px;margin-top:4px;font-weight:500;}
+  .hp-theme .vc-link{color:var(--hp-mid);}
+  .hs-theme .vc-link{color:var(--hs-mid);}
+  .filters{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap;}
+  .fbtn{padding:5px 14px;border-radius:999px;font-size:13px;cursor:pointer;border:.5px solid var(--b2);background:var(--bg);color:var(--t2);font-weight:500;}
+  .hp-theme .fbtn.on{background:var(--hp-main);color:#fff3e0;border-color:var(--hp-main);}
+  .hs-theme .fbtn.on{background:var(--hs-main);color:#e8f1f8;border-color:var(--hs-main);}
+  .dlbl{font-size:12px;font-weight:600;border-radius:var(--rs);padding:4px 12px;display:inline-block;margin-bottom:8px;}
+  .hp-theme .dlbl{color:var(--hp-txt);background:var(--hp-light);border:.5px solid var(--hp-border);}
+  .hs-theme .dlbl{color:var(--hs-txt);background:var(--hs-light);border:.5px solid var(--hs-border);}
+  .gcards{display:flex;flex-direction:column;gap:8px;margin-bottom:1.25rem;}
+  .gcard{background:var(--bg);border:.5px solid var(--br);border-radius:var(--rl);padding:.85rem 1rem;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:border-color .15s,box-shadow .15s;}
+  .hp-theme .gcard:hover{border-color:var(--hp-mid);box-shadow:0 2px 8px rgba(160,82,45,.1);}
+  .hs-theme .gcard:hover{border-color:var(--hs-mid);box-shadow:0 2px 8px rgba(44,95,138,.1);}
+  .gtop{display:flex;align-items:center;gap:8px;}
+  .gm{font-size:15px;font-weight:700;color:var(--tx);line-height:1.3;}
+  .gm .vs{font-weight:600;margin:0 2px;}
+  .hp-theme .gm .vs{color:var(--hp-mid);}
+  .hs-theme .gm .vs{color:var(--hs-mid);}
+  .gbot{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .tbadge{text-align:center;border-radius:var(--rs);padding:3px 9px;flex-shrink:0;}
+  .hp-theme .tbadge{background:var(--hp-light);border:.5px solid var(--hp-border);}
+  .hs-theme .tbadge{background:var(--hs-light);border:.5px solid var(--hs-border);}
+  .tbadge span{font-size:11px;font-weight:600;white-space:nowrap;}
+  .hp-theme .tbadge span{color:var(--hp-txt);}
+  .hs-theme .tbadge span{color:var(--hs-txt);}
+  .vlink{font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;text-decoration:none;font-weight:500;}
+  .hp-theme .vlink{color:var(--hp-mid);}
+  .hs-theme .vlink{color:var(--hs-mid);}
+  .vlink:hover{text-decoration:underline;}
+  .spacer{flex:1;}
+  .cb{padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600;flex-shrink:0;}
+  .c유소년{background:#e3f2fd;color:#0d47a1;border:.5px solid #90caf9;}
+  .c꿈나무{background:#fff8e1;color:#e65100;border:.5px solid #ffcc02;}
+  .c새싹{background:#e8f5e9;color:#1b5e20;border:.5px solid #81c784;}
+  .c고학년{background:#ede7f6;color:#4527a0;border:.5px solid #b39ddb;}
+  .c저학년{background:#fce4ec;color:#ad1457;border:.5px solid #f48fb1;}
+  .sb{font-size:11px;padding:3px 8px;border-radius:999px;font-weight:500;flex-shrink:0;}
+  .home{background:#e8f5e9;color:#2e7d32;border:.5px solid #81c784;}
+  .away{background:#fce4ec;color:#880e4f;border:.5px solid #f48fb1;}
+  .wx{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:500;background:#f0f9ff;border:.5px solid #bae6fd;border-radius:var(--rs);padding:3px 8px;color:#0369a1;white-space:nowrap;flex-shrink:0;}
+  .wx.rain{background:#fef3c7;border-color:#fcd34d;color:#92400e;}
+  .wx.cloud{background:#f3f4f6;border-color:var(--b2);color:#374151;}
+  .wx.load{background:#f9fafb;border-color:var(--br);color:#9ca3af;}
+  /* 경기 팝업 */
+  .gov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:800;align-items:flex-end;justify-content:center;}
+  .gov.open{display:flex;}
+  .gpop{background:var(--bg);border-radius:var(--rl) var(--rl) 0 0;width:100%;max-width:640px;max-height:92vh;overflow-y:auto;box-shadow:0 -4px 32px rgba(0,0,0,.25);animation:slideUp .25s ease;}
+  @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  .gph{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem .85rem;border-bottom:.5px solid var(--br);position:sticky;top:0;background:var(--bg);z-index:1;}
+  .gph h3{font-size:14px;font-weight:700;color:var(--tx);}
+  .xbtn{width:32px;height:32px;border-radius:50%;border:none;background:var(--bg2);cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;color:var(--t2);}
+  .gpb{padding:1rem 1.25rem 1.5rem;}
+  .vsbox{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--rm);margin-bottom:12px;}
+  .hp-pop .vsbox{background:var(--hp-light);border:.5px solid var(--hp-border);}
+  .hs-pop .vsbox{background:var(--hs-light);border:.5px solid var(--hs-border);}
+  .vst{flex:1;text-align:center;}
+  .vn{font-size:15px;font-weight:700;}
+  .hp-pop .vn{color:var(--hp-txt);}
+  .hs-pop .vn{color:var(--hs-txt);}
+  .vn.hw{color:#1565c0 !important;}
+  .vr{font-size:11px;color:var(--t2);margin-top:2px;}
+  .vsep{font-size:18px;font-weight:700;color:var(--b2);}
+  .meta{font-size:12px;color:var(--t2);margin-bottom:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .mlink{text-decoration:underline;cursor:pointer;font-weight:500;}
+  .hp-pop .mlink{color:var(--hp-mid);}
+  .hs-pop .mlink{color:var(--hs-mid);}
+  .field{border-radius:var(--rl);padding:1rem .5rem;box-shadow:inset 0 2px 8px rgba(0,0,0,.2);}
+  .hp-pop .field{background:var(--hp-field);}
+  .hs-pop .field{background:var(--hs-field);}
+  .ftitle{font-size:11px;text-align:center;margin-bottom:8px;color:rgba(255,255,255,.6);}
+  .diamond{position:relative;width:100%;max-width:380px;height:340px;margin:0 auto;}
+  .diamond svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+  .pnode{position:absolute;transform:translate(-50%,-50%);background:#f5f5dc;border:1.5px solid #8B6914;border-radius:var(--rs);padding:4px 8px;min-width:62px;text-align:center;cursor:pointer;transition:transform .12s;z-index:2;}
+  .pnode:hover{transform:translate(-50%,-50%) scale(1.1);background:#fffde7;}
+  .pnode.pitcher{background:#fff9c4;border-color:#f9a825;}
+  .pnode.catcher{background:#e3f2fd;border-color:#1565c0;}
+  .pnode.extra{background:#f3e5f5;border-color:#8e24aa;}
+  .pname{font-size:12px;font-weight:600;color:#1a1a1a;}
+  .ppos{font-size:9px;color:#666;margin-top:1px;}
+  /* 선수/경기장 팝업 */
+  .plov,.vpov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1100;align-items:center;justify-content:center;padding:1rem;}
+  .plov.open,.vpov.open{display:flex;}
+  .plpop{background:var(--bg);border-radius:var(--rl);padding:1.25rem;width:260px;box-shadow:0 8px 40px rgba(0,0,0,.35);}
+  .vppop{background:var(--bg);border-radius:var(--rl);padding:1.25rem;width:300px;box-shadow:0 8px 32px rgba(0,0,0,.25);}
+  .mhd{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .mav{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;background:#f1f5f9;color:#334155;border:2px solid var(--b2);}
+  .mname{font-size:16px;font-weight:700;color:var(--tx);}
+  .mnum{font-size:13px;color:var(--t2);margin-top:2px;}
+  .mrows{border-top:.5px solid var(--br);padding-top:10px;}
+  .mrow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:.5px solid var(--br);font-size:13px;}
+  .mrow:last-child{border-bottom:none;}
+  .ml{color:var(--t2);} .mv{color:var(--tx);font-weight:600;}
+  .mcls{display:block;width:100%;margin-top:14px;padding:9px;text-align:center;cursor:pointer;color:#fff;border-radius:var(--rm);border:none;font-size:13px;font-weight:600;background:#334155;}
+  .vptags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+  .vptag{font-size:11px;padding:3px 9px;border-radius:999px;background:#f1f5f9;color:#334155;border:.5px solid var(--b2);}
+  .nbtn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border-radius:var(--rm);background:#03C75A;color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:8px;text-decoration:none;}
+  .empty-msg{text-align:center;padding:2.5rem 1rem;color:var(--t2);font-size:14px;line-height:1.6;}
+  @media(max-width:400px){.stats{grid-template-columns:repeat(2,1fr);}.vrow{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="gov" id="gov" onclick="closeGame(event)">
+  <div class="gpop" id="gpop" onclick="event.stopPropagation()">
+    <div class="gph"><h3 id="gpTitle"></h3><button class="xbtn" onclick="closeGame()">✕</button></div>
+    <div class="gpb" id="gpBody"></div>
+  </div>
+</div>
+<div class="plov" id="plov" onclick="closePl()">
+  <div class="plpop" onclick="event.stopPropagation()">
+    <div class="mhd"><div class="mav" id="mAv"></div><div><div class="mname" id="mName"></div><div class="mnum" id="mNum"></div></div></div>
+    <div class="mrows" id="mRows"></div>
+    <button class="mcls" onclick="closePl()">닫기</button>
+  </div>
+</div>
+<div class="vpov" id="vpov" onclick="closeVp()">
+  <div class="vppop" onclick="event.stopPropagation()">
+    <div class="mhd"><span style="font-size:26px">🏟️</span><div class="mname" id="vpName"></div></div>
+    <div style="border-top:.5px solid var(--br);padding-top:10px;">
+      <div style="font-size:13px;color:var(--t2);margin-bottom:12px;line-height:1.7;" id="vpAddr"></div>
+      <div style="font-size:11px;color:var(--t2);margin-bottom:6px;font-weight:600;">배정 경기</div>
+      <div class="vptags" id="vpGames"></div>
+      <a class="nbtn" id="vpLink" href="#" target="_blank">📍 네이버 지도로 찾아가기</a>
+      <button class="mcls" onclick="closeVp()">닫기</button>
+    </div>
+  </div>
+</div>
+<div class="wrap" id="mainWrap">
+  <div class="hdr" id="hdr">
+    <svg class="logo-svg" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+      <path d="M28 3 L50 12 L50 32 Q50 46 28 53 Q6 46 6 32 L6 12 Z" fill="#1a3a5c" stroke="#c8a84b" stroke-width="1.5"/>
+      <path d="M28 7 L46 15 L46 32 Q46 43 28 49 Q10 43 10 32 L10 15 Z" fill="#0d2340"/>
+      <text x="13" y="33" font-family="Arial Black,sans-serif" font-weight="900" font-size="18" fill="#c8a84b" letter-spacing="-1">H</text>
+      <text x="29" y="33" font-family="Arial Black,sans-serif" font-weight="900" font-size="18" fill="#ffffff" letter-spacing="-1">J</text>
+      <ellipse cx="28" cy="22" rx="5" ry="3.5" fill="#f5a623"/>
+      <ellipse cx="28" cy="22" rx="2" ry="3" fill="#1a1a1a"/>
+      <circle cx="27" cy="21" r="0.8" fill="#fff"/>
+      <rect x="10" y="37" width="36" height="8" rx="2" fill="#c8a84b"/>
+      <text x="28" y="43.5" font-family="Arial,sans-serif" font-weight="700" font-size="5.5" fill="#0d2340" text-anchor="middle" letter-spacing="0.5">TIGERS</text>
+      <circle cx="28" cy="51" r="3" fill="#fff" stroke="#ccc" stroke-width=".5"/>
+    </svg>
+    <div>
+      <h1>광주화정유소년야구단</h1>
+      <p id="hdrSub">8월 대회 통합 대시보드</p>
+    </div>
+  </div>
+  <div class="tour-tabs">
+    <div class="ttab" id="tab-hp" onclick="setTour('hp')">
+      <div class="tt-name">🥩 함평천지한우배</div>
+      <div class="tt-date">8/15(토)~16(일) · 유·꿈·새싹</div>
+    </div>
+    <div class="ttab" id="tab-hs" onclick="setTour('hs')">
+      <div class="tt-name">🏔️ 화순대회</div>
+      <div class="tt-date">8/14(금)~16(일) · 고·저학년</div>
+    </div>
+  </div>
+
+  <!-- 선수 검색바 -->
+  <div class="search-bar">
+    <input type="text" id="playerSearch" placeholder="선수 이름 검색 (라인업 포함 경기만 표시)" oninput="onSearch()" autocomplete="off">
+    <button type="button" onclick="clearSearch()">초기화</button>
+  </div>
+
+  <div class="stats" id="stats"></div>
+  <div class="sec">경기장 안내</div>
+  <div class="vrow" id="venues"></div>
+  <div class="sec">경기 일정</div>
+  <div class="filters" id="filters"></div>
+  <div id="glist"></div>
+</div>
+<script>
+/* ═══════════ 데이터 ═══════════ */
+const ROSTER = {
+  '강은찬':{num:'61',school:'화정남초',birth:'19.09.05'},
+  '강주찬':{num:'56',school:'화정남초',birth:'16.10.12'},
+  '고준석':{num:'49',school:'광주화정초',birth:'18.05.25'},
+  '김강우':{num:'3',school:'전남중학교',birth:'13.05.21'},
+  '김경환':{num:'16',school:'양산중학교',birth:'11.06.02'},
+  '김도윤':{num:'1',school:'진제초등',birth:'15.07.17'},
+  '김동유':{num:'55',school:'운남중학교',birth:'13.12.06'},
+  '김선균':{num:'29',school:'',birth:'14.02.20'},
+  '김세린':{num:'68',school:'전남중학교',birth:'13.03.29'},
+  '김시온':{num:'13',school:'광주교대부설초',birth:'14.09.10'},
+  '김용진':{num:'15',school:'광주교대부설초',birth:'16.04.28'},
+  '김정진':{num:'14',school:'양산중학교',birth:'12.06.17'},
+  '김찬린':{num:'',school:'',birth:'16.04.27'},
+  '김현승':{num:'45',school:'상무초등',birth:'15.04.05'},
+  '나준완':{num:'75',school:'유안초등',birth:'18.01.29'},
+  '노현서':{num:'32',school:'진제초등',birth:'14.05.31'},
+  '노현우':{num:'36',school:'신암초등',birth:'15.01.03'},
+  '문다원':{num:'63',school:'화정남초',birth:'17.07.09'},
+  '박건률':{num:'34',school:'화정남초',birth:'15.04.28'},
+  '백건후':{num:'81',school:'광주상무초',birth:'15.08.27'},
+  '변지성':{num:'30',school:'광주교대부설초',birth:'17.02.16'},
+  '서승원':{num:'17',school:'주월중학교',birth:'12.06.25'},
+  '서주원':{num:'10',school:'불로초등',birth:'14.06.07'},
+  '석훈빈':{num:'43',school:'화정남초',birth:'15.10.20'},
+  '송지율':{num:'37',school:'성덕중',birth:'13.12.27'},
+  '신수호':{num:'96',school:'연제초등',birth:'16.11.07'},
+  '심연후':{num:'89',school:'광천초등',birth:'16.06.01'},
+  '오유빈':{num:'11',school:'조대여중',birth:'12.12.14'},
+  '오유찬(54)':{num:'54',school:'연제초',birth:'16.06.19'},
+  '오유찬(7)':{num:'7',school:'화정초',birth:'15.02.11'},
+  '오준수':{num:'50',school:'성진초등',birth:'15.10.01'},
+  '유수완':{num:'27',school:'광주화정초',birth:'17.01.24'},
+  '이도하':{num:'41',school:'풍암초등',birth:'18.04.07'},
+  '이우영':{num:'66',school:'화정초등',birth:'13.07.11'},
+  '이찬을':{num:'97',school:'연제초등',birth:'16.10.18'},
+  '임서준':{num:'99',school:'연제초',birth:'18.08.12'},
+  '임재민':{num:'84',school:'연제초등',birth:'16.04.04'},
+  '임지민':{num:'53',school:'지산중학교',birth:'12.04.15'},
+  '장민준':{num:'18',school:'광주화정초',birth:'14.10.30'},
+  '장유준':{num:'6',school:'광주교대부설초',birth:'17.02.22'},
+  '장호준':{num:'21',school:'봉산중학교',birth:'13.04.08'},
+  '정은우':{num:'28',school:'수완초',birth:'17.04.11'},
+  '정지후':{num:'0',school:'화정남초',birth:'17.12.17'},
+  '정현우':{num:'22',school:'수완초',birth:'15.02.20'},
+  '최민후':{num:'83',school:'마지초등',birth:'18.10.31'},
+  '하유성':{num:'87',school:'화정남초',birth:'17.07.13'},
+  '하준우':{num:'92',school:'화정남초',birth:'17.01.11'},
+};
+const TOURS = {
+  hp: {
+    name:'제3회 함평천지한우배 전국유소년야구대회',
+    sub:'함평천지한우배 (8/15~16)',
+    cats:['전체','유소년','꿈나무','새싹'],
+    lat:35.0656, lon:126.5167,
+    dates:{'8/15':'2026-08-15','8/16':'2026-08-16'},
+    venues:{
+      '함평리틀구장':{addr:'전남 함평군 대동면 용성리 452-5',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EB%A6%AC%ED%8B%80%EC%95%BC%EA%B5%AC%EC%9E%A5',games:['8/15 유소년','8/16 유소년×2']},
+      '베어스타운':{addr:'전남 함평군 대동면 학동로 934',url:'https://map.naver.com/p/search/%EB%82%98%EB%B9%84%EB%B2%A0%EC%9D%B4%EC%8A%A4%ED%83%80%EC%9A%B4',games:['8/16 꿈나무']},
+      '공설운동장A':{addr:'전남 함평군 함장로 1377',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B3%B5%EC%84%A4%EC%9A%B4%EB%8F%99%EC%9E%A5',games:['8/15 꿈나무×2']},
+      '공설운동장B':{addr:'전남 함평군 함장로 1377',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B3%B5%EC%84%A4%EC%9A%B4%EB%8F%99%EC%9E%A5',games:['8/15 새싹','8/16 새싹×2']},
+    },
+    games:[
+      {id:'hp1',date:'8/15',dow:'토',time:'09:30~11:00',hour:9, cat:'유소년',venue:'함평리틀구장',left:'화정',right:'SB'},
+      {id:'hp2',date:'8/15',dow:'토',time:'11:00~12:30',hour:11,cat:'꿈나무',venue:'공설운동장A',left:'지누',right:'화정'},
+      {id:'hp3',date:'8/15',dow:'토',time:'13:00~14:30',hour:13,cat:'새싹', venue:'공설운동장B',left:'화정',right:'SB'},
+      {id:'hp4',date:'8/15',dow:'토',time:'14:30~16:00',hour:14,cat:'꿈나무',venue:'공설운동장A',left:'전주HPB',right:'화정'},
+      {id:'hp5',date:'8/16',dow:'일',time:'08:00~09:30',hour:8, cat:'꿈나무',venue:'베어스타운',left:'SB',right:'화정'},
+      {id:'hp6',date:'8/16',dow:'일',time:'11:00~12:30',hour:11,cat:'유소년',venue:'함평리틀구장',left:'제주야구학교',right:'화정'},
+      {id:'hp7',date:'8/16',dow:'일',time:'13:00~14:30',hour:13,cat:'새싹', venue:'공설운동장B',left:'원더베이스볼',right:'화정'},
+      {id:'hp8',date:'8/16',dow:'일',time:'14:30~16:00',hour:14,cat:'새싹', venue:'공설운동장B',left:'화정',right:'나주베스트'},
+      {id:'hp9',date:'8/16',dow:'일',time:'17:30~19:00',hour:17,cat:'유소년',venue:'함평리틀구장',left:'전주HPB',right:'화정'},
+    ],
+    lineups:{
+      hp1:{CF:'노현서',LF:'김세린',RF:'장민준',SS:'김강우',SP:'김선균',B2:'석훈빈',B3:'송지율',B1:'장호준',EH:'',C:'이우영'},
+      hp2:{CF:'이서준',LF:'정현우',RF:'오유찬(54)',SS:'신수호',SP:'석훈빈',B2:'심연후',B3:'노현우',B1:'강주찬',EH:'김세린',C:'백건후'},
+      hp3:{CF:'강은찬',LF:'고준석',RF:'오유찬(54)',SS:'임서준',SP:'변지성',B2:'나준완',B3:'정은우',B1:'하준우',EH:'신수호',C:'정지후'},
+      hp4:{CF:'김세린',LF:'이서준',RF:'심연후',SS:'석훈빈',SP:'정현우',B2:'신수호',B3:'노현우',B1:'백건후',EH:'오유찬(54)',C:'강주찬'},
+      hp5:{CF:'이서준',LF:'정현우',RF:'강주찬',SS:'김세린',SP:'석훈빈',B2:'심연후',B3:'노현우',B1:'백건후',EH:'신수호',C:'오유찬(54)'},
+      hp6:{CF:'김세린',LF:'이우영',RF:'장민준',SS:'김강우',SP:'송지율',B2:'석훈빈',B3:'노현서',B1:'장호준',EH:'',C:'김선균'},
+      hp7:{CF:'강은찬',LF:'나준완',RF:'신수호',SS:'임서준',SP:'정지후',B2:'고준석',B3:'정은우',B1:'하준우',EH:'오유찬(54)',C:'변지성'},
+      hp8:{CF:'나준완',LF:'고준석',RF:'신수호',SS:'임서준',SP:'정은우',B2:'강은찬',B3:'정지후',B1:'하준우',EH:'오유찬(54)',C:'변지성'},
+      hp9:{CF:'석훈빈',LF:'이우영',RF:'장민준',SS:'김강우',SP:'노현서',B2:'김세린',B3:'송지율',B1:'장호준',EH:'',C:'김선균'},
+    }
+  },
+  hs: {
+    name:'화순대회',
+    sub:'화순대회 (8/14~16)',
+    cats:['전체','고학년','저학년'],
+    lat:35.0646, lon:126.9864,
+    dates:{'8/14':'2026-08-14','8/15':'2026-08-15','8/16':'2026-08-16'},
+    venues:{
+      '화순중 구장':{addr:'전남 화순군 화순읍 칠충로 71',url:'https://map.naver.com/p/search/%ED%99%94%EC%88%9C%EC%A4%91%ED%95%99%EA%B5%90',games:['8/14 고학년','8/14 저학년']},
+      '화순이양야구장':{addr:'전남 화순군 이양면 금능1길 46',url:'https://map.naver.com/p/search/%ED%99%94%EC%88%9C%EA%B5%B0%20%EA%B8%88%EB%8A%A51%EA%B8%B8%2046',games:['8/15 고학년×2','8/15 저학년','8/16 저학년']},
+    },
+    games:[
+      {id:'hs1',date:'8/14',dow:'금',time:'08:30~10:00',hour:8, cat:'고학년',venue:'화순중 구장',left:'화정',right:'화순'},
+      {id:'hs2',date:'8/14',dow:'금',time:'10:00~11:30',hour:10,cat:'저학년',venue:'화순중 구장',left:'화정',right:'화순'},
+      {id:'hs3',date:'8/15',dow:'토',time:'08:30~10:00',hour:8, cat:'고학년',venue:'화순이양야구장',left:'SB',right:'화정'},
+      {id:'hs4',date:'8/15',dow:'토',time:'10:00~11:30',hour:10,cat:'저학년',venue:'화순이양야구장',left:'SB',right:'화정'},
+      {id:'hs5',date:'8/15',dow:'토',time:'16:30~18:00',hour:16,cat:'고학년',venue:'화순이양야구장',left:'화정',right:'순천북초'},
+      {id:'hs6',date:'8/16',dow:'일',time:'08:30~10:00',hour:8, cat:'저학년',venue:'화순이양야구장',left:'화정',right:'순천북초'},
+    ],
+    lineups:{
+      hs1:{CF:'박서현',LF:'김세린',RF:'노현서',SS:'김강우',SP:'장민준',B2:'석훈빈',B3:'노현우',B1:'송지율',EH:'정현우',C:'김선균'},
+      hs2:{CF:'정지후',LF:'정은우',RF:'강주찬',SS:'박서현',SP:'김용진',B2:'심연후',B3:'김세린',B1:'오유찬(54)',EH:'',C:'신수호'},
+      hs3:{CF:'박서현',LF:'용종원',RF:'김태연',SS:'김용진',SP:'오유찬(7)',B2:'유수완',B3:'이승원',B1:'송유준',EH:'김찬린',C:'안민준'},
+      hs4:{CF:'박서현',LF:'용종원',RF:'김찬린',SS:'김용진',SP:'유수완',B2:'장유준',B3:'이승원',B1:'김태연',EH:'',C:'안민준'},
+      hs5:{CF:'박서현',LF:'용종원',RF:'이승원',SS:'오유찬(7)',SP:'송유준',B2:'유수완',B3:'김용진',B1:'김태연',EH:'김찬린',C:'안민준'},
+      hs6:{CF:'박서현',LF:'장유준',RF:'김찬린',SS:'유수완',SP:'김용진',B2:'이승원',B3:'용종원',B1:'김태연',EH:'',C:'안민준'},
+    }
+  }
+};
+const POS = [
+  {key:'CF',label:'CF 중견',x:50,y:6, cls:''},
+  {key:'LF',label:'LF 좌익',x:14,y:22,cls:''},
+  {key:'RF',label:'RF 우익',x:86,y:22,cls:''},
+  {key:'SS',label:'SS 유격',x:34,y:44,cls:''},
+  {key:'B2',label:'2B 2루', x:66,y:44,cls:''},
+  {key:'B3',label:'3B 3루', x:14,y:65,cls:''},
+  {key:'SP',label:'SP 투수',x:50,y:60,cls:'pitcher'},
+  {key:'B1',label:'1B 1루', x:86,y:65,cls:''},
+  {key:'EH',label:'',x:86,y:84,cls:'extra'},
+  {key:'C', label:'C 포수', x:50,y:87,cls:'catcher'},
+];
+let tour='hp', filt='전체', wxCache={}, searchTerm='';
+/* ═══════════ 팝업 ═══════════ */
+function closeGame(e){if(e&&e.target!==document.getElementById('gov'))return;document.getElementById('gov').classList.remove('open');}
+function closePl(){document.getElementById('plov').classList.remove('open');}
+function closeVp(){document.getElementById('vpov').classList.remove('open');}
+function openVp(name,e){
+  if(e)e.stopPropagation();
+  const v=TOURS[tour].venues[name];if(!v)return;
+  document.getElementById('vpName').textContent=name;
+  document.getElementById('vpAddr').textContent=v.addr;
+  document.getElementById('vpGames').innerHTML=v.games.map(g=>`<span class="vptag">${g}</span>`).join('');
+  document.getElementById('vpLink').href=v.url;
+  document.getElementById('vpov').classList.add('open');
+}
+function showPl(key,posLabel){
+  const p=ROSTER[key];
+  document.getElementById('mAv').textContent=key.slice(0,1);
+  document.getElementById('mName').textContent=key;
+  document.getElementById('mNum').textContent=(p&&p.num)?`#${p.num} · ${posLabel}`:posLabel;
+  const rows=[];
+  if(p&&p.num)rows.push({l:'등번호',v:`#${p.num}`});
+  if(p&&p.school)rows.push({l:'출신학교',v:p.school});
+  if(p&&p.birth)rows.push({l:'생년월일',v:p.birth});
+  if(rows.length===0)rows.push({l:'정보',v:'등록된 정보 없음'});
+  document.getElementById('mRows').innerHTML=rows.map(r=>`<div class="mrow"><span class="ml">${r.l}</span><span class="mv">${r.v}</span></div>`).join('');
+  document.getElementById('plov').classList.add('open');
+}
+/* ═══════════ 날씨 ═══════════ */
+function wxInfo(code,temp){
+  if(code<=1) return{icon:'☀️',label:`맑음 ${temp}°`,cls:''};
+  if(code<=3) return{icon:'⛅',label:`구름 ${temp}°`,cls:'cloud'};
+  if(code<=48)return{icon:'🌫️',label:`안개 ${temp}°`,cls:'cloud'};
+  if(code<=67)return{icon:'🌧️',label:`비 ${temp}°`,cls:'rain'};
+  if(code<=77)return{icon:'❄️',label:`눈 ${temp}°`,cls:'cloud'};
+  if(code<=82)return{icon:'🌦️',label:`소나기 ${temp}°`,cls:'rain'};
+  return{icon:'⛈️',label:`뇌우 ${temp}°`,cls:'rain'};
+}
+async function fetchWeather(tKey){
+  const T=TOURS[tKey];
+  try{
+    const today=new Date(); today.setHours(0,0,0,0);
+    const lastDate=Object.values(T.dates).sort().pop();
+    const target=new Date(lastDate);
+    const diff=Math.ceil((target-today)/(1000*60*60*24));
+    const fdays=Math.max(Math.min(diff+1,16),1);
+    const url=`https://api.open-meteo.com/v1/forecast?latitude=${T.lat}&longitude=${T.lon}&hourly=temperature_2m,weather_code&timezone=Asia%2FSeoul&forecast_days=${fdays}`;
+    const r=await fetch(url);
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d=await r.json();
+    if(!d.hourly||!d.hourly.time) throw new Error('no data');
+    const times=d.hourly.time, temps=d.hourly.temperature_2m, codes=d.hourly.weather_code||d.hourly.weathercode;
+    T.games.forEach(g=>{
+      const ds=T.dates[g.date];
+      const key=`${ds}T${String(g.hour).padStart(2,'0')}:00`;
+      const idx=times.indexOf(key);
+      if(idx>=0) wxCache[g.id]={code:codes[idx],temp:Math.round(temps[idx])};
+    });
+    applyWx();
+  }catch(e){
+    console.warn('날씨 오류:',e.message);
+    T.games.forEach(g=>{
+      const el=document.getElementById('wx'+g.id);
+      if(el){el.className='wx cloud';el.textContent='날씨 준비중';}
+    });
+  }
+}
+function applyWx(){
+  TOURS[tour].games.forEach(g=>{
+    const el=document.getElementById('wx'+g.id); if(!el)return;
+    const w=wxCache[g.id]; if(!w)return;
+    const{icon,label,cls}=wxInfo(w.code,w.temp);
+    el.className='wx '+cls; el.textContent=`${icon} ${label}`;
+  });
+}
+/* ═══════════ 검색 ═══════════ */
+function onSearch(){
+  searchTerm = document.getElementById('playerSearch').value.trim();
+  renderGames();
+}
+function clearSearch(){
+  document.getElementById('playerSearch').value = '';
+  searchTerm = '';
+  renderGames();
+}
+/* ═══════════ 렌더링 ═══════════ */
+function setTour(t){
+  tour=t; filt='전체';
+  renderAll();
+  if(!Object.keys(wxCache).some(k=>k.startsWith(t))) fetchWeather(t);
+  else applyWx();
+}
+function renderAll(){
+  const T=TOURS[tour];
+  const wrap=document.getElementById('mainWrap');
+  wrap.className='wrap '+(tour==='hp'?'hp-theme':'hs-theme');
+  const hdr=document.getElementById('hdr');
+  hdr.className='hdr '+(tour==='hp'?'hp':'hs');
+  document.getElementById('hdrSub').textContent=T.name;
+  document.getElementById('tab-hp').className='ttab'+(tour==='hp'?' on-hp':'');
+  document.getElementById('tab-hs').className='ttab'+(tour==='hs'?' on-hs':'');
+  const days=[...new Set(T.games.map(g=>g.date))].length;
+  const cats=[...new Set(T.games.map(g=>g.cat))].length;
+  const venues=Object.keys(T.venues).length;
+  document.getElementById('stats').innerHTML=[
+    {n:T.games.length,l:'총 경기 수'},{n:days,l:'경기 일수'},{n:cats,l:'참가 부문'},{n:venues,l:'경기장 수'}
+  ].map(s=>`<div class="stat"><div class="n">${s.n}</div><div class="l">${s.l}</div></div>`).join('');
+  document.getElementById('venues').innerHTML=Object.entries(T.venues).map(([name,v])=>`
+    <div class="vcard" onclick="openVp('${name}',event)">
+      <span style="font-size:22px">🏟️</span>
+      <div><div class="vc-name">${name}</div><div class="vc-addr">${v.addr}</div><div class="vc-link">📍 지도 보기</div></div>
+    </div>`).join('');
+  renderFilters();
+  renderGames();
+}
+function renderFilters(){
+  document.getElementById('filters').innerHTML=TOURS[tour].cats.map(f=>
+    `<button class="fbtn ${filt===f?'on':''}" onclick="setFilt('${f}')">${f}</button>`).join('');
+}
+function setFilt(f){filt=f;renderFilters();renderGames();}
+function renderGames(){
+  const T=TOURS[tour];
+  let games = filt==='전체' ? [...T.games] : T.games.filter(g=>g.cat===filt);
+
+  // 선수 검색 필터 (라인업에 포함된 경기만)
+  if(searchTerm){
+    games = games.filter(g=>{
+      const lu = T.lineups[g.id] || {};
+      return Object.values(lu).some(name => name && name.includes(searchTerm));
+    });
+  }
+
+  if(games.length === 0){
+    document.getElementById('glist').innerHTML = `
+      <div class="empty-msg">
+        검색 결과가 없습니다.<br>
+        다른 선수 이름을 입력하거나 필터를 초기화하세요.
+      </div>`;
+    return;
+  }
+
   const byDate={};
   games.forEach(g=>{if(!byDate[g.date])byDate[g.date]=[];byDate[g.date].push(g);});
   Object.values(byDate).forEach(arr=>arr.sort((a,b)=>a.time.localeCompare(b.time)));
@@ -507,7 +1067,6 @@ function renderGames(){
     }).join('')}</div>`).join('');
   applyWx();
 }
-
 function openGame(id){
   const T=TOURS[tour];
   const g=T.games.find(x=>x.id===id);if(!g)return;
@@ -544,9 +1103,2022 @@ function openGame(id){
     </div>`;
   document.getElementById('gov').classList.add('open');
 }
-
 /* ═══════════ 초기화 ═══════════ */
 setTour('hp');
 </script>
 </body>
 </html>
+사용 방법
+상단 검색창에 선수 이름 일부만 입력해도 됩니다.
+예: 김세린, 오유찬, 석훈빈
+입력하는 즉시 해당 선수가 라인업에 들어간 경기만 필터링됩니다.
+초기화 버튼을 누르면 검색어가 지워지고 전체 일정이 다시 표시됩니다.
+카테고리 필터(유소년/꿈나무 등)와 동시에 사용할 수 있습니다.
+필요하시면 검색 결과에 "총 N경기" 표시나 선수별 출전 횟수 요약 등 추가 기능도 바로 넣어드릴 수 있습니다!
+
+잘 됐는데, 검색으로 볼때는 두개 대회 모두 포함해서 리스트업이 되면 더 좋겠는데?
+
+
+1m 28s동안 생각함
+검색 시 두 대회(함평 + 화순)를 모두 포함해서 보여주도록 수정했습니다.
+
+변경 내용
+검색어가 있으면 현재 탭과 상관없이 양쪽 대회 라인업을 전부 검색
+경기 카드에 함평 / 화순 배지를 추가해서 어느 대회인지 바로 구분 가능
+날짜·시간 순으로 정렬
+검색 중에도 날씨 정보가 정상적으로 표시되도록 처리
+아래 코드를 그대로 사용하시면 됩니다.
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>광주화정유소년야구단 - 8월 대회 통합 대시보드</title>
+<style>
+  :root{
+    /* 함평: 흙빛 브라운 */
+    --hp-main:#8B4513;--hp-mid:#a0522d;--hp-light:#fff3e0;--hp-border:#d2a679;--hp-field:#3d2817;--hp-txt:#6b3410;
+    /* 화순: 네이비 블루 */
+    --hs-main:#1a3a5c;--hs-mid:#2c5f8a;--hs-light:#e8f1f8;--hs-border:#9dc0dd;--hs-field:#152b42;--hs-txt:#1a3a5c;
+    --bg:#fff;--bg2:#f7f8fa;--tx:#1a1a1a;--t2:#6b7280;--br:#e5e7eb;--b2:#d1d5db;
+    --rs:6px;--rm:10px;--rl:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:var(--bg2);color:var(--tx);min-height:100vh;}
+  .wrap{max-width:640px;margin:0 auto;padding:1rem;}
+  /* 헤더 */
+  .hdr{border-radius:var(--rl);padding:1.1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:14px;transition:background .3s;}
+  .hdr.hp{background:var(--hp-main);box-shadow:0 2px 10px rgba(139,69,19,.35);}
+  .hdr.hs{background:var(--hs-main);box-shadow:0 2px 10px rgba(26,58,92,.35);}
+  .logo-svg{width:56px;height:56px;flex-shrink:0;}
+  .hdr h1{font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;}
+  .hdr p{font-size:12px;color:rgba(255,255,255,.75);}
+  /* 대회 탭 */
+  .tour-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
+  .ttab{padding:12px 8px;border-radius:var(--rm);text-align:center;cursor:pointer;border:1.5px solid var(--br);background:var(--bg);transition:all .2s;}
+  .ttab .tt-name{font-size:14px;font-weight:700;color:var(--t2);}
+  .ttab .tt-date{font-size:11px;color:var(--t2);margin-top:3px;}
+  .ttab.on-hp{background:var(--hp-light);border-color:var(--hp-main);}
+  .ttab.on-hp .tt-name{color:var(--hp-main);}
+  .ttab.on-hp .tt-date{color:var(--hp-mid);}
+  .ttab.on-hs{background:var(--hs-light);border-color:var(--hs-main);}
+  .ttab.on-hs .tt-name{color:var(--hs-main);}
+  .ttab.on-hs .tt-date{color:var(--hs-mid);}
+  /* 검색바 */
+  .search-bar{display:flex;gap:8px;margin-bottom:1rem;align-items:center;}
+  .search-bar input{
+    flex:1;padding:11px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
+    font-size:14px;background:var(--bg);outline:none;transition:border-color .2s;
+    font-family:inherit;
+  }
+  .hp-theme .search-bar input:focus{border-color:var(--hp-main);}
+  .hs-theme .search-bar input:focus{border-color:var(--hs-main);}
+  .search-bar button{
+    padding:11px 16px;border-radius:var(--rm);border:none;background:var(--t2);
+    color:#fff;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;
+    font-family:inherit;
+  }
+  .search-bar button:hover{opacity:.9;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1rem;}
+  .stat{background:var(--bg);border-radius:var(--rm);padding:.8rem .5rem;text-align:center;border:.5px solid var(--br);}
+  .stat .n{font-size:22px;font-weight:700;}
+  .hp-theme .stat .n{color:var(--hp-mid);}
+  .hs-theme .stat .n{color:var(--hs-mid);}
+  .stat .l{font-size:11px;color:var(--t2);margin-top:2px;}
+  .sec{font-size:11px;font-weight:600;color:var(--t2);margin-bottom:8px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.06em;}
+  .sec::before{content:'';width:3px;height:13px;border-radius:2px;}
+  .hp-theme .sec::before{background:var(--hp-mid);}
+  .hs-theme .sec::before{background:var(--hs-mid);}
+  .vrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
+  .vcard{background:var(--bg);border:.5px solid var(--br);border-radius:var(--rl);padding:.85rem 1rem;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color .15s;}
+  .hp-theme .vcard:hover{border-color:var(--hp-mid);}
+  .hs-theme .vcard:hover{border-color:var(--hs-mid);}
+  .vc-name{font-size:13px;font-weight:600;color:var(--tx);}
+  .vc-addr{font-size:11px;color:var(--t2);margin-top:2px;line-height:1.4;}
+  .vc-link{font-size:11px;margin-top:4px;font-weight:500;}
+  .hp-theme .vc-link{color:var(--hp-mid);}
+  .hs-theme .vc-link{color:var(--hs-mid);}
+  .filters{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap;}
+  .fbtn{padding:5px 14px;border-radius:999px;font-size:13px;cursor:pointer;border:.5px solid var(--b2);background:var(--bg);color:var(--t2);font-weight:500;}
+  .hp-theme .fbtn.on{background:var(--hp-main);color:#fff3e0;border-color:var(--hp-main);}
+  .hs-theme .fbtn.on{background:var(--hs-main);color:#e8f1f8;border-color:var(--hs-main);}
+  .dlbl{font-size:12px;font-weight:600;border-radius:var(--rs);padding:4px 12px;display:inline-block;margin-bottom:8px;}
+  .hp-theme .dlbl{color:var(--hp-txt);background:var(--hp-light);border:.5px solid var(--hp-border);}
+  .hs-theme .dlbl{color:var(--hs-txt);background:var(--hs-light);border:.5px solid var(--hs-border);}
+  .gcards{display:flex;flex-direction:column;gap:8px;margin-bottom:1.25rem;}
+  .gcard{background:var(--bg);border:.5px solid var(--br);border-radius:var(--rl);padding:.85rem 1rem;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:border-color .15s,box-shadow .15s;}
+  .hp-theme .gcard:hover{border-color:var(--hp-mid);box-shadow:0 2px 8px rgba(160,82,45,.1);}
+  .hs-theme .gcard:hover{border-color:var(--hs-mid);box-shadow:0 2px 8px rgba(44,95,138,.1);}
+  .gtop{display:flex;align-items:center;gap:8px;}
+  .gm{font-size:15px;font-weight:700;color:var(--tx);line-height:1.3;}
+  .gm .vs{font-weight:600;margin:0 2px;}
+  .hp-theme .gm .vs{color:var(--hp-mid);}
+  .hs-theme .gm .vs{color:var(--hs-mid);}
+  .gbot{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .tbadge{text-align:center;border-radius:var(--rs);padding:3px 9px;flex-shrink:0;}
+  .hp-theme .tbadge{background:var(--hp-light);border:.5px solid var(--hp-border);}
+  .hs-theme .tbadge{background:var(--hs-light);border:.5px solid var(--hs-border);}
+  .tbadge span{font-size:11px;font-weight:600;white-space:nowrap;}
+  .hp-theme .tbadge span{color:var(--hp-txt);}
+  .hs-theme .tbadge span{color:var(--hs-txt);}
+  .vlink{font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;text-decoration:none;font-weight:500;}
+  .hp-theme .vlink{color:var(--hp-mid);}
+  .hs-theme .vlink{color:var(--hs-mid);}
+  .vlink:hover{text-decoration:underline;}
+  .spacer{flex:1;}
+  .cb{padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600;flex-shrink:0;}
+  .c유소년{background:#e3f2fd;color:#0d47a1;border:.5px solid #90caf9;}
+  .c꿈나무{background:#fff8e1;color:#e65100;border:.5px solid #ffcc02;}
+  .c새싹{background:#e8f5e9;color:#1b5e20;border:.5px solid #81c784;}
+  .c고학년{background:#ede7f6;color:#4527a0;border:.5px solid #b39ddb;}
+  .c저학년{background:#fce4ec;color:#ad1457;border:.5px solid #f48fb1;}
+  .c함평{background:#fff3e0;color:#6b3410;border:.5px solid #d2a679;}
+  .c화순{background:#e8f1f8;color:#1a3a5c;border:.5px solid #9dc0dd;}
+  .sb{font-size:11px;padding:3px 8px;border-radius:999px;font-weight:500;flex-shrink:0;}
+  .home{background:#e8f5e9;color:#2e7d32;border:.5px solid #81c784;}
+  .away{background:#fce4ec;color:#880e4f;border:.5px solid #f48fb1;}
+  .wx{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:500;background:#f0f9ff;border:.5px solid #bae6fd;border-radius:var(--rs);padding:3px 8px;color:#0369a1;white-space:nowrap;flex-shrink:0;}
+  .wx.rain{background:#fef3c7;border-color:#fcd34d;color:#92400e;}
+  .wx.cloud{background:#f3f4f6;border-color:var(--b2);color:#374151;}
+  .wx.load{background:#f9fafb;border-color:var(--br);color:#9ca3af;}
+  /* 경기 팝업 */
+  .gov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:800;align-items:flex-end;justify-content:center;}
+  .gov.open{display:flex;}
+  .gpop{background:var(--bg);border-radius:var(--rl) var(--rl) 0 0;width:100%;max-width:640px;max-height:92vh;overflow-y:auto;box-shadow:0 -4px 32px rgba(0,0,0,.25);animation:slideUp .25s ease;}
+  @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  .gph{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem .85rem;border-bottom:.5px solid var(--br);position:sticky;top:0;background:var(--bg);z-index:1;}
+  .gph h3{font-size:14px;font-weight:700;color:var(--tx);}
+  .xbtn{width:32px;height:32px;border-radius:50%;border:none;background:var(--bg2);cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;color:var(--t2);}
+  .gpb{padding:1rem 1.25rem 1.5rem;}
+  .vsbox{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--rm);margin-bottom:12px;}
+  .hp-pop .vsbox{background:var(--hp-light);border:.5px solid var(--hp-border);}
+  .hs-pop .vsbox{background:var(--hs-light);border:.5px solid var(--hs-border);}
+  .vst{flex:1;text-align:center;}
+  .vn{font-size:15px;font-weight:700;}
+  .hp-pop .vn{color:var(--hp-txt);}
+  .hs-pop .vn{color:var(--hs-txt);}
+  .vn.hw{color:#1565c0 !important;}
+  .vr{font-size:11px;color:var(--t2);margin-top:2px;}
+  .vsep{font-size:18px;font-weight:700;color:var(--b2);}
+  .meta{font-size:12px;color:var(--t2);margin-bottom:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .mlink{text-decoration:underline;cursor:pointer;font-weight:500;}
+  .hp-pop .mlink{color:var(--hp-mid);}
+  .hs-pop .mlink{color:var(--hs-mid);}
+  .field{border-radius:var(--rl);padding:1rem .5rem;box-shadow:inset 0 2px 8px rgba(0,0,0,.2);}
+  .hp-pop .field{background:var(--hp-field);}
+  .hs-pop .field{background:var(--hs-field);}
+  .ftitle{font-size:11px;text-align:center;margin-bottom:8px;color:rgba(255,255,255,.6);}
+  .diamond{position:relative;width:100%;max-width:380px;height:340px;margin:0 auto;}
+  .diamond svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+  .pnode{position:absolute;transform:translate(-50%,-50%);background:#f5f5dc;border:1.5px solid #8B6914;border-radius:var(--rs);padding:4px 8px;min-width:62px;text-align:center;cursor:pointer;transition:transform .12s;z-index:2;}
+  .pnode:hover{transform:translate(-50%,-50%) scale(1.1);background:#fffde7;}
+  .pnode.pitcher{background:#fff9c4;border-color:#f9a825;}
+  .pnode.catcher{background:#e3f2fd;border-color:#1565c0;}
+  .pnode.extra{background:#f3e5f5;border-color:#8e24aa;}
+  .pname{font-size:12px;font-weight:600;color:#1a1a1a;}
+  .ppos{font-size:9px;color:#666;margin-top:1px;}
+  /* 선수/경기장 팝업 */
+  .plov,.vpov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1100;align-items:center;justify-content:center;padding:1rem;}
+  .plov.open,.vpov.open{display:flex;}
+  .plpop{background:var(--bg);border-radius:var(--rl);padding:1.25rem;width:260px;box-shadow:0 8px 40px rgba(0,0,0,.35);}
+  .vppop{background:var(--bg);border-radius:var(--rl);padding:1.25rem;width:300px;box-shadow:0 8px 32px rgba(0,0,0,.25);}
+  .mhd{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .mav{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;background:#f1f5f9;color:#334155;border:2px solid var(--b2);}
+  .mname{font-size:16px;font-weight:700;color:var(--tx);}
+  .mnum{font-size:13px;color:var(--t2);margin-top:2px;}
+  .mrows{border-top:.5px solid var(--br);padding-top:10px;}
+  .mrow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:.5px solid var(--br);font-size:13px;}
+  .mrow:last-child{border-bottom:none;}
+  .ml{color:var(--t2);} .mv{color:var(--tx);font-weight:600;}
+  .mcls{display:block;width:100%;margin-top:14px;padding:9px;text-align:center;cursor:pointer;color:#fff;border-radius:var(--rm);border:none;font-size:13px;font-weight:600;background:#334155;}
+  .vptags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+  .vptag{font-size:11px;padding:3px 9px;border-radius:999px;background:#f1f5f9;color:#334155;border:.5px solid var(--b2);}
+  .nbtn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border-radius:var(--rm);background:#03C75A;color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:8px;text-decoration:none;}
+  .empty-msg{text-align:center;padding:2.5rem 1rem;color:var(--t2);font-size:14px;line-height:1.6;}
+  .search-info{font-size:12px;color:var(--t2);margin-bottom:10px;padding:6px 12px;background:#f1f5f9;border-radius:var(--rs);display:none;}
+  .search-info.show{display:block;}
+  @media(max-width:400px){.stats{grid-template-columns:repeat(2,1fr);}.vrow{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="gov" id="gov" onclick="closeGame(event)">
+  <div class="gpop" id="gpop" onclick="event.stopPropagation()">
+    <div class="gph"><h3 id="gpTitle"></h3><button class="xbtn" onclick="closeGame()">✕</button></div>
+    <div class="gpb" id="gpBody"></div>
+  </div>
+</div>
+<div class="plov" id="plov" onclick="closePl()">
+  <div class="plpop" onclick="event.stopPropagation()">
+    <div class="mhd"><div class="mav" id="mAv"></div><div><div class="mname" id="mName"></div><div class="mnum" id="mNum"></div></div></div>
+    <div class="mrows" id="mRows"></div>
+    <button class="mcls" onclick="closePl()">닫기</button>
+  </div>
+</div>
+<div class="vpov" id="vpov" onclick="closeVp()">
+  <div class="vppop" onclick="event.stopPropagation()">
+    <div class="mhd"><span style="font-size:26px">🏟️</span><div class="mname" id="vpName"></div></div>
+    <div style="border-top:.5px solid var(--br);padding-top:10px;">
+      <div style="font-size:13px;color:var(--t2);margin-bottom:12px;line-height:1.7;" id="vpAddr"></div>
+      <div style="font-size:11px;color:var(--t2);margin-bottom:6px;font-weight:600;">배정 경기</div>
+      <div class="vptags" id="vpGames"></div>
+      <a class="nbtn" id="vpLink" href="#" target="_blank">📍 네이버 지도로 찾아가기</a>
+      <button class="mcls" onclick="closeVp()">닫기</button>
+    </div>
+  </div>
+</div>
+<div class="wrap" id="mainWrap">
+  <div class="hdr" id="hdr">
+    <svg class="logo-svg" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+      <path d="M28 3 L50 12 L50 32 Q50 46 28 53 Q6 46 6 32 L6 12 Z" fill="#1a3a5c" stroke="#c8a84b" stroke-width="1.5"/>
+      <path d="M28 7 L46 15 L46 32 Q46 43 28 49 Q10 43 10 32 L10 15 Z" fill="#0d2340"/>
+      <text x="13" y="33" font-family="Arial Black,sans-serif" font-weight="900" font-size="18" fill="#c8a84b" letter-spacing="-1">H</text>
+      <text x="29" y="33" font-family="Arial Black,sans-serif" font-weight="900" font-size="18" fill="#ffffff" letter-spacing="-1">J</text>
+      <ellipse cx="28" cy="22" rx="5" ry="3.5" fill="#f5a623"/>
+      <ellipse cx="28" cy="22" rx="2" ry="3" fill="#1a1a1a"/>
+      <circle cx="27" cy="21" r="0.8" fill="#fff"/>
+      <rect x="10" y="37" width="36" height="8" rx="2" fill="#c8a84b"/>
+      <text x="28" y="43.5" font-family="Arial,sans-serif" font-weight="700" font-size="5.5" fill="#0d2340" text-anchor="middle" letter-spacing="0.5">TIGERS</text>
+      <circle cx="28" cy="51" r="3" fill="#fff" stroke="#ccc" stroke-width=".5"/>
+    </svg>
+    <div>
+      <h1>광주화정유소년야구단</h1>
+      <p id="hdrSub">8월 대회 통합 대시보드</p>
+    </div>
+  </div>
+  <div class="tour-tabs">
+    <div class="ttab" id="tab-hp" onclick="setTour('hp')">
+      <div class="tt-name">🥩 함평천지한우배</div>
+      <div class="tt-date">8/15(토)~16(일) · 유·꿈·새싹</div>
+    </div>
+    <div class="ttab" id="tab-hs" onclick="setTour('hs')">
+      <div class="tt-name">🏔️ 화순대회</div>
+      <div class="tt-date">8/14(금)~16(일) · 고·저학년</div>
+    </div>
+  </div>
+
+  <!-- 선수 검색바 -->
+  <div class="search-bar">
+    <input type="text" id="playerSearch" placeholder="선수 이름 검색 (함평+화순 전체)" oninput="onSearch()" autocomplete="off">
+    <button type="button" onclick="clearSearch()">초기화</button>
+  </div>
+
+  <div class="stats" id="stats"></div>
+  <div class="sec">경기장 안내</div>
+  <div class="vrow" id="venues"></div>
+  <div class="sec">경기 일정</div>
+  <div class="search-info" id="searchInfo"></div>
+  <div class="filters" id="filters"></div>
+  <div id="glist"></div>
+</div>
+<script>
+/* ═══════════ 데이터 ═══════════ */
+const ROSTER = {
+  '강은찬':{num:'61',school:'화정남초',birth:'19.09.05'},
+  '강주찬':{num:'56',school:'화정남초',birth:'16.10.12'},
+  '고준석':{num:'49',school:'광주화정초',birth:'18.05.25'},
+  '김강우':{num:'3',school:'전남중학교',birth:'13.05.21'},
+  '김경환':{num:'16',school:'양산중학교',birth:'11.06.02'},
+  '김도윤':{num:'1',school:'진제초등',birth:'15.07.17'},
+  '김동유':{num:'55',school:'운남중학교',birth:'13.12.06'},
+  '김선균':{num:'29',school:'',birth:'14.02.20'},
+  '김세린':{num:'68',school:'전남중학교',birth:'13.03.29'},
+  '김시온':{num:'13',school:'광주교대부설초',birth:'14.09.10'},
+  '김용진':{num:'15',school:'광주교대부설초',birth:'16.04.28'},
+  '김정진':{num:'14',school:'양산중학교',birth:'12.06.17'},
+  '김찬린':{num:'',school:'',birth:'16.04.27'},
+  '김현승':{num:'45',school:'상무초등',birth:'15.04.05'},
+  '나준완':{num:'75',school:'유안초등',birth:'18.01.29'},
+  '노현서':{num:'32',school:'진제초등',birth:'14.05.31'},
+  '노현우':{num:'36',school:'신암초등',birth:'15.01.03'},
+  '문다원':{num:'63',school:'화정남초',birth:'17.07.09'},
+  '박건률':{num:'34',school:'화정남초',birth:'15.04.28'},
+  '백건후':{num:'81',school:'광주상무초',birth:'15.08.27'},
+  '변지성':{num:'30',school:'광주교대부설초',birth:'17.02.16'},
+  '서승원':{num:'17',school:'주월중학교',birth:'12.06.25'},
+  '서주원':{num:'10',school:'불로초등',birth:'14.06.07'},
+  '석훈빈':{num:'43',school:'화정남초',birth:'15.10.20'},
+  '송지율':{num:'37',school:'성덕중',birth:'13.12.27'},
+  '신수호':{num:'96',school:'연제초등',birth:'16.11.07'},
+  '심연후':{num:'89',school:'광천초등',birth:'16.06.01'},
+  '오유빈':{num:'11',school:'조대여중',birth:'12.12.14'},
+  '오유찬(54)':{num:'54',school:'연제초',birth:'16.06.19'},
+  '오유찬(7)':{num:'7',school:'화정초',birth:'15.02.11'},
+  '오준수':{num:'50',school:'성진초등',birth:'15.10.01'},
+  '유수완':{num:'27',school:'광주화정초',birth:'17.01.24'},
+  '이도하':{num:'41',school:'풍암초등',birth:'18.04.07'},
+  '이우영':{num:'66',school:'화정초등',birth:'13.07.11'},
+  '이찬을':{num:'97',school:'연제초등',birth:'16.10.18'},
+  '임서준':{num:'99',school:'연제초',birth:'18.08.12'},
+  '임재민':{num:'84',school:'연제초등',birth:'16.04.04'},
+  '임지민':{num:'53',school:'지산중학교',birth:'12.04.15'},
+  '장민준':{num:'18',school:'광주화정초',birth:'14.10.30'},
+  '장유준':{num:'6',school:'광주교대부설초',birth:'17.02.22'},
+  '장호준':{num:'21',school:'봉산중학교',birth:'13.04.08'},
+  '정은우':{num:'28',school:'수완초',birth:'17.04.11'},
+  '정지후':{num:'0',school:'화정남초',birth:'17.12.17'},
+  '정현우':{num:'22',school:'수완초',birth:'15.02.20'},
+  '최민후':{num:'83',school:'마지초등',birth:'18.10.31'},
+  '하유성':{num:'87',school:'화정남초',birth:'17.07.13'},
+  '하준우':{num:'92',school:'화정남초',birth:'17.01.11'},
+};
+const TOURS = {
+  hp: {
+    name:'제3회 함평천지한우배 전국유소년야구대회',
+    sub:'함평천지한우배 (8/15~16)',
+    cats:['전체','유소년','꿈나무','새싹'],
+    lat:35.0656, lon:126.5167,
+    dates:{'8/15':'2026-08-15','8/16':'2026-08-16'},
+    venues:{
+      '함평리틀구장':{addr:'전남 함평군 대동면 용성리 452-5',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EB%A6%AC%ED%8B%80%EC%95%BC%EA%B5%AC%EC%9E%A5',games:['8/15 유소년','8/16 유소년×2']},
+      '베어스타운':{addr:'전남 함평군 대동면 학동로 934',url:'https://map.naver.com/p/search/%EB%82%98%EB%B9%84%EB%B2%A0%EC%9D%B4%EC%8A%A4%ED%83%80%EC%9A%B4',games:['8/16 꿈나무']},
+      '공설운동장A':{addr:'전남 함평군 함장로 1377',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B3%B5%EC%84%A4%EC%9A%B4%EB%8F%99%EC%9E%A5',games:['8/15 꿈나무×2']},
+      '공설운동장B':{addr:'전남 함평군 함장로 1377',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B3%B5%EC%84%A4%EC%9A%B4%EB%8F%99%EC%9E%A5',games:['8/15 새싹','8/16 새싹×2']},
+    },
+    games:[
+      {id:'hp1',date:'8/15',dow:'토',time:'09:30~11:00',hour:9, cat:'유소년',venue:'함평리틀구장',left:'화정',right:'SB'},
+      {id:'hp2',date:'8/15',dow:'토',time:'11:00~12:30',hour:11,cat:'꿈나무',venue:'공설운동장A',left:'지누',right:'화정'},
+      {id:'hp3',date:'8/15',dow:'토',time:'13:00~14:30',hour:13,cat:'새싹', venue:'공설운동장B',left:'화정',right:'SB'},
+      {id:'hp4',date:'8/15',dow:'토',time:'14:30~16:00',hour:14,cat:'꿈나무',venue:'공설운동장A',left:'전주HPB',right:'화정'},
+      {id:'hp5',date:'8/16',dow:'일',time:'08:00~09:30',hour:8, cat:'꿈나무',venue:'베어스타운',left:'SB',right:'화정'},
+      {id:'hp6',date:'8/16',dow:'일',time:'11:00~12:30',hour:11,cat:'유소년',venue:'함평리틀구장',left:'제주야구학교',right:'화정'},
+      {id:'hp7',date:'8/16',dow:'일',time:'13:00~14:30',hour:13,cat:'새싹', venue:'공설운동장B',left:'원더베이스볼',right:'화정'},
+      {id:'hp8',date:'8/16',dow:'일',time:'14:30~16:00',hour:14,cat:'새싹', venue:'공설운동장B',left:'화정',right:'나주베스트'},
+      {id:'hp9',date:'8/16',dow:'일',time:'17:30~19:00',hour:17,cat:'유소년',venue:'함평리틀구장',left:'전주HPB',right:'화정'},
+    ],
+    lineups:{
+      hp1:{CF:'노현서',LF:'김세린',RF:'장민준',SS:'김강우',SP:'김선균',B2:'석훈빈',B3:'송지율',B1:'장호준',EH:'',C:'이우영'},
+      hp2:{CF:'이서준',LF:'정현우',RF:'오유찬(54)',SS:'신수호',SP:'석훈빈',B2:'심연후',B3:'노현우',B1:'강주찬',EH:'김세린',C:'백건후'},
+      hp3:{CF:'강은찬',LF:'고준석',RF:'오유찬(54)',SS:'임서준',SP:'변지성',B2:'나준완',B3:'정은우',B1:'하준우',EH:'신수호',C:'정지후'},
+      hp4:{CF:'김세린',LF:'이서준',RF:'심연후',SS:'석훈빈',SP:'정현우',B2:'신수호',B3:'노현우',B1:'백건후',EH:'오유찬(54)',C:'강주찬'},
+      hp5:{CF:'이서준',LF:'정현우',RF:'강주찬',SS:'김세린',SP:'석훈빈',B2:'심연후',B3:'노현우',B1:'백건후',EH:'신수호',C:'오유찬(54)'},
+      hp6:{CF:'김세린',LF:'이우영',RF:'장민준',SS:'김강우',SP:'송지율',B2:'석훈빈',B3:'노현서',B1:'장호준',EH:'',C:'김선균'},
+      hp7:{CF:'강은찬',LF:'나준완',RF:'신수호',SS:'임서준',SP:'정지후',B2:'고준석',B3:'정은우',B1:'하준우',EH:'오유찬(54)',C:'변지성'},
+      hp8:{CF:'나준완',LF:'고준석',RF:'신수호',SS:'임서준',SP:'정은우',B2:'강은찬',B3:'정지후',B1:'하준우',EH:'오유찬(54)',C:'변지성'},
+      hp9:{CF:'석훈빈',LF:'이우영',RF:'장민준',SS:'김강우',SP:'노현서',B2:'김세린',B3:'송지율',B1:'장호준',EH:'',C:'김선균'},
+    }
+  },
+  hs: {
+    name:'화순대회',
+    sub:'화순대회 (8/14~16)',
+    cats:['전체','고학년','저학년'],
+    lat:35.0646, lon:126.9864,
+    dates:{'8/14':'2026-08-14','8/15':'2026-08-15','8/16':'2026-08-16'},
+    venues:{
+      '화순중 구장':{addr:'전남 화순군 화순읍 칠충로 71',url:'https://map.naver.com/p/search/%ED%99%94%EC%88%9C%EC%A4%91%ED%95%99%EA%B5%90',games:['8/14 고학년','8/14 저학년']},
+      '화순이양야구장':{addr:'전남 화순군 이양면 금능1길 46',url:'https://map.naver.com/p/search/%ED%99%94%EC%88%9C%EA%B5%B0%20%EA%B8%88%EB%8A%A51%EA%B8%B8%2046',games:['8/15 고학년×2','8/15 저학년','8/16 저학년']},
+    },
+    games:[
+      {id:'hs1',date:'8/14',dow:'금',time:'08:30~10:00',hour:8, cat:'고학년',venue:'화순중 구장',left:'화정',right:'화순'},
+      {id:'hs2',date:'8/14',dow:'금',time:'10:00~11:30',hour:10,cat:'저학년',venue:'화순중 구장',left:'화정',right:'화순'},
+      {id:'hs3',date:'8/15',dow:'토',time:'08:30~10:00',hour:8, cat:'고학년',venue:'화순이양야구장',left:'SB',right:'화정'},
+      {id:'hs4',date:'8/15',dow:'토',time:'10:00~11:30',hour:10,cat:'저학년',venue:'화순이양야구장',left:'SB',right:'화정'},
+      {id:'hs5',date:'8/15',dow:'토',time:'16:30~18:00',hour:16,cat:'고학년',venue:'화순이양야구장',left:'화정',right:'순천북초'},
+      {id:'hs6',date:'8/16',dow:'일',time:'08:30~10:00',hour:8, cat:'저학년',venue:'화순이양야구장',left:'화정',right:'순천북초'},
+    ],
+    lineups:{
+      hs1:{CF:'박서현',LF:'김세린',RF:'노현서',SS:'김강우',SP:'장민준',B2:'석훈빈',B3:'노현우',B1:'송지율',EH:'정현우',C:'김선균'},
+      hs2:{CF:'정지후',LF:'정은우',RF:'강주찬',SS:'박서현',SP:'김용진',B2:'심연후',B3:'김세린',B1:'오유찬(54)',EH:'',C:'신수호'},
+      hs3:{CF:'박서현',LF:'용종원',RF:'김태연',SS:'김용진',SP:'오유찬(7)',B2:'유수완',B3:'이승원',B1:'송유준',EH:'김찬린',C:'안민준'},
+      hs4:{CF:'박서현',LF:'용종원',RF:'김찬린',SS:'김용진',SP:'유수완',B2:'장유준',B3:'이승원',B1:'김태연',EH:'',C:'안민준'},
+      hs5:{CF:'박서현',LF:'용종원',RF:'이승원',SS:'오유찬(7)',SP:'송유준',B2:'유수완',B3:'김용진',B1:'김태연',EH:'김찬린',C:'안민준'},
+      hs6:{CF:'박서현',LF:'장유준',RF:'김찬린',SS:'유수완',SP:'김용진',B2:'이승원',B3:'용종원',B1:'김태연',EH:'',C:'안민준'},
+    }
+  }
+};
+const POS = [
+  {key:'CF',label:'CF 중견',x:50,y:6, cls:''},
+  {key:'LF',label:'LF 좌익',x:14,y:22,cls:''},
+  {key:'RF',label:'RF 우익',x:86,y:22,cls:''},
+  {key:'SS',label:'SS 유격',x:34,y:44,cls:''},
+  {key:'B2',label:'2B 2루', x:66,y:44,cls:''},
+  {key:'B3',label:'3B 3루', x:14,y:65,cls:''},
+  {key:'SP',label:'SP 투수',x:50,y:60,cls:'pitcher'},
+  {key:'B1',label:'1B 1루', x:86,y:65,cls:''},
+  {key:'EH',label:'',x:86,y:84,cls:'extra'},
+  {key:'C', label:'C 포수', x:50,y:87,cls:'catcher'},
+];
+let tour='hp', filt='전체', wxCache={}, searchTerm='';
+/* ═══════════ 팝업 ═══════════ */
+function closeGame(e){if(e&&e.target!==document.getElementById('gov'))return;document.getElementById('gov').classList.remove('open');}
+function closePl(){document.getElementById('plov').classList.remove('open');}
+function closeVp(){document.getElementById('vpov').classList.remove('open');}
+function openVp(name,e){
+  if(e)e.stopPropagation();
+  const v=TOURS[tour].venues[name];if(!v)return;
+  document.getElementById('vpName').textContent=name;
+  document.getElementById('vpAddr').textContent=v.addr;
+  document.getElementById('vpGames').innerHTML=v.games.map(g=>`<span class="vptag">${g}</span>`).join('');
+  document.getElementById('vpLink').href=v.url;
+  document.getElementById('vpov').classList.add('open');
+}
+function showPl(key,posLabel){
+  const p=ROSTER[key];
+  document.getElementById('mAv').textContent=key.slice(0,1);
+  document.getElementById('mName').textContent=key;
+  document.getElementById('mNum').textContent=(p&&p.num)?`#${p.num} · ${posLabel}`:posLabel;
+  const rows=[];
+  if(p&&p.num)rows.push({l:'등번호',v:`#${p.num}`});
+  if(p&&p.school)rows.push({l:'출신학교',v:p.school});
+  if(p&&p.birth)rows.push({l:'생년월일',v:p.birth});
+  if(rows.length===0)rows.push({l:'정보',v:'등록된 정보 없음'});
+  document.getElementById('mRows').innerHTML=rows.map(r=>`<div class="mrow"><span class="ml">${r.l}</span><span class="mv">${r.v}</span></div>`).join('');
+  document.getElementById('plov').classList.add('open');
+}
+/* ═══════════ 날씨 ═══════════ */
+function wxInfo(code,temp){
+  if(code<=1) return{icon:'☀️',label:`맑음 ${temp}°`,cls:''};
+  if(code<=3) return{icon:'⛅',label:`구름 ${temp}°`,cls:'cloud'};
+  if(code<=48)return{icon:'🌫️',label:`안개 ${temp}°`,cls:'cloud'};
+  if(code<=67)return{icon:'🌧️',label:`비 ${temp}°`,cls:'rain'};
+  if(code<=77)return{icon:'❄️',label:`눈 ${temp}°`,cls:'cloud'};
+  if(code<=82)return{icon:'🌦️',label:`소나기 ${temp}°`,cls:'rain'};
+  return{icon:'⛈️',label:`뇌우 ${temp}°`,cls:'rain'};
+}
+async function fetchWeather(tKey){
+  const T=TOURS[tKey];
+  try{
+    const today=new Date(); today.setHours(0,0,0,0);
+    const lastDate=Object.values(T.dates).sort().pop();
+    const target=new Date(lastDate);
+    const diff=Math.ceil((target-today)/(1000*60*60*24));
+    const fdays=Math.max(Math.min(diff+1,16),1);
+    const url=`https://api.open-meteo.com/v1/forecast?latitude=${T.lat}&longitude=${T.lon}&hourly=temperature_2m,weather_code&timezone=Asia%2FSeoul&forecast_days=${fdays}`;
+    const r=await fetch(url);
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d=await r.json();
+    if(!d.hourly||!d.hourly.time) throw new Error('no data');
+    const times=d.hourly.time, temps=d.hourly.temperature_2m, codes=d.hourly.weather_code||d.hourly.weathercode;
+    T.games.forEach(g=>{
+      const ds=T.dates[g.date];
+      const key=`${ds}T${String(g.hour).padStart(2,'0')}:00`;
+      const idx=times.indexOf(key);
+      if(idx>=0) wxCache[g.id]={code:codes[idx],temp:Math.round(temps[idx])};
+    });
+    applyWx();
+  }catch(e){
+    console.warn('날씨 오류:',e.message);
+    T.games.forEach(g=>{
+      const el=document.getElementById('wx'+g.id);
+      if(el){el.className='wx cloud';el.textContent='날씨 준비중';}
+    });
+  }
+}
+function applyWx(){
+  // 현재 화면에 있는 모든 wx 요소에 적용
+  document.querySelectorAll('[id^="wx"]').forEach(el=>{
+    const id = el.id.replace('wx','');
+    const w = wxCache[id];
+    if(!w) return;
+    const{icon,label,cls}=wxInfo(w.code,w.temp);
+    el.className='wx '+cls; el.textContent=`${icon} ${label}`;
+  });
+}
+/* ═══════════ 검색 ═══════════ */
+function onSearch(){
+  searchTerm = document.getElementById('playerSearch').value.trim();
+  // 검색 시 양쪽 대회 날씨 미리 로드
+  if(searchTerm){
+    if(!Object.keys(wxCache).some(k=>k.startsWith('hp'))) fetchWeather('hp');
+    if(!Object.keys(wxCache).some(k=>k.startsWith('hs'))) fetchWeather('hs');
+  }
+  renderGames();
+}
+function clearSearch(){
+  document.getElementById('playerSearch').value = '';
+  searchTerm = '';
+  renderGames();
+}
+/* ═══════════ 렌더링 ═══════════ */
+function setTour(t){
+  tour=t; filt='전체';
+  renderAll();
+  if(!Object.keys(wxCache).some(k=>k.startsWith(t))) fetchWeather(t);
+  else applyWx();
+}
+function renderAll(){
+  const T=TOURS[tour];
+  const wrap=document.getElementById('mainWrap');
+  wrap.className='wrap '+(tour==='hp'?'hp-theme':'hs-theme');
+  const hdr=document.getElementById('hdr');
+  hdr.className='hdr '+(tour==='hp'?'hp':'hs');
+  document.getElementById('hdrSub').textContent=T.name;
+  document.getElementById('tab-hp').className='ttab'+(tour==='hp'?' on-hp':'');
+  document.getElementById('tab-hs').className='ttab'+(tour==='hs'?' on-hs':'');
+  const days=[...new Set(T.games.map(g=>g.date))].length;
+  const cats=[...new Set(T.games.map(g=>g.cat))].length;
+  const venues=Object.keys(T.venues).length;
+  document.getElementById('stats').innerHTML=[
+    {n:T.games.length,l:'총 경기 수'},{n:days,l:'경기 일수'},{n:cats,l:'참가 부문'},{n:venues,l:'경기장 수'}
+  ].map(s=>`<div class="stat"><div class="n">${s.n}</div><div class="l">${s.l}</div></div>`).join('');
+  document.getElementById('venues').innerHTML=Object.entries(T.venues).map(([name,v])=>`
+    <div class="vcard" onclick="openVp('${name}',event)">
+      <span style="font-size:22px">🏟️</span>
+      <div><div class="vc-name">${name}</div><div class="vc-addr">${v.addr}</div><div class="vc-link">📍 지도 보기</div></div>
+    </div>`).join('');
+  renderFilters();
+  renderGames();
+}
+function renderFilters(){
+  document.getElementById('filters').innerHTML=TOURS[tour].cats.map(f=>
+    `<button class="fbtn ${filt===f?'on':''}" onclick="setFilt('${f}')">${f}</button>`).join('');
+}
+function setFilt(f){filt=f;renderFilters();renderGames();}
+function renderGames(){
+  let games = [];
+
+  if(searchTerm){
+    // 양쪽 대회 모두 검색
+    ['hp','hs'].forEach(tKey=>{
+      const T = TOURS[tKey];
+      T.games.forEach(g=>{
+        const lu = T.lineups[g.id] || {};
+        if(Object.values(lu).some(name => name && name.includes(searchTerm))){
+          games.push({...g, tourKey: tKey});
+        }
+      });
+    });
+  } else {
+    // 기존: 현재 투어 + 카테고리 필터
+    const T = TOURS[tour];
+    const filtered = filt==='전체' ? T.games : T.games.filter(g=>g.cat===filt);
+    games = filtered.map(g => ({...g, tourKey: tour}));
+  }
+
+  // 날짜 → 시간 순 정렬
+  games.sort((a,b)=>{
+    const da = TOURS[a.tourKey].dates[a.date];
+    const db = TOURS[b.tourKey].dates[b.date];
+    if(da !== db) return da.localeCompare(db);
+    return a.time.localeCompare(b.time);
+  });
+
+  // 검색 안내 문구
+  const infoEl = document.getElementById('searchInfo');
+  if(searchTerm){
+    infoEl.className = 'search-info show';
+    infoEl.textContent = `"${searchTerm}" 검색 결과 · 함평 + 화순 전체 (${games.length}경기)`;
+  } else {
+    infoEl.className = 'search-info';
+    infoEl.textContent = '';
+  }
+
+  if(games.length === 0){
+    document.getElementById('glist').innerHTML = `
+      <div class="empty-msg">
+        검색 결과가 없습니다.<br>
+        다른 선수 이름을 입력하거나 필터를 초기화하세요.
+      </div>`;
+    return;
+  }
+
+  const byDate = {};
+  games.forEach(g=>{
+    if(!byDate[g.date]) byDate[g.date]=[];
+    byDate[g.date].push(g);
+  });
+
+  document.getElementById('glist').innerHTML = Object.entries(byDate).map(([date,gs])=>`
+    <div class="dlbl">📅 ${date}(${gs[0].dow}요일)</div>
+    <div class="gcards">${gs.map(g=>{
+      const isH = g.right==='화정';
+      const T = TOURS[g.tourKey];
+      const vurl = T.venues[g.venue]?.url || '#';
+      const tourLabel = g.tourKey==='hp' ? '함평' : '화순';
+      const tourCls = g.tourKey==='hp' ? 'c함평' : 'c화순';
+      return`<div class="gcard" onclick="openGame('${g.id}','${g.tourKey}')">
+        <div class="gtop"><div class="gm">${g.left}<span class="vs"> vs </span>${g.right}</div></div>
+        <div class="gbot">
+          <div class="tbadge"><span>${g.time}</span></div>
+          <a class="vlink" href="${vurl}" target="_blank" onclick="event.stopPropagation()">📍 ${g.venue}</a>
+          <span class="spacer"></span>
+          <span id="wx${g.id}" class="wx load">⏳</span>
+          <span class="sb ${isH?'home':'away'}">${isH?'홈':'원정'}</span>
+          <span class="cb ${tourCls}">${tourLabel}</span>
+          <span class="cb c${g.cat}">${g.cat}</span>
+        </div>
+      </div>`;
+    }).join('')}</div>`).join('');
+
+  applyWx();
+}
+function openGame(id, tKey){
+  const tourKey = tKey || tour;
+  const T = TOURS[tourKey];
+  const g = T.games.find(x=>x.id===id); if(!g) return;
+  const lu = T.lineups[g.id] || {};
+  const vurl = T.venues[g.venue]?.url || '#';
+  const nodes = POS.filter(p=>!(p.key==='EH'&&!lu[p.key])).map(p=>{
+    const key = lu[p.key] || '';
+    return`<div class="pnode ${p.cls}" style="left:${p.x}%;top:${p.y}%" onclick="showPl('${key}','${p.label}')">
+      <div class="pname">${key}</div><div class="ppos">${p.label}</div></div>`;
+  }).join('');
+  document.getElementById('gpop').className = 'gpop '+(tourKey==='hp'?'hp-pop':'hs-pop');
+  document.getElementById('gpTitle').textContent = `⚾ ${g.date}(${g.dow}) ${g.time} · ${g.cat}`;
+  document.getElementById('gpBody').innerHTML = `
+    <div class="vsbox">
+      <div class="vst"><div class="vn ${g.left==='화정'?'hw':''}">${g.left}</div><div class="vr">원정</div></div>
+      <div class="vsep">:</div>
+      <div class="vst"><div class="vn ${g.right==='화정'?'hw':''}">${g.right}</div><div class="vr">홈</div></div>
+    </div>
+    <div class="meta">
+      <a href="${vurl}" target="_blank" class="mlink" onclick="event.stopPropagation()">📍 ${g.venue}</a>
+      <span>·</span><span>화정 ${g.right==='화정'?'홈':'원정'}</span>
+      <span>·</span><span>${tourKey==='hp'?'함평천지한우배':'화순대회'}</span>
+    </div>
+    <div class="field">
+      <div class="ftitle">수비 라인업 — 선수 이름을 클릭하면 상세 정보를 볼 수 있습니다</div>
+      <div class="diamond">
+        <svg viewBox="0 0 380 340" xmlns="http://www.w3.org/2000/svg">
+          <line x1="53" y1="75" x2="190" y2="296" stroke="#999" stroke-width="1" opacity=".4"/>
+          <line x1="327" y1="75" x2="190" y2="296" stroke="#999" stroke-width="1" opacity=".4"/>
+          <path d="M53 75 Q190 10 327 75" fill="none" stroke="#999" stroke-width="1" opacity=".3"/>
+          <polygon points="190,150 120,210 190,265 260,210" fill="rgba(210,166,121,.18)" stroke="#c8a84b" stroke-width="1.5"/>
+        </svg>
+        ${nodes}
+      </div>
+    </div>`;
+  document.getElementById('gov').classList.add('open');
+}
+/* ═══════════ 초기화 ═══════════ */
+setTour('hp');
+</script>
+</body>
+</html>
+이제 선수 이름을 검색하면 함평 + 화순 두 대회를 합쳐서 해당 선수가 라인업에 들어간 경기가 모두 나옵니다.
+카드 오른쪽에 함평 / 화순 배지도 같이 표시됩니다.
+
+"오유찬"은 동명이인이라 검색할때 동명이인이 있으면 후보 두명을 디스플레이 하고 선택하는 식으로 만들어줘. (이름 옆에 백넘버 표시)
+
+
+1m 39s동안 생각함
+동명이인(오유찬)이 있을 때 후보 두 명을 보여주고 선택하는 기능을 추가했습니다.
+
+동작 방식
+오유찬 검색 → 후보 2명 표시 (이름 + 백넘버)
+원하는 선수를 클릭하면 그 선수만 포함된 경기가 리스트업됨
+다른 이름(동명이인 없음)은 기존처럼 바로 결과 표시
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>광주화정유소년야구단 - 8월 대회 통합 대시보드</title>
+<style>
+  :root{
+    /* 함평: 흙빛 브라운 */
+    --hp-main:#8B4513;--hp-mid:#a0522d;--hp-light:#fff3e0;--hp-border:#d2a679;--hp-field:#3d2817;--hp-txt:#6b3410;
+    /* 화순: 네이비 블루 */
+    --hs-main:#1a3a5c;--hs-mid:#2c5f8a;--hs-light:#e8f1f8;--hs-border:#9dc0dd;--hs-field:#152b42;--hs-txt:#1a3a5c;
+    --bg:#fff;--bg2:#f7f8fa;--tx:#1a1a1a;--t2:#6b7280;--br:#e5e7eb;--b2:#d1d5db;
+    --rs:6px;--rm:10px;--rl:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:var(--bg2);color:var(--tx);min-height:100vh;}
+  .wrap{max-width:640px;margin:0 auto;padding:1rem;}
+  /* 헤더 */
+  .hdr{border-radius:var(--rl);padding:1.1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:14px;transition:background .3s;}
+  .hdr.hp{background:var(--hp-main);box-shadow:0 2px 10px rgba(139,69,19,.35);}
+  .hdr.hs{background:var(--hs-main);box-shadow:0 2px 10px rgba(26,58,92,.35);}
+  .logo-svg{width:56px;height:56px;flex-shrink:0;}
+  .hdr h1{font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;}
+  .hdr p{font-size:12px;color:rgba(255,255,255,.75);}
+  /* 대회 탭 */
+  .tour-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
+  .ttab{padding:12px 8px;border-radius:var(--rm);text-align:center;cursor:pointer;border:1.5px solid var(--br);background:var(--bg);transition:all .2s;}
+  .ttab .tt-name{font-size:14px;font-weight:700;color:var(--t2);}
+  .ttab .tt-date{font-size:11px;color:var(--t2);margin-top:3px;}
+  .ttab.on-hp{background:var(--hp-light);border-color:var(--hp-main);}
+  .ttab.on-hp .tt-name{color:var(--hp-main);}
+  .ttab.on-hp .tt-date{color:var(--hp-mid);}
+  .ttab.on-hs{background:var(--hs-light);border-color:var(--hs-main);}
+  .ttab.on-hs .tt-name{color:var(--hs-main);}
+  .ttab.on-hs .tt-date{color:var(--hs-mid);}
+  /* 검색바 */
+  .search-bar{display:flex;gap:8px;margin-bottom:1rem;align-items:center;}
+  .search-bar input{
+    flex:1;padding:11px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
+    font-size:14px;background:var(--bg);outline:none;transition:border-color .2s;
+    font-family:inherit;
+  }
+  .hp-theme .search-bar input:focus{border-color:var(--hp-main);}
+  .hs-theme .search-bar input:focus{border-color:var(--hs-main);}
+  .search-bar button{
+    padding:11px 16px;border-radius:var(--rm);border:none;background:var(--t2);
+    color:#fff;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;
+    font-family:inherit;
+  }
+  .search-bar button:hover{opacity:.9;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1rem;}
+  .stat{background:var(--bg);border-radius:var(--rm);padding:.8rem .5rem;text-align:center;border:.5px solid var(--br);}
+  .stat .n{font-size:22px;font-weight:700;}
+  .hp-theme .stat .n{color:var(--hp-mid);}
+  .hs-theme .stat .n{color:var(--hs-mid);}
+  .stat .l{font-size:11px;color:var(--t2);margin-top:2px;}
+  .sec{font-size:11px;font-weight:600;color:var(--t2);margin-bottom:8px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.06em;}
+  .sec::before{content:'';width:3px;height:13px;border-radius:2px;}
+  .hp-theme .sec::before{background:var(--hp-mid);}
+  .hs-theme .sec::before{background:var(--hs-mid);}
+  .vrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
+  .vcard{background:var(--bg);border:.5px solid var(--br);border-radius:var(--rl);padding:.85rem 1rem;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color .15s;}
+  .hp-theme .vcard:hover{border-color:var(--hp-mid);}
+  .hs-theme .vcard:hover{border-color:var(--hs-mid);}
+  .vc-name{font-size:13px;font-weight:600;color:var(--tx);}
+  .vc-addr{font-size:11px;color:var(--t2);margin-top:2px;line-height:1.4;}
+  .vc-link{font-size:11px;margin-top:4px;font-weight:500;}
+  .hp-theme .vc-link{color:var(--hp-mid);}
+  .hs-theme .vc-link{color:var(--hs-mid);}
+  .filters{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap;}
+  .fbtn{padding:5px 14px;border-radius:999px;font-size:13px;cursor:pointer;border:.5px solid var(--b2);background:var(--bg);color:var(--t2);font-weight:500;}
+  .hp-theme .fbtn.on{background:var(--hp-main);color:#fff3e0;border-color:var(--hp-main);}
+  .hs-theme .fbtn.on{background:var(--hs-main);color:#e8f1f8;border-color:var(--hs-main);}
+  .dlbl{font-size:12px;font-weight:600;border-radius:var(--rs);padding:4px 12px;display:inline-block;margin-bottom:8px;}
+  .hp-theme .dlbl{color:var(--hp-txt);background:var(--hp-light);border:.5px solid var(--hp-border);}
+  .hs-theme .dlbl{color:var(--hs-txt);background:var(--hs-light);border:.5px solid var(--hs-border);}
+  .gcards{display:flex;flex-direction:column;gap:8px;margin-bottom:1.25rem;}
+  .gcard{background:var(--bg);border:.5px solid var(--br);border-radius:var(--rl);padding:.85rem 1rem;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:border-color .15s,box-shadow .15s;}
+  .hp-theme .gcard:hover{border-color:var(--hp-mid);box-shadow:0 2px 8px rgba(160,82,45,.1);}
+  .hs-theme .gcard:hover{border-color:var(--hs-mid);box-shadow:0 2px 8px rgba(44,95,138,.1);}
+  .gtop{display:flex;align-items:center;gap:8px;}
+  .gm{font-size:15px;font-weight:700;color:var(--tx);line-height:1.3;}
+  .gm .vs{font-weight:600;margin:0 2px;}
+  .hp-theme .gm .vs{color:var(--hp-mid);}
+  .hs-theme .gm .vs{color:var(--hs-mid);}
+  .gbot{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .tbadge{text-align:center;border-radius:var(--rs);padding:3px 9px;flex-shrink:0;}
+  .hp-theme .tbadge{background:var(--hp-light);border:.5px solid var(--hp-border);}
+  .hs-theme .tbadge{background:var(--hs-light);border:.5px solid var(--hs-border);}
+  .tbadge span{font-size:11px;font-weight:600;white-space:nowrap;}
+  .hp-theme .tbadge span{color:var(--hp-txt);}
+  .hs-theme .tbadge span{color:var(--hs-txt);}
+  .vlink{font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;text-decoration:none;font-weight:500;}
+  .hp-theme .vlink{color:var(--hp-mid);}
+  .hs-theme .vlink{color:var(--hs-mid);}
+  .vlink:hover{text-decoration:underline;}
+  .spacer{flex:1;}
+  .cb{padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600;flex-shrink:0;}
+  .c유소년{background:#e3f2fd;color:#0d47a1;border:.5px solid #90caf9;}
+  .c꿈나무{background:#fff8e1;color:#e65100;border:.5px solid #ffcc02;}
+  .c새싹{background:#e8f5e9;color:#1b5e20;border:.5px solid #81c784;}
+  .c고학년{background:#ede7f6;color:#4527a0;border:.5px solid #b39ddb;}
+  .c저학년{background:#fce4ec;color:#ad1457;border:.5px solid #f48fb1;}
+  .c함평{background:#fff3e0;color:#6b3410;border:.5px solid #d2a679;}
+  .c화순{background:#e8f1f8;color:#1a3a5c;border:.5px solid #9dc0dd;}
+  .sb{font-size:11px;padding:3px 8px;border-radius:999px;font-weight:500;flex-shrink:0;}
+  .home{background:#e8f5e9;color:#2e7d32;border:.5px solid #81c784;}
+  .away{background:#fce4ec;color:#880e4f;border:.5px solid #f48fb1;}
+  .wx{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:500;background:#f0f9ff;border:.5px solid #bae6fd;border-radius:var(--rs);padding:3px 8px;color:#0369a1;white-space:nowrap;flex-shrink:0;}
+  .wx.rain{background:#fef3c7;border-color:#fcd34d;color:#92400e;}
+  .wx.cloud{background:#f3f4f6;border-color:var(--b2);color:#374151;}
+  .wx.load{background:#f9fafb;border-color:var(--br);color:#9ca3af;}
+  /* 동명이인 후보 */
+  .cand-box{background:var(--bg);border:1.5px solid var(--br);border-radius:var(--rl);padding:1.1rem 1.2rem;margin-bottom:1rem;}
+  .cand-title{font-size:13px;font-weight:600;color:var(--t2);margin-bottom:12px;}
+  .cand-list{display:flex;flex-direction:column;gap:8px;}
+  .cand-btn{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
+    background:var(--bg);cursor:pointer;font-size:15px;font-weight:600;color:var(--tx);
+    transition:all .15s;font-family:inherit;
+  }
+  .cand-btn:hover{border-color:var(--hs-mid);background:#f0f7ff;}
+  .cand-num{font-size:13px;font-weight:700;color:#1565c0;background:#e3f2fd;padding:3px 10px;border-radius:999px;}
+  /* 경기 팝업 */
+  .gov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:800;align-items:flex-end;justify-content:center;}
+  .gov.open{display:flex;}
+  .gpop{background:var(--bg);border-radius:var(--rl) var(--rl) 0 0;width:100%;max-width:640px;max-height:92vh;overflow-y:auto;box-shadow:0 -4px 32px rgba(0,0,0,.25);animation:slideUp .25s ease;}
+  @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  .gph{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem .85rem;border-bottom:.5px solid var(--br);position:sticky;top:0;background:var(--bg);z-index:1;}
+  .gph h3{font-size:14px;font-weight:700;color:var(--tx);}
+  .xbtn{width:32px;height:32px;border-radius:50%;border:none;background:var(--bg2);cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;color:var(--t2);}
+  .gpb{padding:1rem 1.25rem 1.5rem;}
+  .vsbox{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--rm);margin-bottom:12px;}
+  .hp-pop .vsbox{background:var(--hp-light);border:.5px solid var(--hp-border);}
+  .hs-pop .vsbox{background:var(--hs-light);border:.5px solid var(--hs-border);}
+  .vst{flex:1;text-align:center;}
+  .vn{font-size:15px;font-weight:700;}
+  .hp-pop .vn{color:var(--hp-txt);}
+  .hs-pop .vn{color:var(--hs-txt);}
+  .vn.hw{color:#1565c0 !important;}
+  .vr{font-size:11px;color:var(--t2);margin-top:2px;}
+  .vsep{font-size:18px;font-weight:700;color:var(--b2);}
+  .meta{font-size:12px;color:var(--t2);margin-bottom:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .mlink{text-decoration:underline;cursor:pointer;font-weight:500;}
+  .hp-pop .mlink{color:var(--hp-mid);}
+  .hs-pop .mlink{color:var(--hs-mid);}
+  .field{border-radius:var(--rl);padding:1rem .5rem;box-shadow:inset 0 2px 8px rgba(0,0,0,.2);}
+  .hp-pop .field{background:var(--hp-field);}
+  .hs-pop .field{background:var(--hs-field);}
+  .ftitle{font-size:11px;text-align:center;margin-bottom:8px;color:rgba(255,255,255,.6);}
+  .diamond{position:relative;width:100%;max-width:380px;height:340px;margin:0 auto;}
+  .diamond svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+  .pnode{position:absolute;transform:translate(-50%,-50%);background:#f5f5dc;border:1.5px solid #8B6914;border-radius:var(--rs);padding:4px 8px;min-width:62px;text-align:center;cursor:pointer;transition:transform .12s;z-index:2;}
+  .pnode:hover{transform:translate(-50%,-50%) scale(1.1);background:#fffde7;}
+  .pnode.pitcher{background:#fff9c4;border-color:#f9a825;}
+  .pnode.catcher{background:#e3f2fd;border-color:#1565c0;}
+  .pnode.extra{background:#f3e5f5;border-color:#8e24aa;}
+  .pname{font-size:12px;font-weight:600;color:#1a1a1a;}
+  .ppos{font-size:9px;color:#666;margin-top:1px;}
+  /* 선수/경기장 팝업 */
+  .plov,.vpov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1100;align-items:center;justify-content:center;padding:1rem;}
+  .plov.open,.vpov.open{display:flex;}
+  .plpop{background:var(--bg);border-radius:var(--rl);padding:1.25rem;width:260px;box-shadow:0 8px 40px rgba(0,0,0,.35);}
+  .vppop{background:var(--bg);border-radius:var(--rl);padding:1.25rem;width:300px;box-shadow:0 8px 32px rgba(0,0,0,.25);}
+  .mhd{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .mav{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;background:#f1f5f9;color:#334155;border:2px solid var(--b2);}
+  .mname{font-size:16px;font-weight:700;color:var(--tx);}
+  .mnum{font-size:13px;color:var(--t2);margin-top:2px;}
+  .mrows{border-top:.5px solid var(--br);padding-top:10px;}
+  .mrow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:.5px solid var(--br);font-size:13px;}
+  .mrow:last-child{border-bottom:none;}
+  .ml{color:var(--t2);} .mv{color:var(--tx);font-weight:600;}
+  .mcls{display:block;width:100%;margin-top:14px;padding:9px;text-align:center;cursor:pointer;color:#fff;border-radius:var(--rm);border:none;font-size:13px;font-weight:600;background:#334155;}
+  .vptags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+  .vptag{font-size:11px;padding:3px 9px;border-radius:999px;background:#f1f5f9;color:#334155;border:.5px solid var(--b2);}
+  .nbtn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border-radius:var(--rm);background:#03C75A;color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:8px;text-decoration:none;}
+  .empty-msg{text-align:center;padding:2.5rem 1rem;color:var(--t2);font-size:14px;line-height:1.6;}
+  .search-info{font-size:12px;color:var(--t2);margin-bottom:10px;padding:6px 12px;background:#f1f5f9;border-radius:var(--rs);display:none;}
+  .search-info.show{display:block;}
+  @media(max-width:400px){.stats{grid-template-columns:repeat(2,1fr);}.vrow{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="gov" id="gov" onclick="closeGame(event)">
+  <div class="gpop" id="gpop" onclick="event.stopPropagation()">
+    <div class="gph"><h3 id="gpTitle"></h3><button class="xbtn" onclick="closeGame()">✕</button></div>
+    <div class="gpb" id="gpBody"></div>
+  </div>
+</div>
+<div class="plov" id="plov" onclick="closePl()">
+  <div class="plpop" onclick="event.stopPropagation()">
+    <div class="mhd"><div class="mav" id="mAv"></div><div><div class="mname" id="mName"></div><div class="mnum" id="mNum"></div></div></div>
+    <div class="mrows" id="mRows"></div>
+    <button class="mcls" onclick="closePl()">닫기</button>
+  </div>
+</div>
+<div class="vpov" id="vpov" onclick="closeVp()">
+  <div class="vppop" onclick="event.stopPropagation()">
+    <div class="mhd"><span style="font-size:26px">🏟️</span><div class="mname" id="vpName"></div></div>
+    <div style="border-top:.5px solid var(--br);padding-top:10px;">
+      <div style="font-size:13px;color:var(--t2);margin-bottom:12px;line-height:1.7;" id="vpAddr"></div>
+      <div style="font-size:11px;color:var(--t2);margin-bottom:6px;font-weight:600;">배정 경기</div>
+      <div class="vptags" id="vpGames"></div>
+      <a class="nbtn" id="vpLink" href="#" target="_blank">📍 네이버 지도로 찾아가기</a>
+      <button class="mcls" onclick="closeVp()">닫기</button>
+    </div>
+  </div>
+</div>
+<div class="wrap" id="mainWrap">
+  <div class="hdr" id="hdr">
+    <svg class="logo-svg" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+      <path d="M28 3 L50 12 L50 32 Q50 46 28 53 Q6 46 6 32 L6 12 Z" fill="#1a3a5c" stroke="#c8a84b" stroke-width="1.5"/>
+      <path d="M28 7 L46 15 L46 32 Q46 43 28 49 Q10 43 10 32 L10 15 Z" fill="#0d2340"/>
+      <text x="13" y="33" font-family="Arial Black,sans-serif" font-weight="900" font-size="18" fill="#c8a84b" letter-spacing="-1">H</text>
+      <text x="29" y="33" font-family="Arial Black,sans-serif" font-weight="900" font-size="18" fill="#ffffff" letter-spacing="-1">J</text>
+      <ellipse cx="28" cy="22" rx="5" ry="3.5" fill="#f5a623"/>
+      <ellipse cx="28" cy="22" rx="2" ry="3" fill="#1a1a1a"/>
+      <circle cx="27" cy="21" r="0.8" fill="#fff"/>
+      <rect x="10" y="37" width="36" height="8" rx="2" fill="#c8a84b"/>
+      <text x="28" y="43.5" font-family="Arial,sans-serif" font-weight="700" font-size="5.5" fill="#0d2340" text-anchor="middle" letter-spacing="0.5">TIGERS</text>
+      <circle cx="28" cy="51" r="3" fill="#fff" stroke="#ccc" stroke-width=".5"/>
+    </svg>
+    <div>
+      <h1>광주화정유소년야구단</h1>
+      <p id="hdrSub">8월 대회 통합 대시보드</p>
+    </div>
+  </div>
+  <div class="tour-tabs">
+    <div class="ttab" id="tab-hp" onclick="setTour('hp')">
+      <div class="tt-name">🥩 함평천지한우배</div>
+      <div class="tt-date">8/15(토)~16(일) · 유·꿈·새싹</div>
+    </div>
+    <div class="ttab" id="tab-hs" onclick="setTour('hs')">
+      <div class="tt-name">🏔️ 화순대회</div>
+      <div class="tt-date">8/14(금)~16(일) · 고·저학년</div>
+    </div>
+  </div>
+
+  <!-- 선수 검색바 -->
+  <div class="search-bar">
+    <input type="text" id="playerSearch" placeholder="선수 이름 검색 (함평+화순 전체)" oninput="onSearch()" autocomplete="off">
+    <button type="button" onclick="clearSearch()">초기화</button>
+  </div>
+
+  <div class="stats" id="stats"></div>
+  <div class="sec">경기장 안내</div>
+  <div class="vrow" id="venues"></div>
+  <div class="sec">경기 일정</div>
+  <div class="search-info" id="searchInfo"></div>
+  <div class="filters" id="filters"></div>
+  <div id="glist"></div>
+</div>
+<script>
+/* ═══════════ 데이터 ═══════════ */
+const ROSTER = {
+  '강은찬':{num:'61',school:'화정남초',birth:'19.09.05'},
+  '강주찬':{num:'56',school:'화정남초',birth:'16.10.12'},
+  '고준석':{num:'49',school:'광주화정초',birth:'18.05.25'},
+  '김강우':{num:'3',school:'전남중학교',birth:'13.05.21'},
+  '김경환':{num:'16',school:'양산중학교',birth:'11.06.02'},
+  '김도윤':{num:'1',school:'진제초등',birth:'15.07.17'},
+  '김동유':{num:'55',school:'운남중학교',birth:'13.12.06'},
+  '김선균':{num:'29',school:'',birth:'14.02.20'},
+  '김세린':{num:'68',school:'전남중학교',birth:'13.03.29'},
+  '김시온':{num:'13',school:'광주교대부설초',birth:'14.09.10'},
+  '김용진':{num:'15',school:'광주교대부설초',birth:'16.04.28'},
+  '김정진':{num:'14',school:'양산중학교',birth:'12.06.17'},
+  '김찬린':{num:'',school:'',birth:'16.04.27'},
+  '김현승':{num:'45',school:'상무초등',birth:'15.04.05'},
+  '나준완':{num:'75',school:'유안초등',birth:'18.01.29'},
+  '노현서':{num:'32',school:'진제초등',birth:'14.05.31'},
+  '노현우':{num:'36',school:'신암초등',birth:'15.01.03'},
+  '문다원':{num:'63',school:'화정남초',birth:'17.07.09'},
+  '박건률':{num:'34',school:'화정남초',birth:'15.04.28'},
+  '백건후':{num:'81',school:'광주상무초',birth:'15.08.27'},
+  '변지성':{num:'30',school:'광주교대부설초',birth:'17.02.16'},
+  '서승원':{num:'17',school:'주월중학교',birth:'12.06.25'},
+  '서주원':{num:'10',school:'불로초등',birth:'14.06.07'},
+  '석훈빈':{num:'43',school:'화정남초',birth:'15.10.20'},
+  '송지율':{num:'37',school:'성덕중',birth:'13.12.27'},
+  '신수호':{num:'96',school:'연제초등',birth:'16.11.07'},
+  '심연후':{num:'89',school:'광천초등',birth:'16.06.01'},
+  '오유빈':{num:'11',school:'조대여중',birth:'12.12.14'},
+  '오유찬(54)':{num:'54',school:'연제초',birth:'16.06.19'},
+  '오유찬(7)':{num:'7',school:'화정초',birth:'15.02.11'},
+  '오준수':{num:'50',school:'성진초등',birth:'15.10.01'},
+  '유수완':{num:'27',school:'광주화정초',birth:'17.01.24'},
+  '이도하':{num:'41',school:'풍암초등',birth:'18.04.07'},
+  '이우영':{num:'66',school:'화정초등',birth:'13.07.11'},
+  '이찬을':{num:'97',school:'연제초등',birth:'16.10.18'},
+  '임서준':{num:'99',school:'연제초',birth:'18.08.12'},
+  '임재민':{num:'84',school:'연제초등',birth:'16.04.04'},
+  '임지민':{num:'53',school:'지산중학교',birth:'12.04.15'},
+  '장민준':{num:'18',school:'광주화정초',birth:'14.10.30'},
+  '장유준':{num:'6',school:'광주교대부설초',birth:'17.02.22'},
+  '장호준':{num:'21',school:'봉산중학교',birth:'13.04.08'},
+  '정은우':{num:'28',school:'수완초',birth:'17.04.11'},
+  '정지후':{num:'0',school:'화정남초',birth:'17.12.17'},
+  '정현우':{num:'22',school:'수완초',birth:'15.02.20'},
+  '최민후':{num:'83',school:'마지초등',birth:'18.10.31'},
+  '하유성':{num:'87',school:'화정남초',birth:'17.07.13'},
+  '하준우':{num:'92',school:'화정남초',birth:'17.01.11'},
+};
+const TOURS = {
+  hp: {
+    name:'제3회 함평천지한우배 전국유소년야구대회',
+    sub:'함평천지한우배 (8/15~16)',
+    cats:['전체','유소년','꿈나무','새싹'],
+    lat:35.0656, lon:126.5167,
+    dates:{'8/15':'2026-08-15','8/16':'2026-08-16'},
+    venues:{
+      '함평리틀구장':{addr:'전남 함평군 대동면 용성리 452-5',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EB%A6%AC%ED%8B%80%EC%95%BC%EA%B5%AC%EC%9E%A5',games:['8/15 유소년','8/16 유소년×2']},
+      '베어스타운':{addr:'전남 함평군 대동면 학동로 934',url:'https://map.naver.com/p/search/%EB%82%98%EB%B9%84%EB%B2%A0%EC%9D%B4%EC%8A%A4%ED%83%80%EC%9A%B4',games:['8/16 꿈나무']},
+      '공설운동장A':{addr:'전남 함평군 함장로 1377',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B3%B5%EC%84%A4%EC%9A%B4%EB%8F%99%EC%9E%A5',games:['8/15 꿈나무×2']},
+      '공설운동장B':{addr:'전남 함평군 함장로 1377',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B3%B5%EC%84%A4%EC%9A%B4%EB%8F%99%EC%9E%A5',games:['8/15 새싹','8/16 새싹×2']},
+    },
+    games:[
+      {id:'hp1',date:'8/15',dow:'토',time:'09:30~11:00',hour:9, cat:'유소년',venue:'함평리틀구장',left:'화정',right:'SB'},
+      {id:'hp2',date:'8/15',dow:'토',time:'11:00~12:30',hour:11,cat:'꿈나무',venue:'공설운동장A',left:'지누',right:'화정'},
+      {id:'hp3',date:'8/15',dow:'토',time:'13:00~14:30',hour:13,cat:'새싹', venue:'공설운동장B',left:'화정',right:'SB'},
+      {id:'hp4',date:'8/15',dow:'토',time:'14:30~16:00',hour:14,cat:'꿈나무',venue:'공설운동장A',left:'전주HPB',right:'화정'},
+      {id:'hp5',date:'8/16',dow:'일',time:'08:00~09:30',hour:8, cat:'꿈나무',venue:'베어스타운',left:'SB',right:'화정'},
+      {id:'hp6',date:'8/16',dow:'일',time:'11:00~12:30',hour:11,cat:'유소년',venue:'함평리틀구장',left:'제주야구학교',right:'화정'},
+      {id:'hp7',date:'8/16',dow:'일',time:'13:00~14:30',hour:13,cat:'새싹', venue:'공설운동장B',left:'원더베이스볼',right:'화정'},
+      {id:'hp8',date:'8/16',dow:'일',time:'14:30~16:00',hour:14,cat:'새싹', venue:'공설운동장B',left:'화정',right:'나주베스트'},
+      {id:'hp9',date:'8/16',dow:'일',time:'17:30~19:00',hour:17,cat:'유소년',venue:'함평리틀구장',left:'전주HPB',right:'화정'},
+    ],
+    lineups:{
+      hp1:{CF:'노현서',LF:'김세린',RF:'장민준',SS:'김강우',SP:'김선균',B2:'석훈빈',B3:'송지율',B1:'장호준',EH:'',C:'이우영'},
+      hp2:{CF:'이서준',LF:'정현우',RF:'오유찬(54)',SS:'신수호',SP:'석훈빈',B2:'심연후',B3:'노현우',B1:'강주찬',EH:'김세린',C:'백건후'},
+      hp3:{CF:'강은찬',LF:'고준석',RF:'오유찬(54)',SS:'임서준',SP:'변지성',B2:'나준완',B3:'정은우',B1:'하준우',EH:'신수호',C:'정지후'},
+      hp4:{CF:'김세린',LF:'이서준',RF:'심연후',SS:'석훈빈',SP:'정현우',B2:'신수호',B3:'노현우',B1:'백건후',EH:'오유찬(54)',C:'강주찬'},
+      hp5:{CF:'이서준',LF:'정현우',RF:'강주찬',SS:'김세린',SP:'석훈빈',B2:'심연후',B3:'노현우',B1:'백건후',EH:'신수호',C:'오유찬(54)'},
+      hp6:{CF:'김세린',LF:'이우영',RF:'장민준',SS:'김강우',SP:'송지율',B2:'석훈빈',B3:'노현서',B1:'장호준',EH:'',C:'김선균'},
+      hp7:{CF:'강은찬',LF:'나준완',RF:'신수호',SS:'임서준',SP:'정지후',B2:'고준석',B3:'정은우',B1:'하준우',EH:'오유찬(54)',C:'변지성'},
+      hp8:{CF:'나준완',LF:'고준석',RF:'신수호',SS:'임서준',SP:'정은우',B2:'강은찬',B3:'정지후',B1:'하준우',EH:'오유찬(54)',C:'변지성'},
+      hp9:{CF:'석훈빈',LF:'이우영',RF:'장민준',SS:'김강우',SP:'노현서',B2:'김세린',B3:'송지율',B1:'장호준',EH:'',C:'김선균'},
+    }
+  },
+  hs: {
+    name:'화순대회',
+    sub:'화순대회 (8/14~16)',
+    cats:['전체','고학년','저학년'],
+    lat:35.0646, lon:126.9864,
+    dates:{'8/14':'2026-08-14','8/15':'2026-08-15','8/16':'2026-08-16'},
+    venues:{
+      '화순중 구장':{addr:'전남 화순군 화순읍 칠충로 71',url:'https://map.naver.com/p/search/%ED%99%94%EC%88%9C%EC%A4%91%ED%95%99%EA%B5%90',games:['8/14 고학년','8/14 저학년']},
+      '화순이양야구장':{addr:'전남 화순군 이양면 금능1길 46',url:'https://map.naver.com/p/search/%ED%99%94%EC%88%9C%EA%B5%B0%20%EA%B8%88%EB%8A%A51%EA%B8%B8%2046',games:['8/15 고학년×2','8/15 저학년','8/16 저학년']},
+    },
+    games:[
+      {id:'hs1',date:'8/14',dow:'금',time:'08:30~10:00',hour:8, cat:'고학년',venue:'화순중 구장',left:'화정',right:'화순'},
+      {id:'hs2',date:'8/14',dow:'금',time:'10:00~11:30',hour:10,cat:'저학년',venue:'화순중 구장',left:'화정',right:'화순'},
+      {id:'hs3',date:'8/15',dow:'토',time:'08:30~10:00',hour:8, cat:'고학년',venue:'화순이양야구장',left:'SB',right:'화정'},
+      {id:'hs4',date:'8/15',dow:'토',time:'10:00~11:30',hour:10,cat:'저학년',venue:'화순이양야구장',left:'SB',right:'화정'},
+      {id:'hs5',date:'8/15',dow:'토',time:'16:30~18:00',hour:16,cat:'고학년',venue:'화순이양야구장',left:'화정',right:'순천북초'},
+      {id:'hs6',date:'8/16',dow:'일',time:'08:30~10:00',hour:8, cat:'저학년',venue:'화순이양야구장',left:'화정',right:'순천북초'},
+    ],
+    lineups:{
+      hs1:{CF:'박서현',LF:'김세린',RF:'노현서',SS:'김강우',SP:'장민준',B2:'석훈빈',B3:'노현우',B1:'송지율',EH:'정현우',C:'김선균'},
+      hs2:{CF:'정지후',LF:'정은우',RF:'강주찬',SS:'박서현',SP:'김용진',B2:'심연후',B3:'김세린',B1:'오유찬(54)',EH:'',C:'신수호'},
+      hs3:{CF:'박서현',LF:'용종원',RF:'김태연',SS:'김용진',SP:'오유찬(7)',B2:'유수완',B3:'이승원',B1:'송유준',EH:'김찬린',C:'안민준'},
+      hs4:{CF:'박서현',LF:'용종원',RF:'김찬린',SS:'김용진',SP:'유수완',B2:'장유준',B3:'이승원',B1:'김태연',EH:'',C:'안민준'},
+      hs5:{CF:'박서현',LF:'용종원',RF:'이승원',SS:'오유찬(7)',SP:'송유준',B2:'유수완',B3:'김용진',B1:'김태연',EH:'김찬린',C:'안민준'},
+      hs6:{CF:'박서현',LF:'장유준',RF:'김찬린',SS:'유수완',SP:'김용진',B2:'이승원',B3:'용종원',B1:'김태연',EH:'',C:'안민준'},
+    }
+  }
+};
+const POS = [
+  {key:'CF',label:'CF 중견',x:50,y:6, cls:''},
+  {key:'LF',label:'LF 좌익',x:14,y:22,cls:''},
+  {key:'RF',label:'RF 우익',x:86,y:22,cls:''},
+  {key:'SS',label:'SS 유격',x:34,y:44,cls:''},
+  {key:'B2',label:'2B 2루', x:66,y:44,cls:''},
+  {key:'B3',label:'3B 3루', x:14,y:65,cls:''},
+  {key:'SP',label:'SP 투수',x:50,y:60,cls:'pitcher'},
+  {key:'B1',label:'1B 1루', x:86,y:65,cls:''},
+  {key:'EH',label:'',x:86,y:84,cls:'extra'},
+  {key:'C', label:'C 포수', x:50,y:87,cls:'catcher'},
+];
+let tour='hp', filt='전체', wxCache={}, searchTerm='', selectedPlayer=null;
+/* ═══════════ 팝업 ═══════════ */
+function closeGame(e){if(e&&e.target!==document.getElementById('gov'))return;document.getElementById('gov').classList.remove('open');}
+function closePl(){document.getElementById('plov').classList.remove('open');}
+function closeVp(){document.getElementById('vpov').classList.remove('open');}
+function openVp(name,e){
+  if(e)e.stopPropagation();
+  const v=TOURS[tour].venues[name];if(!v)return;
+  document.getElementById('vpName').textContent=name;
+  document.getElementById('vpAddr').textContent=v.addr;
+  document.getElementById('vpGames').innerHTML=v.games.map(g=>`<span class="vptag">${g}</span>`).join('');
+  document.getElementById('vpLink').href=v.url;
+  document.getElementById('vpov').classList.add('open');
+}
+function showPl(key,posLabel){
+  const p=ROSTER[key];
+  document.getElementById('mAv').textContent=key.slice(0,1);
+  document.getElementById('mName').textContent=key;
+  document.getElementById('mNum').textContent=(p&&p.num)?`#${p.num} · ${posLabel}`:posLabel;
+  const rows=[];
+  if(p&&p.num)rows.push({l:'등번호',v:`#${p.num}`});
+  if(p&&p.school)rows.push({l:'출신학교',v:p.school});
+  if(p&&p.birth)rows.push({l:'생년월일',v:p.birth});
+  if(rows.length===0)rows.push({l:'정보',v:'등록된 정보 없음'});
+  document.getElementById('mRows').innerHTML=rows.map(r=>`<div class="mrow"><span class="ml">${r.l}</span><span class="mv">${r.v}</span></div>`).join('');
+  document.getElementById('plov').classList.add('open');
+}
+/* ═══════════ 날씨 ═══════════ */
+function wxInfo(code,temp){
+  if(code<=1) return{icon:'☀️',label:`맑음 ${temp}°`,cls:''};
+  if(code<=3) return{icon:'⛅',label:`구름 ${temp}°`,cls:'cloud'};
+  if(code<=48)return{icon:'🌫️',label:`안개 ${temp}°`,cls:'cloud'};
+  if(code<=67)return{icon:'🌧️',label:`비 ${temp}°`,cls:'rain'};
+  if(code<=77)return{icon:'❄️',label:`눈 ${temp}°`,cls:'cloud'};
+  if(code<=82)return{icon:'🌦️',label:`소나기 ${temp}°`,cls:'rain'};
+  return{icon:'⛈️',label:`뇌우 ${temp}°`,cls:'rain'};
+}
+async function fetchWeather(tKey){
+  const T=TOURS[tKey];
+  try{
+    const today=new Date(); today.setHours(0,0,0,0);
+    const lastDate=Object.values(T.dates).sort().pop();
+    const target=new Date(lastDate);
+    const diff=Math.ceil((target-today)/(1000*60*60*24));
+    const fdays=Math.max(Math.min(diff+1,16),1);
+    const url=`https://api.open-meteo.com/v1/forecast?latitude=${T.lat}&longitude=${T.lon}&hourly=temperature_2m,weather_code&timezone=Asia%2FSeoul&forecast_days=${fdays}`;
+    const r=await fetch(url);
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d=await r.json();
+    if(!d.hourly||!d.hourly.time) throw new Error('no data');
+    const times=d.hourly.time, temps=d.hourly.temperature_2m, codes=d.hourly.weather_code||d.hourly.weathercode;
+    T.games.forEach(g=>{
+      const ds=T.dates[g.date];
+      const key=`${ds}T${String(g.hour).padStart(2,'0')}:00`;
+      const idx=times.indexOf(key);
+      if(idx>=0) wxCache[g.id]={code:codes[idx],temp:Math.round(temps[idx])};
+    });
+    applyWx();
+  }catch(e){
+    console.warn('날씨 오류:',e.message);
+    T.games.forEach(g=>{
+      const el=document.getElementById('wx'+g.id);
+      if(el){el.className='wx cloud';el.textContent='날씨 준비중';}
+    });
+  }
+}
+function applyWx(){
+  document.querySelectorAll('[id^="wx"]').forEach(el=>{
+    const id = el.id.replace('wx','');
+    const w = wxCache[id];
+    if(!w) return;
+    const{icon,label,cls}=wxInfo(w.code,w.temp);
+    el.className='wx '+cls; el.textContent=`${icon} ${label}`;
+  });
+}
+/* ═══════════ 검색 ═══════════ */
+function onSearch(){
+  searchTerm = document.getElementById('playerSearch').value.trim();
+  selectedPlayer = null; // 입력 변경 시 선택 초기화
+  if(searchTerm){
+    if(!Object.keys(wxCache).some(k=>k.startsWith('hp'))) fetchWeather('hp');
+    if(!Object.keys(wxCache).some(k=>k.startsWith('hs'))) fetchWeather('hs');
+  }
+  renderGames();
+}
+function clearSearch(){
+  document.getElementById('playerSearch').value = '';
+  searchTerm = '';
+  selectedPlayer = null;
+  renderGames();
+}
+function selectPlayer(name){
+  selectedPlayer = name;
+  renderGames();
+}
+/* 후보 선수 수집 */
+function getCandidates(term){
+  if(!term) return [];
+  const set = new Set();
+  ['hp','hs'].forEach(tKey=>{
+    const T = TOURS[tKey];
+    Object.values(T.lineups).forEach(lu=>{
+      Object.values(lu).forEach(name=>{
+        if(name && name.includes(term)) set.add(name);
+      });
+    });
+  });
+  return Array.from(set).sort();
+}
+/* ═══════════ 렌더링 ═══════════ */
+function setTour(t){
+  tour=t; filt='전체';
+  renderAll();
+  if(!Object.keys(wxCache).some(k=>k.startsWith(t))) fetchWeather(t);
+  else applyWx();
+}
+function renderAll(){
+  const T=TOURS[tour];
+  const wrap=document.getElementById('mainWrap');
+  wrap.className='wrap '+(tour==='hp'?'hp-theme':'hs-theme');
+  const hdr=document.getElementById('hdr');
+  hdr.className='hdr '+(tour==='hp'?'hp':'hs');
+  document.getElementById('hdrSub').textContent=T.name;
+  document.getElementById('tab-hp').className='ttab'+(tour==='hp'?' on-hp':'');
+  document.getElementById('tab-hs').className='ttab'+(tour==='hs'?' on-hs':'');
+  const days=[...new Set(T.games.map(g=>g.date))].length;
+  const cats=[...new Set(T.games.map(g=>g.cat))].length;
+  const venues=Object.keys(T.venues).length;
+  document.getElementById('stats').innerHTML=[
+    {n:T.games.length,l:'총 경기 수'},{n:days,l:'경기 일수'},{n:cats,l:'참가 부문'},{n:venues,l:'경기장 수'}
+  ].map(s=>`<div class="stat"><div class="n">${s.n}</div><div class="l">${s.l}</div></div>`).join('');
+  document.getElementById('venues').innerHTML=Object.entries(T.venues).map(([name,v])=>`
+    <div class="vcard" onclick="openVp('${name}',event)">
+      <span style="font-size:22px">🏟️</span>
+      <div><div class="vc-name">${name}</div><div class="vc-addr">${v.addr}</div><div class="vc-link">📍 지도 보기</div></div>
+    </div>`).join('');
+  renderFilters();
+  renderGames();
+}
+function renderFilters(){
+  document.getElementById('filters').innerHTML=TOURS[tour].cats.map(f=>
+    `<button class="fbtn ${filt===f?'on':''}" onclick="setFilt('${f}')">${f}</button>`).join('');
+}
+function setFilt(f){filt=f;renderFilters();renderGames();}
+function renderGames(){
+  const infoEl = document.getElementById('searchInfo');
+  let games = [];
+
+  if(searchTerm){
+    const candidates = getCandidates(searchTerm);
+
+    // 동명이인 후보가 2명 이상이고 아직 선택하지 않은 경우 → 선택 UI 표시
+    if(candidates.length > 1 && !selectedPlayer){
+      infoEl.className = 'search-info show';
+      infoEl.textContent = `"${searchTerm}" 검색 · 동명이인 ${candidates.length}명`;
+      document.getElementById('glist').innerHTML = `
+        <div class="cand-box">
+          <div class="cand-title">동명이인이 있습니다. 선수를 선택하세요.</div>
+          <div class="cand-list">
+            ${candidates.map(name=>{
+              const p = ROSTER[name] || {};
+              const num = p.num ? `#${p.num}` : '';
+              return `<button class="cand-btn" onclick="selectPlayer('${name}')">
+                <span>${name}</span>
+                <span class="cand-num">${num}</span>
+              </button>`;
+            }).join('')}
+          </div>
+        </div>`;
+      return;
+    }
+
+    // 선택된 선수 또는 후보가 1명인 경우
+    const target = selectedPlayer || (candidates.length === 1 ? candidates[0] : null);
+
+    if(target){
+      ['hp','hs'].forEach(tKey=>{
+        const T = TOURS[tKey];
+        T.games.forEach(g=>{
+          const lu = T.lineups[g.id] || {};
+          if(Object.values(lu).includes(target)){
+            games.push({...g, tourKey: tKey});
+          }
+        });
+      });
+      infoEl.className = 'search-info show';
+      const p = ROSTER[target] || {};
+      const numStr = p.num ? ` #${p.num}` : '';
+      infoEl.textContent = `"${target}${numStr}" 검색 결과 · 함평 + 화순 (${games.length}경기)`;
+    } else {
+      infoEl.className = 'search-info show';
+      infoEl.textContent = `"${searchTerm}" 검색 결과 없음`;
+    }
+  } else {
+    // 검색 없을 때: 현재 투어 + 필터
+    const T = TOURS[tour];
+    const filtered = filt==='전체' ? T.games : T.games.filter(g=>g.cat===filt);
+    games = filtered.map(g => ({...g, tourKey: tour}));
+    infoEl.className = 'search-info';
+    infoEl.textContent = '';
+  }
+
+  // 날짜 → 시간 순 정렬
+  games.sort((a,b)=>{
+    const da = TOURS[a.tourKey].dates[a.date];
+    const db = TOURS[b.tourKey].dates[b.date];
+    if(da !== db) return da.localeCompare(db);
+    return a.time.localeCompare(b.time);
+  });
+
+  if(games.length === 0){
+    document.getElementById('glist').innerHTML = `
+      <div class="empty-msg">
+        검색 결과가 없습니다.<br>
+        다른 선수 이름을 입력하거나 필터를 초기화하세요.
+      </div>`;
+    return;
+  }
+
+  const byDate = {};
+  games.forEach(g=>{
+    if(!byDate[g.date]) byDate[g.date]=[];
+    byDate[g.date].push(g);
+  });
+
+  document.getElementById('glist').innerHTML = Object.entries(byDate).map(([date,gs])=>`
+    <div class="dlbl">📅 ${date}(${gs[0].dow}요일)</div>
+    <div class="gcards">${gs.map(g=>{
+      const isH = g.right==='화정';
+      const T = TOURS[g.tourKey];
+      const vurl = T.venues[g.venue]?.url || '#';
+      const tourLabel = g.tourKey==='hp' ? '함평' : '화순';
+      const tourCls = g.tourKey==='hp' ? 'c함평' : 'c화순';
+      return`<div class="gcard" onclick="openGame('${g.id}','${g.tourKey}')">
+        <div class="gtop"><div class="gm">${g.left}<span class="vs"> vs </span>${g.right}</div></div>
+        <div class="gbot">
+          <div class="tbadge"><span>${g.time}</span></div>
+          <a class="vlink" href="${vurl}" target="_blank" onclick="event.stopPropagation()">📍 ${g.venue}</a>
+          <span class="spacer"></span>
+          <span id="wx${g.id}" class="wx load">⏳</span>
+          <span class="sb ${isH?'home':'away'}">${isH?'홈':'원정'}</span>
+          <span class="cb ${tourCls}">${tourLabel}</span>
+          <span class="cb c${g.cat}">${g.cat}</span>
+        </div>
+      </div>`;
+    }).join('')}</div>`).join('');
+
+  applyWx();
+}
+function openGame(id, tKey){
+  const tourKey = tKey || tour;
+  const T = TOURS[tourKey];
+  const g = T.games.find(x=>x.id===id); if(!g) return;
+  const lu = T.lineups[g.id] || {};
+  const vurl = T.venues[g.venue]?.url || '#';
+  const nodes = POS.filter(p=>!(p.key==='EH'&&!lu[p.key])).map(p=>{
+    const key = lu[p.key] || '';
+    return`<div class="pnode ${p.cls}" style="left:${p.x}%;top:${p.y}%" onclick="showPl('${key}','${p.label}')">
+      <div class="pname">${key}</div><div class="ppos">${p.label}</div></div>`;
+  }).join('');
+  document.getElementById('gpop').className = 'gpop '+(tourKey==='hp'?'hp-pop':'hs-pop');
+  document.getElementById('gpTitle').textContent = `⚾ ${g.date}(${g.dow}) ${g.time} · ${g.cat}`;
+  document.getElementById('gpBody').innerHTML = `
+    <div class="vsbox">
+      <div class="vst"><div class="vn ${g.left==='화정'?'hw':''}">${g.left}</div><div class="vr">원정</div></div>
+      <div class="vsep">:</div>
+      <div class="vst"><div class="vn ${g.right==='화정'?'hw':''}">${g.right}</div><div class="vr">홈</div></div>
+    </div>
+    <div class="meta">
+      <a href="${vurl}" target="_blank" class="mlink" onclick="event.stopPropagation()">📍 ${g.venue}</a>
+      <span>·</span><span>화정 ${g.right==='화정'?'홈':'원정'}</span>
+      <span>·</span><span>${tourKey==='hp'?'함평천지한우배':'화순대회'}</span>
+    </div>
+    <div class="field">
+      <div class="ftitle">수비 라인업 — 선수 이름을 클릭하면 상세 정보를 볼 수 있습니다</div>
+      <div class="diamond">
+        <svg viewBox="0 0 380 340" xmlns="http://www.w3.org/2000/svg">
+          <line x1="53" y1="75" x2="190" y2="296" stroke="#999" stroke-width="1" opacity=".4"/>
+          <line x1="327" y1="75" x2="190" y2="296" stroke="#999" stroke-width="1" opacity=".4"/>
+          <path d="M53 75 Q190 10 327 75" fill="none" stroke="#999" stroke-width="1" opacity=".3"/>
+          <polygon points="190,150 120,210 190,265 260,210" fill="rgba(210,166,121,.18)" stroke="#c8a84b" stroke-width="1.5"/>
+        </svg>
+        ${nodes}
+      </div>
+    </div>`;
+  document.getElementById('gov').classList.add('open');
+}
+/* ═══════════ 초기화 ═══════════ */
+setTour('hp');
+</script>
+</body>
+</html>
+사용 예시
+검색창에 오유찬 입력
+아래처럼 후보 2명이 나타남
+오유찬(54)  #54
+오유찬(7)   #7
+원하는 선수를 클릭하면 그 선수만 포함된 경기가 바로 표시됩니다.
+다른 선수 이름(동명이인 없음)은 기존처럼 바로 결과 리스트가 나옵니다.
+
+
+
+
+
+와이드
+
+모바일
+
+출처
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>광주화정유소년야구단 - 8월 대회 통합 대시보드</title>
+<style>
+  :root{
+    /* 함평: 흙빛 브라운 */
+    --hp-main:#8B4513;--hp-mid:#a0522d;--hp-light:#fff3e0;--hp-border:#d2a679;--hp-field:#3d2817;--hp-txt:#6b3410;
+    /* 화순: 네이비 블루 */
+    --hs-main:#1a3a5c;--hs-mid:#2c5f8a;--hs-light:#e8f1f8;--hs-border:#9dc0dd;--hs-field:#152b42;--hs-txt:#1a3a5c;
+    --bg:#fff;--bg2:#f7f8fa;--tx:#1a1a1a;--t2:#6b7280;--br:#e5e7eb;--b2:#d1d5db;
+    --rs:6px;--rm:10px;--rl:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:var(--bg2);color:var(--tx);min-height:100vh;}
+  .wrap{max-width:640px;margin:0 auto;padding:1rem;}
+  /* 헤더 */
+  .hdr{border-radius:var(--rl);padding:1.1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:14px;transition:background .3s;}
+  .hdr.hp{background:var(--hp-main);box-shadow:0 2px 10px rgba(139,69,19,.35);}
+  .hdr.hs{background:var(--hs-main);box-shadow:0 2px 10px rgba(26,58,92,.35);}
+  .logo-svg{width:56px;height:56px;flex-shrink:0;}
+  .hdr h1{font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;}
+  .hdr p{font-size:12px;color:rgba(255,255,255,.75);}
+  /* 대회 탭 */
+  .tour-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
+  .ttab{padding:12px 8px;border-radius:var(--rm);text-align:center;cursor:pointer;border:1.5px solid var(--br);background:var(--bg);transition:all .2s;}
+  .ttab .tt-name{font-size:14px;font-weight:700;color:var(--t2);}
+  .ttab .tt-date{font-size:11px;color:var(--t2);margin-top:3px;}
+  .ttab.on-hp{background:var(--hp-light);border-color:var(--hp-main);}
+  .ttab.on-hp .tt-name{color:var(--hp-main);}
+  .ttab.on-hp .tt-date{color:var(--hp-mid);}
+  .ttab.on-hs{background:var(--hs-light);border-color:var(--hs-main);}
+  .ttab.on-hs .tt-name{color:var(--hs-main);}
+  .ttab.on-hs .tt-date{color:var(--hs-mid);}
+  /* 검색바 */
+  .search-bar{display:flex;gap:8px;margin-bottom:1rem;align-items:center;}
+  .search-bar input{
+    flex:1;padding:11px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
+    font-size:14px;background:var(--bg);outline:none;transition:border-color .2s;
+    font-family:inherit;
+  }
+  .hp-theme .search-bar input:focus{border-color:var(--hp-main);}
+  .hs-theme .search-bar input:focus{border-color:var(--hs-main);}
+  .search-bar button{
+    padding:11px 16px;border-radius:var(--rm);border:none;background:var(--t2);
+    color:#fff;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;
+    font-family:inherit;
+  }
+  .search-bar button:hover{opacity:.9;}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1rem;}
+  .stat{background:var(--bg);border-radius:var(--rm);padding:.8rem .5rem;text-align:center;border:.5px solid var(--br);}
+  .stat .n{font-size:22px;font-weight:700;}
+  .hp-theme .stat .n{color:var(--hp-mid);}
+  .hs-theme .stat .n{color:var(--hs-mid);}
+  .stat .l{font-size:11px;color:var(--t2);margin-top:2px;}
+  .sec{font-size:11px;font-weight:600;color:var(--t2);margin-bottom:8px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.06em;}
+  .sec::before{content:'';width:3px;height:13px;border-radius:2px;}
+  .hp-theme .sec::before{background:var(--hp-mid);}
+  .hs-theme .sec::before{background:var(--hs-mid);}
+  .vrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
+  .vcard{background:var(--bg);border:.5px solid var(--br);border-radius:var(--rl);padding:.85rem 1rem;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color .15s;}
+  .hp-theme .vcard:hover{border-color:var(--hp-mid);}
+  .hs-theme .vcard:hover{border-color:var(--hs-mid);}
+  .vc-name{font-size:13px;font-weight:600;color:var(--tx);}
+  .vc-addr{font-size:11px;color:var(--t2);margin-top:2px;line-height:1.4;}
+  .vc-link{font-size:11px;margin-top:4px;font-weight:500;}
+  .hp-theme .vc-link{color:var(--hp-mid);}
+  .hs-theme .vc-link{color:var(--hs-mid);}
+  .filters{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap;}
+  .fbtn{padding:5px 14px;border-radius:999px;font-size:13px;cursor:pointer;border:.5px solid var(--b2);background:var(--bg);color:var(--t2);font-weight:500;}
+  .hp-theme .fbtn.on{background:var(--hp-main);color:#fff3e0;border-color:var(--hp-main);}
+  .hs-theme .fbtn.on{background:var(--hs-main);color:#e8f1f8;border-color:var(--hs-main);}
+  .dlbl{font-size:12px;font-weight:600;border-radius:var(--rs);padding:4px 12px;display:inline-block;margin-bottom:8px;}
+  .hp-theme .dlbl{color:var(--hp-txt);background:var(--hp-light);border:.5px solid var(--hp-border);}
+  .hs-theme .dlbl{color:var(--hs-txt);background:var(--hs-light);border:.5px solid var(--hs-border);}
+  .gcards{display:flex;flex-direction:column;gap:8px;margin-bottom:1.25rem;}
+  .gcard{background:var(--bg);border:.5px solid var(--br);border-radius:var(--rl);padding:.85rem 1rem;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:border-color .15s,box-shadow .15s;}
+  .hp-theme .gcard:hover{border-color:var(--hp-mid);box-shadow:0 2px 8px rgba(160,82,45,.1);}
+  .hs-theme .gcard:hover{border-color:var(--hs-mid);box-shadow:0 2px 8px rgba(44,95,138,.1);}
+  .gtop{display:flex;align-items:center;gap:8px;}
+  .gm{font-size:15px;font-weight:700;color:var(--tx);line-height:1.3;}
+  .gm .vs{font-weight:600;margin:0 2px;}
+  .hp-theme .gm .vs{color:var(--hp-mid);}
+  .hs-theme .gm .vs{color:var(--hs-mid);}
+  .gbot{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .tbadge{text-align:center;border-radius:var(--rs);padding:3px 9px;flex-shrink:0;}
+  .hp-theme .tbadge{background:var(--hp-light);border:.5px solid var(--hp-border);}
+  .hs-theme .tbadge{background:var(--hs-light);border:.5px solid var(--hs-border);}
+  .tbadge span{font-size:11px;font-weight:600;white-space:nowrap;}
+  .hp-theme .tbadge span{color:var(--hp-txt);}
+  .hs-theme .tbadge span{color:var(--hs-txt);}
+  .vlink{font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;text-decoration:none;font-weight:500;}
+  .hp-theme .vlink{color:var(--hp-mid);}
+  .hs-theme .vlink{color:var(--hs-mid);}
+  .vlink:hover{text-decoration:underline;}
+  .spacer{flex:1;}
+  .cb{padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600;flex-shrink:0;}
+  .c유소년{background:#e3f2fd;color:#0d47a1;border:.5px solid #90caf9;}
+  .c꿈나무{background:#fff8e1;color:#e65100;border:.5px solid #ffcc02;}
+  .c새싹{background:#e8f5e9;color:#1b5e20;border:.5px solid #81c784;}
+  .c고학년{background:#ede7f6;color:#4527a0;border:.5px solid #b39ddb;}
+  .c저학년{background:#fce4ec;color:#ad1457;border:.5px solid #f48fb1;}
+  .c함평{background:#fff3e0;color:#6b3410;border:.5px solid #d2a679;}
+  .c화순{background:#e8f1f8;color:#1a3a5c;border:.5px solid #9dc0dd;}
+  .sb{font-size:11px;padding:3px 8px;border-radius:999px;font-weight:500;flex-shrink:0;}
+  .home{background:#e8f5e9;color:#2e7d32;border:.5px solid #81c784;}
+  .away{background:#fce4ec;color:#880e4f;border:.5px solid #f48fb1;}
+  .wx{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:500;background:#f0f9ff;border:.5px solid #bae6fd;border-radius:var(--rs);padding:3px 8px;color:#0369a1;white-space:nowrap;flex-shrink:0;}
+  .wx.rain{background:#fef3c7;border-color:#fcd34d;color:#92400e;}
+  .wx.cloud{background:#f3f4f6;border-color:var(--b2);color:#374151;}
+  .wx.load{background:#f9fafb;border-color:var(--br);color:#9ca3af;}
+  /* 동명이인 후보 */
+  .cand-box{background:var(--bg);border:1.5px solid var(--br);border-radius:var(--rl);padding:1.1rem 1.2rem;margin-bottom:1rem;}
+  .cand-title{font-size:13px;font-weight:600;color:var(--t2);margin-bottom:12px;}
+  .cand-list{display:flex;flex-direction:column;gap:8px;}
+  .cand-btn{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
+    background:var(--bg);cursor:pointer;font-size:15px;font-weight:600;color:var(--tx);
+    transition:all .15s;font-family:inherit;
+  }
+  .cand-btn:hover{border-color:var(--hs-mid);background:#f0f7ff;}
+  .cand-num{font-size:13px;font-weight:700;color:#1565c0;background:#e3f2fd;padding:3px 10px;border-radius:999px;}
+  /* 경기 팝업 */
+  .gov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:800;align-items:flex-end;justify-content:center;}
+  .gov.open{display:flex;}
+  .gpop{background:var(--bg);border-radius:var(--rl) var(--rl) 0 0;width:100%;max-width:640px;max-height:92vh;overflow-y:auto;box-shadow:0 -4px 32px rgba(0,0,0,.25);animation:slideUp .25s ease;}
+  @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  .gph{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem .85rem;border-bottom:.5px solid var(--br);position:sticky;top:0;background:var(--bg);z-index:1;}
+  .gph h3{font-size:14px;font-weight:700;color:var(--tx);}
+  .xbtn{width:32px;height:32px;border-radius:50%;border:none;background:var(--bg2);cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;color:var(--t2);}
+  .gpb{padding:1rem 1.25rem 1.5rem;}
+  .vsbox{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--rm);margin-bottom:12px;}
+  .hp-pop .vsbox{background:var(--hp-light);border:.5px solid var(--hp-border);}
+  .hs-pop .vsbox{background:var(--hs-light);border:.5px solid var(--hs-border);}
+  .vst{flex:1;text-align:center;}
+  .vn{font-size:15px;font-weight:700;}
+  .hp-pop .vn{color:var(--hp-txt);}
+  .hs-pop .vn{color:var(--hs-txt);}
+  .vn.hw{color:#1565c0 !important;}
+  .vr{font-size:11px;color:var(--t2);margin-top:2px;}
+  .vsep{font-size:18px;font-weight:700;color:var(--b2);}
+  .meta{font-size:12px;color:var(--t2);margin-bottom:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .mlink{text-decoration:underline;cursor:pointer;font-weight:500;}
+  .hp-pop .mlink{color:var(--hp-mid);}
+  .hs-pop .mlink{color:var(--hs-mid);}
+  .field{border-radius:var(--rl);padding:1rem .5rem;box-shadow:inset 0 2px 8px rgba(0,0,0,.2);}
+  .hp-pop .field{background:var(--hp-field);}
+  .hs-pop .field{background:var(--hs-field);}
+  .ftitle{font-size:11px;text-align:center;margin-bottom:8px;color:rgba(255,255,255,.6);}
+  .diamond{position:relative;width:100%;max-width:380px;height:340px;margin:0 auto;}
+  .diamond svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}
+  .pnode{position:absolute;transform:translate(-50%,-50%);background:#f5f5dc;border:1.5px solid #8B6914;border-radius:var(--rs);padding:4px 8px;min-width:62px;text-align:center;cursor:pointer;transition:transform .12s;z-index:2;}
+  .pnode:hover{transform:translate(-50%,-50%) scale(1.1);background:#fffde7;}
+  .pnode.pitcher{background:#fff9c4;border-color:#f9a825;}
+  .pnode.catcher{background:#e3f2fd;border-color:#1565c0;}
+  .pnode.extra{background:#f3e5f5;border-color:#8e24aa;}
+  .pname{font-size:12px;font-weight:600;color:#1a1a1a;}
+  .ppos{font-size:9px;color:#666;margin-top:1px;}
+  /* 선수/경기장 팝업 */
+  .plov,.vpov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1100;align-items:center;justify-content:center;padding:1rem;}
+  .plov.open,.vpov.open{display:flex;}
+  .plpop{background:var(--bg);border-radius:var(--rl);padding:1.25rem;width:260px;box-shadow:0 8px 40px rgba(0,0,0,.35);}
+  .vppop{background:var(--bg);border-radius:var(--rl);padding:1.25rem;width:300px;box-shadow:0 8px 32px rgba(0,0,0,.25);}
+  .mhd{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .mav{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;background:#f1f5f9;color:#334155;border:2px solid var(--b2);}
+  .mname{font-size:16px;font-weight:700;color:var(--tx);}
+  .mnum{font-size:13px;color:var(--t2);margin-top:2px;}
+  .mrows{border-top:.5px solid var(--br);padding-top:10px;}
+  .mrow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:.5px solid var(--br);font-size:13px;}
+  .mrow:last-child{border-bottom:none;}
+  .ml{color:var(--t2);} .mv{color:var(--tx);font-weight:600;}
+  .mcls{display:block;width:100%;margin-top:14px;padding:9px;text-align:center;cursor:pointer;color:#fff;border-radius:var(--rm);border:none;font-size:13px;font-weight:600;background:#334155;}
+  .vptags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+  .vptag{font-size:11px;padding:3px 9px;border-radius:999px;background:#f1f5f9;color:#334155;border:.5px solid var(--b2);}
+  .nbtn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border-radius:var(--rm);background:#03C75A;color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:8px;text-decoration:none;}
+  .empty-msg{text-align:center;padding:2.5rem 1rem;color:var(--t2);font-size:14px;line-height:1.6;}
+  .search-info{font-size:12px;color:var(--t2);margin-bottom:10px;padding:6px 12px;background:#f1f5f9;border-radius:var(--rs);display:none;}
+  .search-info.show{display:block;}
+  @media(max-width:400px){.stats{grid-template-columns:repeat(2,1fr);}.vrow{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="gov" id="gov" onclick="closeGame(event)">
+  <div class="gpop" id="gpop" onclick="event.stopPropagation()">
+    <div class="gph"><h3 id="gpTitle"></h3><button class="xbtn" onclick="closeGame()">✕</button></div>
+    <div class="gpb" id="gpBody"></div>
+  </div>
+</div>
+<div class="plov" id="plov" onclick="closePl()">
+  <div class="plpop" onclick="event.stopPropagation()">
+    <div class="mhd"><div class="mav" id="mAv"></div><div><div class="mname" id="mName"></div><div class="mnum" id="mNum"></div></div></div>
+    <div class="mrows" id="mRows"></div>
+    <button class="mcls" onclick="closePl()">닫기</button>
+  </div>
+</div>
+<div class="vpov" id="vpov" onclick="closeVp()">
+  <div class="vppop" onclick="event.stopPropagation()">
+    <div class="mhd"><span style="font-size:26px">🏟️</span><div class="mname" id="vpName"></div></div>
+    <div style="border-top:.5px solid var(--br);padding-top:10px;">
+      <div style="font-size:13px;color:var(--t2);margin-bottom:12px;line-height:1.7;" id="vpAddr"></div>
+      <div style="font-size:11px;color:var(--t2);margin-bottom:6px;font-weight:600;">배정 경기</div>
+      <div class="vptags" id="vpGames"></div>
+      <a class="nbtn" id="vpLink" href="#" target="_blank">📍 네이버 지도로 찾아가기</a>
+      <button class="mcls" onclick="closeVp()">닫기</button>
+    </div>
+  </div>
+</div>
+<div class="wrap" id="mainWrap">
+  <div class="hdr" id="hdr">
+    <svg class="logo-svg" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+      <path d="M28 3 L50 12 L50 32 Q50 46 28 53 Q6 46 6 32 L6 12 Z" fill="#1a3a5c" stroke="#c8a84b" stroke-width="1.5"/>
+      <path d="M28 7 L46 15 L46 32 Q46 43 28 49 Q10 43 10 32 L10 15 Z" fill="#0d2340"/>
+      <text x="13" y="33" font-family="Arial Black,sans-serif" font-weight="900" font-size="18" fill="#c8a84b" letter-spacing="-1">H</text>
+      <text x="29" y="33" font-family="Arial Black,sans-serif" font-weight="900" font-size="18" fill="#ffffff" letter-spacing="-1">J</text>
+      <ellipse cx="28" cy="22" rx="5" ry="3.5" fill="#f5a623"/>
+      <ellipse cx="28" cy="22" rx="2" ry="3" fill="#1a1a1a"/>
+      <circle cx="27" cy="21" r="0.8" fill="#fff"/>
+      <rect x="10" y="37" width="36" height="8" rx="2" fill="#c8a84b"/>
+      <text x="28" y="43.5" font-family="Arial,sans-serif" font-weight="700" font-size="5.5" fill="#0d2340" text-anchor="middle" letter-spacing="0.5">TIGERS</text>
+      <circle cx="28" cy="51" r="3" fill="#fff" stroke="#ccc" stroke-width=".5"/>
+    </svg>
+    <div>
+      <h1>광주화정유소년야구단</h1>
+      <p id="hdrSub">8월 대회 통합 대시보드</p>
+    </div>
+  </div>
+  <div class="tour-tabs">
+    <div class="ttab" id="tab-hp" onclick="setTour('hp')">
+      <div class="tt-name">🥩 함평천지한우배</div>
+      <div class="tt-date">8/15(토)~16(일) · 유·꿈·새싹</div>
+    </div>
+    <div class="ttab" id="tab-hs" onclick="setTour('hs')">
+      <div class="tt-name">🏔️ 화순대회</div>
+      <div class="tt-date">8/14(금)~16(일) · 고·저학년</div>
+    </div>
+  </div>
+
+  <!-- 선수 검색바 -->
+  <div class="search-bar">
+    <input type="text" id="playerSearch" placeholder="선수 이름 검색 (함평+화순 전체)" oninput="onSearch()" autocomplete="off">
+    <button type="button" onclick="clearSearch()">초기화</button>
+  </div>
+
+  <div class="stats" id="stats"></div>
+  <div class="sec">경기장 안내</div>
+  <div class="vrow" id="venues"></div>
+  <div class="sec">경기 일정</div>
+  <div class="search-info" id="searchInfo"></div>
+  <div class="filters" id="filters"></div>
+  <div id="glist"></div>
+</div>
+<script>
+/* ═══════════ 데이터 ═══════════ */
+const ROSTER = {
+  '강은찬':{num:'61',school:'화정남초',birth:'19.09.05'},
+  '강주찬':{num:'56',school:'화정남초',birth:'16.10.12'},
+  '고준석':{num:'49',school:'광주화정초',birth:'18.05.25'},
+  '김강우':{num:'3',school:'전남중학교',birth:'13.05.21'},
+  '김경환':{num:'16',school:'양산중학교',birth:'11.06.02'},
+  '김도윤':{num:'1',school:'진제초등',birth:'15.07.17'},
+  '김동유':{num:'55',school:'운남중학교',birth:'13.12.06'},
+  '김선균':{num:'29',school:'',birth:'14.02.20'},
+  '김세린':{num:'68',school:'전남중학교',birth:'13.03.29'},
+  '김시온':{num:'13',school:'광주교대부설초',birth:'14.09.10'},
+  '김용진':{num:'15',school:'광주교대부설초',birth:'16.04.28'},
+  '김정진':{num:'14',school:'양산중학교',birth:'12.06.17'},
+  '김찬린':{num:'',school:'',birth:'16.04.27'},
+  '김현승':{num:'45',school:'상무초등',birth:'15.04.05'},
+  '나준완':{num:'75',school:'유안초등',birth:'18.01.29'},
+  '노현서':{num:'32',school:'진제초등',birth:'14.05.31'},
+  '노현우':{num:'36',school:'신암초등',birth:'15.01.03'},
+  '문다원':{num:'63',school:'화정남초',birth:'17.07.09'},
+  '박건률':{num:'34',school:'화정남초',birth:'15.04.28'},
+  '백건후':{num:'81',school:'광주상무초',birth:'15.08.27'},
+  '변지성':{num:'30',school:'광주교대부설초',birth:'17.02.16'},
+  '서승원':{num:'17',school:'주월중학교',birth:'12.06.25'},
+  '서주원':{num:'10',school:'불로초등',birth:'14.06.07'},
+  '석훈빈':{num:'43',school:'화정남초',birth:'15.10.20'},
+  '송지율':{num:'37',school:'성덕중',birth:'13.12.27'},
+  '신수호':{num:'96',school:'연제초등',birth:'16.11.07'},
+  '심연후':{num:'89',school:'광천초등',birth:'16.06.01'},
+  '오유빈':{num:'11',school:'조대여중',birth:'12.12.14'},
+  '오유찬(54)':{num:'54',school:'연제초',birth:'16.06.19'},
+  '오유찬(7)':{num:'7',school:'화정초',birth:'15.02.11'},
+  '오준수':{num:'50',school:'성진초등',birth:'15.10.01'},
+  '유수완':{num:'27',school:'광주화정초',birth:'17.01.24'},
+  '이도하':{num:'41',school:'풍암초등',birth:'18.04.07'},
+  '이우영':{num:'66',school:'화정초등',birth:'13.07.11'},
+  '이찬을':{num:'97',school:'연제초등',birth:'16.10.18'},
+  '임서준':{num:'99',school:'연제초',birth:'18.08.12'},
+  '임재민':{num:'84',school:'연제초등',birth:'16.04.04'},
+  '임지민':{num:'53',school:'지산중학교',birth:'12.04.15'},
+  '장민준':{num:'18',school:'광주화정초',birth:'14.10.30'},
+  '장유준':{num:'6',school:'광주교대부설초',birth:'17.02.22'},
+  '장호준':{num:'21',school:'봉산중학교',birth:'13.04.08'},
+  '정은우':{num:'28',school:'수완초',birth:'17.04.11'},
+  '정지후':{num:'0',school:'화정남초',birth:'17.12.17'},
+  '정현우':{num:'22',school:'수완초',birth:'15.02.20'},
+  '최민후':{num:'83',school:'마지초등',birth:'18.10.31'},
+  '하유성':{num:'87',school:'화정남초',birth:'17.07.13'},
+  '하준우':{num:'92',school:'화정남초',birth:'17.01.11'},
+};
+const TOURS = {
+  hp: {
+    name:'제3회 함평천지한우배 전국유소년야구대회',
+    sub:'함평천지한우배 (8/15~16)',
+    cats:['전체','유소년','꿈나무','새싹'],
+    lat:35.0656, lon:126.5167,
+    dates:{'8/15':'2026-08-15','8/16':'2026-08-16'},
+    venues:{
+      '함평리틀구장':{addr:'전남 함평군 대동면 용성리 452-5',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EB%A6%AC%ED%8B%80%EC%95%BC%EA%B5%AC%EC%9E%A5',games:['8/15 유소년','8/16 유소년×2']},
+      '베어스타운':{addr:'전남 함평군 대동면 학동로 934',url:'https://map.naver.com/p/search/%EB%82%98%EB%B9%84%EB%B2%A0%EC%9D%B4%EC%8A%A4%ED%83%80%EC%9A%B4',games:['8/16 꿈나무']},
+      '공설운동장A':{addr:'전남 함평군 함장로 1377',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B3%B5%EC%84%A4%EC%9A%B4%EB%8F%99%EC%9E%A5',games:['8/15 꿈나무×2']},
+      '공설운동장B':{addr:'전남 함평군 함장로 1377',url:'https://map.naver.com/p/search/%ED%95%A8%ED%8F%89%EA%B3%B5%EC%84%A4%EC%9A%B4%EB%8F%99%EC%9E%A5',games:['8/15 새싹','8/16 새싹×2']},
+    },
+    games:[
+      {id:'hp1',date:'8/15',dow:'토',time:'09:30~11:00',hour:9, cat:'유소년',venue:'함평리틀구장',left:'화정',right:'SB'},
+      {id:'hp2',date:'8/15',dow:'토',time:'11:00~12:30',hour:11,cat:'꿈나무',venue:'공설운동장A',left:'지누',right:'화정'},
+      {id:'hp3',date:'8/15',dow:'토',time:'13:00~14:30',hour:13,cat:'새싹', venue:'공설운동장B',left:'화정',right:'SB'},
+      {id:'hp4',date:'8/15',dow:'토',time:'14:30~16:00',hour:14,cat:'꿈나무',venue:'공설운동장A',left:'전주HPB',right:'화정'},
+      {id:'hp5',date:'8/16',dow:'일',time:'08:00~09:30',hour:8, cat:'꿈나무',venue:'베어스타운',left:'SB',right:'화정'},
+      {id:'hp6',date:'8/16',dow:'일',time:'11:00~12:30',hour:11,cat:'유소년',venue:'함평리틀구장',left:'제주야구학교',right:'화정'},
+      {id:'hp7',date:'8/16',dow:'일',time:'13:00~14:30',hour:13,cat:'새싹', venue:'공설운동장B',left:'원더베이스볼',right:'화정'},
+      {id:'hp8',date:'8/16',dow:'일',time:'14:30~16:00',hour:14,cat:'새싹', venue:'공설운동장B',left:'화정',right:'나주베스트'},
+      {id:'hp9',date:'8/16',dow:'일',time:'17:30~19:00',hour:17,cat:'유소년',venue:'함평리틀구장',left:'전주HPB',right:'화정'},
+    ],
+    lineups:{
+      hp1:{CF:'노현서',LF:'김세린',RF:'장민준',SS:'김강우',SP:'김선균',B2:'석훈빈',B3:'송지율',B1:'장호준',EH:'',C:'이우영'},
+      hp2:{CF:'이서준',LF:'정현우',RF:'오유찬(54)',SS:'신수호',SP:'석훈빈',B2:'심연후',B3:'노현우',B1:'강주찬',EH:'김세린',C:'백건후'},
+      hp3:{CF:'강은찬',LF:'고준석',RF:'오유찬(54)',SS:'임서준',SP:'변지성',B2:'나준완',B3:'정은우',B1:'하준우',EH:'신수호',C:'정지후'},
+      hp4:{CF:'김세린',LF:'이서준',RF:'심연후',SS:'석훈빈',SP:'정현우',B2:'신수호',B3:'노현우',B1:'백건후',EH:'오유찬(54)',C:'강주찬'},
+      hp5:{CF:'이서준',LF:'정현우',RF:'강주찬',SS:'김세린',SP:'석훈빈',B2:'심연후',B3:'노현우',B1:'백건후',EH:'신수호',C:'오유찬(54)'},
+      hp6:{CF:'김세린',LF:'이우영',RF:'장민준',SS:'김강우',SP:'송지율',B2:'석훈빈',B3:'노현서',B1:'장호준',EH:'',C:'김선균'},
+      hp7:{CF:'강은찬',LF:'나준완',RF:'신수호',SS:'임서준',SP:'정지후',B2:'고준석',B3:'정은우',B1:'하준우',EH:'오유찬(54)',C:'변지성'},
+      hp8:{CF:'나준완',LF:'고준석',RF:'신수호',SS:'임서준',SP:'정은우',B2:'강은찬',B3:'정지후',B1:'하준우',EH:'오유찬(54)',C:'변지성'},
+      hp9:{CF:'석훈빈',LF:'이우영',RF:'장민준',SS:'김강우',SP:'노현서',B2:'김세린',B3:'송지율',B1:'장호준',EH:'',C:'김선균'},
+    }
+  },
+  hs: {
+    name:'화순대회',
+    sub:'화순대회 (8/14~16)',
+    cats:['전체','고학년','저학년'],
+    lat:35.0646, lon:126.9864,
+    dates:{'8/14':'2026-08-14','8/15':'2026-08-15','8/16':'2026-08-16'},
+    venues:{
+      '화순중 구장':{addr:'전남 화순군 화순읍 칠충로 71',url:'https://map.naver.com/p/search/%ED%99%94%EC%88%9C%EC%A4%91%ED%95%99%EA%B5%90',games:['8/14 고학년','8/14 저학년']},
+      '화순이양야구장':{addr:'전남 화순군 이양면 금능1길 46',url:'https://map.naver.com/p/search/%ED%99%94%EC%88%9C%EA%B5%B0%20%EA%B8%88%EB%8A%A51%EA%B8%B8%2046',games:['8/15 고학년×2','8/15 저학년','8/16 저학년']},
+    },
+    games:[
+      {id:'hs1',date:'8/14',dow:'금',time:'08:30~10:00',hour:8, cat:'고학년',venue:'화순중 구장',left:'화정',right:'화순'},
+      {id:'hs2',date:'8/14',dow:'금',time:'10:00~11:30',hour:10,cat:'저학년',venue:'화순중 구장',left:'화정',right:'화순'},
+      {id:'hs3',date:'8/15',dow:'토',time:'08:30~10:00',hour:8, cat:'고학년',venue:'화순이양야구장',left:'SB',right:'화정'},
+      {id:'hs4',date:'8/15',dow:'토',time:'10:00~11:30',hour:10,cat:'저학년',venue:'화순이양야구장',left:'SB',right:'화정'},
+      {id:'hs5',date:'8/15',dow:'토',time:'16:30~18:00',hour:16,cat:'고학년',venue:'화순이양야구장',left:'화정',right:'순천북초'},
+      {id:'hs6',date:'8/16',dow:'일',time:'08:30~10:00',hour:8, cat:'저학년',venue:'화순이양야구장',left:'화정',right:'순천북초'},
+    ],
+    lineups:{
+      hs1:{CF:'박서현',LF:'김세린',RF:'노현서',SS:'김강우',SP:'장민준',B2:'석훈빈',B3:'노현우',B1:'송지율',EH:'정현우',C:'김선균'},
+      hs2:{CF:'정지후',LF:'정은우',RF:'강주찬',SS:'박서현',SP:'김용진',B2:'심연후',B3:'김세린',B1:'오유찬(54)',EH:'',C:'신수호'},
+      hs3:{CF:'박서현',LF:'용종원',RF:'김태연',SS:'김용진',SP:'오유찬(7)',B2:'유수완',B3:'이승원',B1:'송유준',EH:'김찬린',C:'안민준'},
+      hs4:{CF:'박서현',LF:'용종원',RF:'김찬린',SS:'김용진',SP:'유수완',B2:'장유준',B3:'이승원',B1:'김태연',EH:'',C:'안민준'},
+      hs5:{CF:'박서현',LF:'용종원',RF:'이승원',SS:'오유찬(7)',SP:'송유준',B2:'유수완',B3:'김용진',B1:'김태연',EH:'김찬린',C:'안민준'},
+      hs6:{CF:'박서현',LF:'장유준',RF:'김찬린',SS:'유수완',SP:'김용진',B2:'이승원',B3:'용종원',B1:'김태연',EH:'',C:'안민준'},
+    }
+  }
+};
+const POS = [
+  {key:'CF',label:'CF 중견',x:50,y:6, cls:''},
+  {key:'LF',label:'LF 좌익',x:14,y:22,cls:''},
+  {key:'RF',label:'RF 우익',x:86,y:22,cls:''},
+  {key:'SS',label:'SS 유격',x:34,y:44,cls:''},
+  {key:'B2',label:'2B 2루', x:66,y:44,cls:''},
+  {key:'B3',label:'3B 3루', x:14,y:65,cls:''},
+  {key:'SP',label:'SP 투수',x:50,y:60,cls:'pitcher'},
+  {key:'B1',label:'1B 1루', x:86,y:65,cls:''},
+  {key:'EH',label:'',x:86,y:84,cls:'extra'},
+  {key:'C', label:'C 포수', x:50,y:87,cls:'catcher'},
+];
+let tour='hp', filt='전체', wxCache={}, searchTerm='', selectedPlayer=null;
+/* ═══════════ 팝업 ═══════════ */
+function closeGame(e){if(e&&e.target!==document.getElementById('gov'))return;document.getElementById('gov').classList.remove('open');}
+function closePl(){document.getElementById('plov').classList.remove('open');}
+function closeVp(){document.getElementById('vpov').classList.remove('open');}
+function openVp(name,e){
+  if(e)e.stopPropagation();
+  const v=TOURS[tour].venues[name];if(!v)return;
+  document.getElementById('vpName').textContent=name;
+  document.getElementById('vpAddr').textContent=v.addr;
+  document.getElementById('vpGames').innerHTML=v.games.map(g=>`<span class="vptag">${g}</span>`).join('');
+  document.getElementById('vpLink').href=v.url;
+  document.getElementById('vpov').classList.add('open');
+}
+function showPl(key,posLabel){
+  const p=ROSTER[key];
+  document.getElementById('mAv').textContent=key.slice(0,1);
+  document.getElementById('mName').textContent=key;
+  document.getElementById('mNum').textContent=(p&&p.num)?`#${p.num} · ${posLabel}`:posLabel;
+  const rows=[];
+  if(p&&p.num)rows.push({l:'등번호',v:`#${p.num}`});
+  if(p&&p.school)rows.push({l:'출신학교',v:p.school});
+  if(p&&p.birth)rows.push({l:'생년월일',v:p.birth});
+  if(rows.length===0)rows.push({l:'정보',v:'등록된 정보 없음'});
+  document.getElementById('mRows').innerHTML=rows.map(r=>`<div class="mrow"><span class="ml">${r.l}</span><span class="mv">${r.v}</span></div>`).join('');
+  document.getElementById('plov').classList.add('open');
+}
+/* ═══════════ 날씨 ═══════════ */
+function wxInfo(code,temp){
+  if(code<=1) return{icon:'☀️',label:`맑음 ${temp}°`,cls:''};
+  if(code<=3) return{icon:'⛅',label:`구름 ${temp}°`,cls:'cloud'};
+  if(code<=48)return{icon:'🌫️',label:`안개 ${temp}°`,cls:'cloud'};
+  if(code<=67)return{icon:'🌧️',label:`비 ${temp}°`,cls:'rain'};
+  if(code<=77)return{icon:'❄️',label:`눈 ${temp}°`,cls:'cloud'};
+  if(code<=82)return{icon:'🌦️',label:`소나기 ${temp}°`,cls:'rain'};
+  return{icon:'⛈️',label:`뇌우 ${temp}°`,cls:'rain'};
+}
+async function fetchWeather(tKey){
+  const T=TOURS[tKey];
+  try{
+    const today=new Date(); today.setHours(0,0,0,0);
+    const lastDate=Object.values(T.dates).sort().pop();
+    const target=new Date(lastDate);
+    const diff=Math.ceil((target-today)/(1000*60*60*24));
+    const fdays=Math.max(Math.min(diff+1,16),1);
+    const url=`https://api.open-meteo.com/v1/forecast?latitude=${T.lat}&longitude=${T.lon}&hourly=temperature_2m,weather_code&timezone=Asia%2FSeoul&forecast_days=${fdays}`;
+    const r=await fetch(url);
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d=await r.json();
+    if(!d.hourly||!d.hourly.time) throw new Error('no data');
+    const times=d.hourly.time, temps=d.hourly.temperature_2m, codes=d.hourly.weather_code||d.hourly.weathercode;
+    T.games.forEach(g=>{
+      const ds=T.dates[g.date];
+      const key=`${ds}T${String(g.hour).padStart(2,'0')}:00`;
+      const idx=times.indexOf(key);
+      if(idx>=0) wxCache[g.id]={code:codes[idx],temp:Math.round(temps[idx])};
+    });
+    applyWx();
+  }catch(e){
+    console.warn('날씨 오류:',e.message);
+    T.games.forEach(g=>{
+      const el=document.getElementById('wx'+g.id);
+      if(el){el.className='wx cloud';el.textContent='날씨 준비중';}
+    });
+  }
+}
+function applyWx(){
+  document.querySelectorAll('[id^="wx"]').forEach(el=>{
+    const id = el.id.replace('wx','');
+    const w = wxCache[id];
+    if(!w) return;
+    const{icon,label,cls}=wxInfo(w.code,w.temp);
+    el.className='wx '+cls; el.textContent=`${icon} ${label}`;
+  });
+}
+/* ═══════════ 검색 ═══════════ */
+function onSearch(){
+  searchTerm = document.getElementById('playerSearch').value.trim();
+  selectedPlayer = null; // 입력 변경 시 선택 초기화
+  if(searchTerm){
+    if(!Object.keys(wxCache).some(k=>k.startsWith('hp'))) fetchWeather('hp');
+    if(!Object.keys(wxCache).some(k=>k.startsWith('hs'))) fetchWeather('hs');
+  }
+  renderGames();
+}
+function clearSearch(){
+  document.getElementById('playerSearch').value = '';
+  searchTerm = '';
+  selectedPlayer = null;
+  renderGames();
+}
+function selectPlayer(name){
+  selectedPlayer = name;
+  renderGames();
+}
+/* 후보 선수 수집 */
+function getCandidates(term){
+  if(!term) return [];
+  const set = new Set();
+  ['hp','hs'].forEach(tKey=>{
+    const T = TOURS[tKey];
+    Object.values(T.lineups).forEach(lu=>{
+      Object.values(lu).forEach(name=>{
+        if(name && name.includes(term)) set.add(name);
+      });
+    });
+  });
+  return Array.from(set).sort();
+}
+/* ═══════════ 렌더링 ═══════════ */
+function setTour(t){
+  tour=t; filt='전체';
+  renderAll();
+  if(!Object.keys(wxCache).some(k=>k.startsWith(t))) fetchWeather(t);
+  else applyWx();
+}
+function renderAll(){
+  const T=TOURS[tour];
+  const wrap=document.getElementById('mainWrap');
+  wrap.className='wrap '+(tour==='hp'?'hp-theme':'hs-theme');
+  const hdr=document.getElementById('hdr');
+  hdr.className='hdr '+(tour==='hp'?'hp':'hs');
+  document.getElementById('hdrSub').textContent=T.name;
+  document.getElementById('tab-hp').className='ttab'+(tour==='hp'?' on-hp':'');
+  document.getElementById('tab-hs').className='ttab'+(tour==='hs'?' on-hs':'');
+  const days=[...new Set(T.games.map(g=>g.date))].length;
+  const cats=[...new Set(T.games.map(g=>g.cat))].length;
+  const venues=Object.keys(T.venues).length;
+  document.getElementById('stats').innerHTML=[
+    {n:T.games.length,l:'총 경기 수'},{n:days,l:'경기 일수'},{n:cats,l:'참가 부문'},{n:venues,l:'경기장 수'}
+  ].map(s=>`<div class="stat"><div class="n">${s.n}</div><div class="l">${s.l}</div></div>`).join('');
+  document.getElementById('venues').innerHTML=Object.entries(T.venues).map(([name,v])=>`
+    <div class="vcard" onclick="openVp('${name}',event)">
+      <span style="font-size:22px">🏟️</span>
+      <div><div class="vc-name">${name}</div><div class="vc-addr">${v.addr}</div><div class="vc-link">📍 지도 보기</div></div>
+    </div>`).join('');
+  renderFilters();
+  renderGames();
+}
+function renderFilters(){
+  document.getElementById('filters').innerHTML=TOURS[tour].cats.map(f=>
+    `<button class="fbtn ${filt===f?'on':''}" onclick="setFilt('${f}')">${f}</button>`).join('');
+}
+function setFilt(f){filt=f;renderFilters();renderGames();}
+function renderGames(){
+  const infoEl = document.getElementById('searchInfo');
+  let games = [];
+
+  if(searchTerm){
+    const candidates = getCandidates(searchTerm);
+
+    // 동명이인 후보가 2명 이상이고 아직 선택하지 않은 경우 → 선택 UI 표시
+    if(candidates.length > 1 && !selectedPlayer){
+      infoEl.className = 'search-info show';
+      infoEl.textContent = `"${searchTerm}" 검색 · 동명이인 ${candidates.length}명`;
+      document.getElementById('glist').innerHTML = `
+        <div class="cand-box">
+          <div class="cand-title">동명이인이 있습니다. 선수를 선택하세요.</div>
+          <div class="cand-list">
+            ${candidates.map(name=>{
+              const p = ROSTER[name] || {};
+              const num = p.num ? `#${p.num}` : '';
+              return `<button class="cand-btn" onclick="selectPlayer('${name}')">
+                <span>${name}</span>
+                <span class="cand-num">${num}</span>
+              </button>`;
+            }).join('')}
+          </div>
+        </div>`;
+      return;
+    }
+
+    // 선택된 선수 또는 후보가 1명인 경우
+    const target = selectedPlayer || (candidates.length === 1 ? candidates[0] : null);
+
+    if(target){
+      ['hp','hs'].forEach(tKey=>{
+        const T = TOURS[tKey];
+        T.games.forEach(g=>{
+          const lu = T.lineups[g.id] || {};
+          if(Object.values(lu).includes(target)){
+            games.push({...g, tourKey: tKey});
+          }
+        });
+      });
+      infoEl.className = 'search-info show';
+      const p = ROSTER[target] || {};
+      const numStr = p.num ? ` #${p.num}` : '';
+      infoEl.textContent = `"${target}${numStr}" 검색 결과 · 함평 + 화순 (${games.length}경기)`;
+    } else {
+      infoEl.className = 'search-info show';
+      infoEl.textContent = `"${searchTerm}" 검색 결과 없음`;
+    }
+  } else {
+    // 검색 없을 때: 현재 투어 + 필터
+    const T = TOURS[tour];
+    const filtered = filt==='전체' ? T.games : T.games.filter(g=>g.cat===filt);
+    games = filtered.map(g => ({...g, tourKey: tour}));
+    infoEl.className = 'search-info';
+    infoEl.textContent = '';
+  }
+
+  // 날짜 → 시간 순 정렬
+  games.sort((a,b)=>{
+    const da = TOURS[a.tourKey].dates[a.date];
+    const db = TOURS[b.tourKey].dates[b.date];
+    if(da !== db) return da.localeCompare(db);
+    return a.time.localeCompare(b.time);
+  });
+
+  if(games.length === 0){
+    document.getElementById('glist').innerHTML = `
+      <div class="empty-msg">
+        검색 결과가 없습니다.<br>
+        다른 선수 이름을 입력하거나 필터를 초기화하세요.
+      </div>`;
+    return;
+  }
+
+  const byDate = {};
+  games.forEach(g=>{
+    if(!byDate[g.date]) byDate[g.date]=[];
+    byDate[g.date].push(g);
+  });
+
+  document.getElementById('glist').innerHTML = Object.entries(byDate).map(([date,gs])=>`
+    <div class="dlbl">📅 ${date}(${gs[0].dow}요일)</div>
+    <div class="gcards">${gs.map(g=>{
+      const isH = g.right==='화정';
+      const T = TOURS[g.tourKey];
+      const vurl = T.venues[g.venue]?.url || '#';
+      const tourLabel = g.tourKey==='hp' ? '함평' : '화순';
+      const tourCls = g.tourKey==='hp' ? 'c함평' : 'c화순';
+      return`<div class="gcard" onclick="openGame('${g.id}','${g.tourKey}')">
+        <div class="gtop"><div class="gm">${g.left}<span class="vs"> vs </span>${g.right}</div></div>
+        <div class="gbot">
+          <div class="tbadge"><span>${g.time}</span></div>
+          <a class="vlink" href="${vurl}" target="_blank" onclick="event.stopPropagation()">📍 ${g.venue}</a>
+          <span class="spacer"></span>
+          <span id="wx${g.id}" class="wx load">⏳</span>
+          <span class="sb ${isH?'home':'away'}">${isH?'홈':'원정'}</span>
+          <span class="cb ${tourCls}">${tourLabel}</span>
+          <span class="cb c${g.cat}">${g.cat}</span>
+        </div>
+      </div>`;
+    }).join('')}</div>`).join('');
+
+  applyWx();
+}
+function openGame(id, tKey){
+  const tourKey = tKey || tour;
+  const T = TOURS[tourKey];
+  const g = T.games.find(x=>x.id===id); if(!g) return;
+  const lu = T.lineups[g.id] || {};
+  const vurl = T.venues[g.venue]?.url || '#';
+  const nodes = POS.filter(p=>!(p.key==='EH'&&!lu[p.key])).map(p=>{
+    const key = lu[p.key] || '';
+    return`<div class="pnode ${p.cls}" style="left:${p.x}%;top:${p.y}%" onclick="showPl('${key}','${p.label}')">
+      <div class="pname">${key}</div><div class="ppos">${p.label}</div></div>`;
+  }).join('');
+  document.getElementById('gpop').className = 'gpop '+(tourKey==='hp'?'hp-pop':'hs-pop');
+  document.getElementById('gpTitle').textContent = `⚾ ${g.date}(${g.dow}) ${g.time} · ${g.cat}`;
+  document.getElementById('gpBody').innerHTML = `
+    <div class="vsbox">
+      <div class="vst"><div class="vn ${g.left==='화정'?'hw':''}">${g.left}</div><div class="vr">원정</div></div>
+      <div class="vsep">:</div>
+      <div class="vst"><div class="vn ${g.right==='화정'?'hw':''}">${g.right}</div><div class="vr">홈</div></div>
+    </div>
+    <div class="meta">
+      <a href="${vurl}" target="_blank" class="mlink" onclick="event.stopPropagation()">📍 ${g.venue}</a>
+      <span>·</span><span>화정 ${g.right==='화정'?'홈':'원정'}</span>
+      <span>·</span><span>${tourKey==='hp'?'함평천지한우배':'화순대회'}</span>
+    </div>
+    <div class="field">
+      <div class="ftitle">수비 라인업 — 선수 이름을 클릭하면 상세 정보를 볼 수 있습니다</div>
+      <div class="diamond">
+        <svg viewBox="0 0 380 340" xmlns="http://www.w3.org/2000/svg">
+          <line x1="53" y1="75" x2="190" y2="296" stroke="#999" stroke-width="1" opacity=".4"/>
+          <line x1="327" y1="75" x2="190" y2="296" stroke="#999" stroke-width="1" opacity=".4"/>
+          <path d="M53 75 Q190 10 327 75" fill="none" stroke="#999" stroke-width="1" opacity=".3"/>
+          <polygon points="190,150 120,210 190,265 260,210" fill="rgba(210,166,121,.18)" stroke="#c8a84b" stroke-width="1.5"/>
+        </svg>
+        ${nodes}
+      </div>
+    </div>`;
+  document.getElementById('gov').classList.add('open');
+}
+/* ═══════════ 초기화 ═══════════ */
+setTour('hp');
+</script>
+</body>
+</html>
+Youth Baseball Tournament Dashboard - Grok
