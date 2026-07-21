@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>광주화정유소년야구단 - 8월 대회 통합 대시보드</title>
 <style>
   :root{
@@ -37,18 +37,21 @@
   /* 검색바 */
   .search-bar{display:flex;gap:8px;margin-bottom:1rem;align-items:center;}
   .search-bar input{
-    flex:1;padding:11px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
-    font-size:14px;background:var(--bg);outline:none;transition:border-color .2s;
-    font-family:inherit;
+    flex:1;padding:12px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
+    font-size:16px;background:var(--bg);outline:none;transition:border-color .2s;
+    font-family:inherit; /* 16px 이상이어야 모바일 줌 방지 */
   }
   .hp-theme .search-bar input:focus{border-color:var(--hp-main);}
   .hs-theme .search-bar input:focus{border-color:var(--hs-main);}
   .search-bar button{
-    padding:11px 16px;border-radius:var(--rm);border:none;background:var(--t2);
-    color:#fff;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;
+    padding:12px 16px;border-radius:var(--rm);border:none;
+    font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;
     font-family:inherit;
   }
-  .search-bar button:hover{opacity:.9;}
+  .btn-confirm{background:#1a3a5c;color:#fff;}
+  .btn-confirm:hover{opacity:.9;}
+  .btn-reset{background:var(--bg);color:var(--t2);border:1.5px solid var(--b2) !important;}
+  .btn-reset:hover{background:#f3f4f6;}
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1rem;}
   .stat{background:var(--bg);border-radius:var(--rm);padding:.8rem .5rem;text-align:center;border:.5px solid var(--br);}
   .stat .n{font-size:22px;font-weight:700;}
@@ -240,17 +243,23 @@
 
   <!-- 선수 검색바 -->
   <div class="search-bar">
-    <input type="text" id="playerSearch" placeholder="선수 이름 검색 (함평+화순 전체)" oninput="onSearch()" autocomplete="off">
-    <button type="button" onclick="clearSearch()">초기화</button>
+    <input type="text" id="playerSearch" placeholder="선수 이름 검색 (함평+화순 전체)" 
+           onkeydown="if(event.key==='Enter') doSearch()" autocomplete="off">
+    <button type="button" class="btn-confirm" onclick="doSearch()">확인</button>
+    <button type="button" class="btn-reset" onclick="clearSearch()">초기화</button>
   </div>
 
   <div class="stats" id="stats"></div>
-  <div class="sec">경기장 안내</div>
-  <div class="vrow" id="venues"></div>
+
+  <!-- 경기 일정을 위로 -->
   <div class="sec">경기 일정</div>
   <div class="search-info" id="searchInfo"></div>
   <div class="filters" id="filters"></div>
   <div id="glist"></div>
+
+  <!-- 경기장 안내를 아래로 -->
+  <div class="sec" style="margin-top:1.5rem">경기장 안내</div>
+  <div class="vrow" id="venues"></div>
 </div>
 <script>
 /* ═══════════ 데이터 ═══════════ */
@@ -455,9 +464,9 @@ function applyWx(){
   });
 }
 /* ═══════════ 검색 ═══════════ */
-function onSearch(){
+function doSearch(){
   searchTerm = document.getElementById('playerSearch').value.trim();
-  selectedPlayer = null; // 입력 변경 시 선택 초기화
+  selectedPlayer = null;
   if(searchTerm){
     if(!Object.keys(wxCache).some(k=>k.startsWith('hp'))) fetchWeather('hp');
     if(!Object.keys(wxCache).some(k=>k.startsWith('hs'))) fetchWeather('hs');
