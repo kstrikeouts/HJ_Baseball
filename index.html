@@ -6,9 +6,7 @@
 <title>광주화정유소년야구단 - 8월 대회 통합 대시보드</title>
 <style>
   :root{
-    /* 함평: 흙빛 브라운 */
     --hp-main:#8B4513;--hp-mid:#a0522d;--hp-light:#fff3e0;--hp-border:#d2a679;--hp-field:#3d2817;--hp-txt:#6b3410;
-    /* 화순: 네이비 블루 */
     --hs-main:#1a3a5c;--hs-mid:#2c5f8a;--hs-light:#e8f1f8;--hs-border:#9dc0dd;--hs-field:#152b42;--hs-txt:#1a3a5c;
     --bg:#fff;--bg2:#f7f8fa;--tx:#1a1a1a;--t2:#6b7280;--br:#e5e7eb;--b2:#d1d5db;
     --rs:6px;--rm:10px;--rl:14px;
@@ -16,14 +14,12 @@
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:var(--bg2);color:var(--tx);min-height:100vh;}
   .wrap{max-width:640px;margin:0 auto;padding:1rem;}
-  /* 헤더 */
   .hdr{border-radius:var(--rl);padding:1.1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:14px;transition:background .3s;}
   .hdr.hp{background:var(--hp-main);box-shadow:0 2px 10px rgba(139,69,19,.35);}
   .hdr.hs{background:var(--hs-main);box-shadow:0 2px 10px rgba(26,58,92,.35);}
   .logo-svg{width:56px;height:56px;flex-shrink:0;}
   .hdr h1{font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;}
   .hdr p{font-size:12px;color:rgba(255,255,255,.75);}
-  /* 대회 탭 */
   .tour-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
   .ttab{padding:12px 8px;border-radius:var(--rm);text-align:center;cursor:pointer;border:1.5px solid var(--br);background:var(--bg);transition:all .2s;}
   .ttab .tt-name{font-size:14px;font-weight:700;color:var(--t2);}
@@ -34,91 +30,14 @@
   .ttab.on-hs{background:var(--hs-light);border-color:var(--hs-main);}
   .ttab.on-hs .tt-name{color:var(--hs-main);}
   .ttab.on-hs .tt-date{color:var(--hs-mid);}
-  /* 검색바 */
   .search-bar{display:flex;gap:8px;margin-bottom:1rem;align-items:center;}
   .search-bar input{
     flex:1;padding:12px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
-    font-size:16px;background:var(--bg);outline:none;transition:border-color .2s;
-    font-family:inherit;
+    font-size:16px;background:var(--bg);outline:none;transition:border-color .2s;font-family:inherit;
   }
   .hp-theme .search-bar input:focus{border-color:var(--hp-main);}
   .hs-theme .search-bar input:focus{border-color:var(--hs-main);}
-  .search-bar button{
-    padding:12px 16px;border-radius:var(--rm);border:none;
-    font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;
-    font-family:inherit;
-  }
-  .btn-confirm{background:#1a3a5c;color:#fff;}
-  .btn-confirm:hover{opacity:.9;}
-  .btn-reset{background:var(--bg);color:var(--t2);border:1.5px solid var(--b2) !important;}
-  .btn-reset:hover{background:#f3f4f6;}
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1rem;}
-  .stat{background:var(--bg);border-radius:var(--rm);padding:.8rem .5rem;text-align:center;border:.5px solid var(--br);}
-  .stat .n{font-size:22px;font-weight:700;}
-  .hp-theme .stat .n{color:var(--hp-mid);}
-  .hs-theme .stat .n{color:var(--hs-mid);}
-  .stat .l{font-size:11px;color:var(--t2);margin-top:2px;}
-  .sec{font-size:11px;font-weight:600;color:var(--t2);margin-bottom:8px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.06em;}
-  .sec::before{content:'';width:3px;height:13px;border-radius:2px;}
-  .hp-theme .sec::before{background:var(--hp-mid);}
-  .hs-theme .sec::before{함평과 화순 카드 색상을 **완전히 다르게** 구분되도록 수정했습니다.
-
-- **함평**: 따뜻한 베이지/브라운 톤 (배경 + 테두리)
-- **화순**: 차가운 블루/네이비 톤 (배경 + 테두리)
-
-이제 한눈에 확연히 구분됩니다.
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>광주화정유소년야구단 - 8월 대회 통합 대시보드</title>
-<style>
-  :root{
-    /* 함평: 흙빛 브라운 */
-    --hp-main:#8B4513;--hp-mid:#a0522d;--hp-light:#fff3e0;--hp-border:#d2a679;--hp-field:#3d2817;--hp-txt:#6b3410;
-    /* 화순: 네이비 블루 */
-    --hs-main:#1a3a5c;--hs-mid:#2c5f8a;--hs-light:#e8f1f8;--hs-border:#9dc0dd;--hs-field:#152b42;--hs-txt:#1a3a5c;
-    --bg:#fff;--bg2:#f7f8fa;--tx:#1a1a1a;--t2:#6b7280;--br:#e5e7eb;--b2:#d1d5db;
-    --rs:6px;--rm:10px;--rl:14px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:var(--bg2);color:var(--tx);min-height:100vh;}
-  .wrap{max-width:640px;margin:0 auto;padding:1rem;}
-  /* 헤더 */
-  .hdr{border-radius:var(--rl);padding:1.1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:14px;transition:background .3s;}
-  .hdr.hp{background:var(--hp-main);box-shadow:0 2px 10px rgba(139,69,19,.35);}
-  .hdr.hs{background:var(--hs-main);box-shadow:0 2px 10px rgba(26,58,92,.35);}
-  .logo-svg{width:56px;height:56px;flex-shrink:0;}
-  .hdr h1{font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;}
-  .hdr p{font-size:12px;color:rgba(255,255,255,.75);}
-  /* 대회 탭 */
-  .tour-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
-  .ttab{padding:12px 8px;border-radius:var(--rm);text-align:center;cursor:pointer;border:1.5px solid var(--br);background:var(--bg);transition:all .2s;}
-  .ttab .tt-name{font-size:14px;font-weight:700;color:var(--t2);}
-  .ttab .tt-date{font-size:11px;color:var(--t2);margin-top:3px;}
-  .ttab.on-hp{background:var(--hp-light);border-color:var(--hp-main);}
-  .ttab.on-hp .tt-name{color:var(--hp-main);}
-  .ttab.on-hp .tt-date{color:var(--hp-mid);}
-  .ttab.on-hs{background:var(--hs-light);border-color:var(--hs-main);}
-  .ttab.on-hs .tt-name{color:var(--hs-main);}
-  .ttab.on-hs .tt-date{color:var(--hs-mid);}
-  /* 검색바 */
-  .search-bar{display:flex;gap:8px;margin-bottom:1rem;align-items:center;}
-  .search-bar input{
-    flex:1;padding:12px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
-    font-size:16px;background:var(--bg);outline:none;transition:border-color .2s;
-    font-family:inherit;
-  }
-  .hp-theme .search-bar input:focus{border-color:var(--hp-main);}
-  .hs-theme .search-bar input:focus{border-color:var(--hs-main);}
-  .search-bar button{
-    padding:12px 16px;border-radius:var(--rm);border:none;
-    font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;
-    font-family:inherit;
-  }
+  .search-bar button{padding:12px 16px;border-radius:var(--rm);border:none;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit;}
   .btn-confirm{background:#1a3a5c;color:#fff;}
   .btn-confirm:hover{opacity:.9;}
   .btn-reset{background:var(--bg);color:var(--t2);border:1.5px solid var(--b2) !important;}
@@ -151,10 +70,10 @@
   .hs-theme .dlbl{color:var(--hs-txt);background:var(--hs-light);border:.5px solid var(--hs-border);}
   .gcards{display:flex;flex-direction:column;gap:10px;margin-bottom:1.25rem;}
 
-  /* ★★★ 대회별 카드 완전 다른 색상 ★★★ */
+  /* 카드 스타일 */
   .gcard{
     border-radius:var(--rl);padding:.9rem 1rem;
-    display:flex;flex-direction:column;gap:8px;cursor:pointer;
+    display:flex;flex-direction:column;gap:6px;cursor:pointer;
     transition:transform .12s, box-shadow .15s;
   }
   .gcard.tour-hp{
@@ -167,23 +86,24 @@
     border:2px solid #9dc0dd;
     border-left:7px solid #1a3a5c;
   }
-  .gcard.tour-hp:hover{
-    transform:translateY(-1px);
-    box-shadow:0 4px 14px rgba(139,69,19,.22);
-  }
-  .gcard.tour-hs:hover{
-    transform:translateY(-1px);
-    box-shadow:0 4px 14px rgba(26,58,92,.22);
-  }
+  .gcard.tour-hp:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(139,69,19,.22);}
+  .gcard.tour-hs:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(26,58,92,.22);}
 
   .gtop{display:flex;align-items:center;gap:8px;}
   .gm{font-size:15px;font-weight:700;color:var(--tx);line-height:1.3;}
   .gm .vs{font-weight:600;margin:0 2px;color:#666;}
+
+  /* 야구장 정보 - 팀명 바로 아래로 이동 */
+  .gvenue{margin:-2px 0 2px 0;}
+  .gvenue .vlink{
+    font-size:12px;color:#555;text-decoration:none;font-weight:500;
+    display:inline-flex;align-items:center;gap:3px;
+  }
+  .gvenue .vlink:hover{text-decoration:underline;}
+
   .gbot{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
   .tbadge{text-align:center;border-radius:var(--rs);padding:3px 9px;flex-shrink:0;background:rgba(255,255,255,.7);border:.5px solid rgba(0,0,0,.08);}
   .tbadge span{font-size:11px;font-weight:600;white-space:nowrap;color:#333;}
-  .vlink{font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;text-decoration:none;font-weight:500;color:#444;}
-  .vlink:hover{text-decoration:underline;}
   .spacer{flex:1;}
   .cb{padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;flex-shrink:0;}
   .c유소년{background:#e3f2fd;color:#0d47a1;border:.5px solid #90caf9;}
@@ -200,170 +120,14 @@
   .wx.rain{background:#fef3c7;border-color:#fcd34d;color:#92400e;}
   .wx.cloud{background:#f3f4f6;border-color:var(--b2);color:#374151;}
   .wx.load{background:#f9fafb;border-color:var(--br);color:#9ca3af;}
-  /* 동명이인 후보 */
+
   .cand-box{background:var(--bg);border:1.5px solid var(--br);border-radius:var(--rl);padding:1.1rem 1.2rem;margin-bottom:1rem;}
   .cand-title{font-size:13px;font-weight:600;color:var(--t2);margin-bottom:12px;}
   .cand-list{display:flex;flex-direction:column;gap:8px;}
-  .cand-btn{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:12px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
-    background:var(--bg);cursor:pointer;font-size:15px;font-weight:600;color:var(--tx);
-    transition:all .15s;font-family:inherit;
-  }
+  .cand-btn{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-radius:var(--rm);border:1.5px solid var(--br);background:var(--bg);cursor:pointer;font-size:15px;font-weight:600;color:var(--tx);transition:all .15s;font-family:inherit;}
   .cand-btn:hover{border-color:var(--hs-mid);background:#f0f7ff;}
   .cand-num{font-size:13px;font-weight:700;color:#1565c0;background:#e3f2fd;padding:3px 10px;border-radius:999px;}
-  /* 경기 팝업함평과 화순 카드 색상을 **완전히 다르게** 구분되도록 수정했습니다.
 
-- **함평**: 따뜻한 베이지/브라운 톤 (배경 + 테두리)
-- **화순**: 차가운 블루/네이비 톤 (배경 + 테두리)
-
-이제 한눈에 확연히 구분됩니다.
-
-```html
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>광주화정유소년야구단 - 8월 대회 통합 대시보드</title>
-<style>
-  :root{
-    /* 함평: 흙빛 브라운 */
-    --hp-main:#8B4513;--hp-mid:#a0522d;--hp-light:#fff3e0;--hp-border:#d2a679;--hp-field:#3d2817;--hp-txt:#6b3410;
-    /* 화순: 네이비 블루 */
-    --hs-main:#1a3a5c;--hs-mid:#2c5f8a;--hs-light:#e8f1f8;--hs-border:#9dc0dd;--hs-field:#152b42;--hs-txt:#1a3a5c;
-    --bg:#fff;--bg2:#f7f8fa;--tx:#1a1a1a;--t2:#6b7280;--br:#e5e7eb;--b2:#d1d5db;
-    --rs:6px;--rm:10px;--rl:14px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;background:var(--bg2);color:var(--tx);min-height:100vh;}
-  .wrap{max-width:640px;margin:0 auto;padding:1rem;}
-  /* 헤더 */
-  .hdr{border-radius:var(--rl);padding:1.1rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;gap:14px;transition:background .3s;}
-  .hdr.hp{background:var(--hp-main);box-shadow:0 2px 10px rgba(139,69,19,.35);}
-  .hdr.hs{background:var(--hs-main);box-shadow:0 2px 10px rgba(26,58,92,.35);}
-  .logo-svg{width:56px;height:56px;flex-shrink:0;}
-  .hdr h1{font-size:18px;font-weight:700;color:#fff;margin-bottom:3px;}
-  .hdr p{font-size:12px;color:rgba(255,255,255,.75);}
-  /* 대회 탭 */
-  .tour-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
-  .ttab{padding:12px 8px;border-radius:var(--rm);text-align:center;cursor:pointer;border:1.5px solid var(--br);background:var(--bg);transition:all .2s;}
-  .ttab .tt-name{font-size:14px;font-weight:700;color:var(--t2);}
-  .ttab .tt-date{font-size:11px;color:var(--t2);margin-top:3px;}
-  .ttab.on-hp{background:var(--hp-light);border-color:var(--hp-main);}
-  .ttab.on-hp .tt-name{color:var(--hp-main);}
-  .ttab.on-hp .tt-date{color:var(--hp-mid);}
-  .ttab.on-hs{background:var(--hs-light);border-color:var(--hs-main);}
-  .ttab.on-hs .tt-name{color:var(--hs-main);}
-  .ttab.on-hs .tt-date{color:var(--hs-mid);}
-  /* 검색바 */
-  .search-bar{display:flex;gap:8px;margin-bottom:1rem;align-items:center;}
-  .search-bar input{
-    flex:1;padding:12px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
-    font-size:16px;background:var(--bg);outline:none;transition:border-color .2s;
-    font-family:inherit;
-  }
-  .hp-theme .search-bar input:focus{border-color:var(--hp-main);}
-  .hs-theme .search-bar input:focus{border-color:var(--hs-main);}
-  .search-bar button{
-    padding:12px 16px;border-radius:var(--rm);border:none;
-    font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;
-    font-family:inherit;
-  }
-  .btn-confirm{background:#1a3a5c;color:#fff;}
-  .btn-confirm:hover{opacity:.9;}
-  .btn-reset{background:var(--bg);color:var(--t2);border:1.5px solid var(--b2) !important;}
-  .btn-reset:hover{background:#f3f4f6;}
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1rem;}
-  .stat{background:var(--bg);border-radius:var(--rm);padding:.8rem .5rem;text-align:center;border:.5px solid var(--br);}
-  .stat .n{font-size:22px;font-weight:700;}
-  .hp-theme .stat .n{color:var(--hp-mid);}
-  .hs-theme .stat .n{color:var(--hs-mid);}
-  .stat .l{font-size:11px;color:var(--t2);margin-top:2px;}
-  .sec{font-size:11px;font-weight:600;color:var(--t2);margin-bottom:8px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.06em;}
-  .sec::before{content:'';width:3px;height:13px;border-radius:2px;}
-  .hp-theme .sec::before{background:var(--hp-mid);}
-  .hs-theme .sec::before{background:var(--hs-mid);}
-  .vrow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
-  .vcard{background:var(--bg);border:.5px solid var(--br);border-radius:var(--rl);padding:.85rem 1rem;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color .15s;}
-  .hp-theme .vcard:hover{border-color:var(--hp-mid);}
-  .hs-theme .vcard:hover{border-color:var(--hs-mid);}
-  .vc-name{font-size:13px;font-weight:600;color:var(--tx);}
-  .vc-addr{font-size:11px;color:var(--t2);margin-top:2px;line-height:1.4;}
-  .vc-link{font-size:11px;margin-top:4px;font-weight:500;}
-  .hp-theme .vc-link{color:var(--hp-mid);}
-  .hs-theme .vc-link{color:var(--hs-mid);}
-  .filters{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap;}
-  .fbtn{padding:5px 14px;border-radius:999px;font-size:13px;cursor:pointer;border:.5px solid var(--b2);background:var(--bg);color:var(--t2);font-weight:500;}
-  .hp-theme .fbtn.on{background:var(--hp-main);color:#fff3e0;border-color:var(--hp-main);}
-  .hs-theme .fbtn.on{background:var(--hs-main);color:#e8f1f8;border-color:var(--hs-main);}
-  .dlbl{font-size:12px;font-weight:600;border-radius:var(--rs);padding:4px 12px;display:inline-block;margin-bottom:8px;}
-  .hp-theme .dlbl{color:var(--hp-txt);background:var(--hp-light);border:.5px solid var(--hp-border);}
-  .hs-theme .dlbl{color:var(--hs-txt);background:var(--hs-light);border:.5px solid var(--hs-border);}
-  .gcards{display:flex;flex-direction:column;gap:10px;margin-bottom:1.25rem;}
-
-  /* ★★★ 대회별 카드 완전 다른 색상 ★★★ */
-  .gcard{
-    border-radius:var(--rl);padding:.9rem 1rem;
-    display:flex;flex-direction:column;gap:8px;cursor:pointer;
-    transition:transform .12s, box-shadow .15s;
-  }
-  .gcard.tour-hp{
-    background:#fff3e0;
-    border:2px solid #d2a679;
-    border-left:7px solid #8B4513;
-  }
-  .gcard.tour-hs{
-    background:#e8f1f8;
-    border:2px solid #9dc0dd;
-    border-left:7px solid #1a3a5c;
-  }
-  .gcard.tour-hp:hover{
-    transform:translateY(-1px);
-    box-shadow:0 4px 14px rgba(139,69,19,.22);
-  }
-  .gcard.tour-hs:hover{
-    transform:translateY(-1px);
-    box-shadow:0 4px 14px rgba(26,58,92,.22);
-  }
-
-  .gtop{display:flex;align-items:center;gap:8px;}
-  .gm{font-size:15px;font-weight:700;color:var(--tx);line-height:1.3;}
-  .gm .vs{font-weight:600;margin:0 2px;color:#666;}
-  .gbot{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
-  .tbadge{text-align:center;border-radius:var(--rs);padding:3px 9px;flex-shrink:0;background:rgba(255,255,255,.7);border:.5px solid rgba(0,0,0,.08);}
-  .tbadge span{font-size:11px;font-weight:600;white-space:nowrap;color:#333;}
-  .vlink{font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:3px;text-decoration:none;font-weight:500;color:#444;}
-  .vlink:hover{text-decoration:underline;}
-  .spacer{flex:1;}
-  .cb{padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700;flex-shrink:0;}
-  .c유소년{background:#e3f2fd;color:#0d47a1;border:.5px solid #90caf9;}
-  .c꿈나무{background:#fff8e1;color:#e65100;border:.5px solid #ffcc02;}
-  .c새싹{background:#e8f5e9;color:#1b5e20;border:.5px solid #81c784;}
-  .c고학년{background:#ede7f6;color:#4527a0;border:.5px solid #b39ddb;}
-  .c저학년{background:#fce4ec;color:#ad1457;border:.5px solid #f48fb1;}
-  .c함평{background:#8B4513;color:#fff;border:none;}
-  .c화순{background:#1a3a5c;color:#fff;border:none;}
-  .sb{font-size:11px;padding:3px 8px;border-radius:999px;font-weight:500;flex-shrink:0;}
-  .home{background:#e8f5e9;color:#2e7d32;border:.5px solid #81c784;}
-  .away{background:#fce4ec;color:#880e4f;border:.5px solid #f48fb1;}
-  .wx{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:500;background:rgba(255,255,255,.75);border:.5px solid rgba(0,0,0,.08);border-radius:var(--rs);padding:3px 8px;color:#0369a1;white-space:nowrap;flex-shrink:0;}
-  .wx.rain{background:#fef3c7;border-color:#fcd34d;color:#92400e;}
-  .wx.cloud{background:#f3f4f6;border-color:var(--b2);color:#374151;}
-  .wx.load{background:#f9fafb;border-color:var(--br);color:#9ca3af;}
-  /* 동명이인 후보 */
-  .cand-box{background:var(--bg);border:1.5px solid var(--br);border-radius:var(--rl);padding:1.1rem 1.2rem;margin-bottom:1rem;}
-  .cand-title{font-size:13px;font-weight:600;color:var(--t2);margin-bottom:12px;}
-  .cand-list{display:flex;flex-direction:column;gap:8px;}
-  .cand-btn{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:12px 14px;border-radius:var(--rm);border:1.5px solid var(--br);
-    background:var(--bg);cursor:pointer;font-size:15px;font-weight:600;color:var(--tx);
-    transition:all .15s;font-family:inherit;
-  }
-  .cand-btn:hover{border-color:var(--hs-mid);background:#f0f7ff;}
-  .cand-num{font-size:13px;font-weight:700;color:#1565c0;background:#e3f2fd;padding:3px 10px;border-radius:999px;}
-  /* 경기 팝업 */
   .gov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:800;align-items:flex-end;justify-content:center;}
   .gov.open{display:flex;}
   .gpop{background:var(--bg);border-radius:var(--rl) var(--rl) 0 0;width:100%;max-width:640px;max-height:92vh;overflow-y:auto;box-shadow:0 -4px 32px rgba(0,0,0,.25);animation:slideUp .25s ease;}
@@ -399,7 +163,6 @@
   .pnode.extra{background:#f3e5f5;border-color:#8e24aa;}
   .pname{font-size:12px;font-weight:600;color:#1a1a1a;}
   .ppos{font-size:9px;color:#666;margin-top:1px;}
-  /* 선수/경기장 팝업 */
   .plov,.vpov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1100;align-items:center;justify-content:center;padding:1rem;}
   .plov.open,.vpov.open{display:flex;}
   .plpop{background:var(--bg);border-radius:var(--rl);padding:1.25rem;width:260px;box-shadow:0 8px 40px rgba(0,0,0,.35);}
@@ -496,7 +259,6 @@
   <div class="vrow" id="venues"></div>
 </div>
 <script>
-/* ═══════════ 데이터 ═══════════ */
 const ROSTER = {
   '강은찬':{num:'61',school:'화정남초',birth:'19.09.05'},
   '강주찬':{num:'56',school:'화정남초',birth:'16.10.12'},
@@ -623,7 +385,7 @@ const POS = [
   {key:'C', label:'C 포수', x:50,y:87,cls:'catcher'},
 ];
 let tour='hp', filt='전체', wxCache={}, searchTerm='', selectedPlayer=null;
-/* ═══════════ 팝업 ═══════════ */
+
 function closeGame(e){if(e&&e.target!==document.getElementById('gov'))return;document.getElementById('gov').classList.remove('open');}
 function closePl(){document.getElementById('plov').classList.remove('open');}
 function closeVp(){document.getElementById('vpov').classList.remove('open');}
@@ -649,7 +411,6 @@ function showPl(key,posLabel){
   document.getElementById('mRows').innerHTML=rows.map(r=>`<div class="mrow"><span class="ml">${r.l}</span><span class="mv">${r.v}</span></div>`).join('');
   document.getElementById('plov').classList.add('open');
 }
-/* ═══════════ 날씨 ═══════════ */
 function wxInfo(code,temp){
   if(code<=1) return{icon:'☀️',label:`맑음 ${temp}°`,cls:''};
   if(code<=3) return{icon:'⛅',label:`구름 ${temp}°`,cls:'cloud'};
@@ -697,7 +458,6 @@ function applyWx(){
     el.className='wx '+cls; el.textContent=`${icon} ${label}`;
   });
 }
-/* ═══════════ 검색 ═══════════ */
 function doSearch(){
   searchTerm = document.getElementById('playerSearch').value.trim();
   selectedPlayer = null;
@@ -730,7 +490,6 @@ function getCandidates(term){
   });
   return Array.from(set).sort();
 }
-/* ═══════════ 렌더링 ═══════════ */
 function setTour(t){
   tour=t; filt='전체';
   renderAll();
@@ -771,7 +530,6 @@ function renderGames(){
 
   if(searchTerm){
     const candidates = getCandidates(searchTerm);
-
     if(candidates.length > 1 && !selectedPlayer){
       infoEl.className = 'search-info show';
       infoEl.textContent = `"${searchTerm}" 검색 · 동명이인 ${candidates.length}명`;
@@ -791,9 +549,7 @@ function renderGames(){
         </div>`;
       return;
     }
-
     const target = selectedPlayer || (candidates.length === 1 ? candidates[0] : null);
-
     if(target){
       ['hp','hs'].forEach(tKey=>{
         const T = TOURS[tKey];
@@ -852,10 +608,14 @@ function renderGames(){
       const tourCls = g.tourKey==='hp' ? 'c함평' : 'c화순';
       const cardTourCls = g.tourKey==='hp' ? 'tour-hp' : 'tour-hs';
       return`<div class="gcard ${cardTourCls}" onclick="openGame('${g.id}','${g.tourKey}')">
-        <div class="gtop"><div class="gm">${g.left}<span class="vs"> vs </span>${g.right}</div></div>
+        <div class="gtop">
+          <div class="gm">${g.left}<span class="vs"> vs </span>${g.right}</div>
+        </div>
+        <div class="gvenue">
+          <a class="vlink" href="${vurl}" target="_blank" onclick="event.stopPropagation()">📍 ${g.venue}</a>
+        </div>
         <div class="gbot">
           <div class="tbadge"><span>${g.time}</span></div>
-          <a class="vlink" href="${vurl}" target="_blank" onclick="event.stopPropagation()">📍 ${g.venue}</a>
           <span class="spacer"></span>
           <span id="wx${g.id}" class="wx load">⏳</span>
           <span class="sb ${isH?'home':'away'}">${isH?'홈':'원정'}</span>
@@ -905,7 +665,6 @@ function openGame(id, tKey){
     </div>`;
   document.getElementById('gov').classList.add('open');
 }
-/* ═══════════ 초기화 ═══════════ */
 setTour('hp');
 </script>
 </body>
