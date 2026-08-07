@@ -181,8 +181,9 @@
     <div class="mhd"><span style="font-size:26px">🏟️</span><div class="mname" id="vpName"></div></div>
     <div style="border-top:.5px solid var(--br);padding-top:10px;">
       <div style="font-size:13px;color:var(--t2);margin-bottom:12px;line-height:1.7;" id="vpAddr"></div>
-      <div style="font-size:11px;color:var(--t2);margin-bottom:6px;font-weight:600;">배정 경기</div>
+      <div style="font-size:11px;color:var(--t2);margin-bottom:6px;font-weight:600;" id="vpGamesLabel">배정 경기</div>
       <div class="vptags" id="vpGames"></div>
+      <div style="font-size:12px;color:var(--t2);margin-bottom:10px;" id="vpTel"></div>
       <a class="nbtn" id="vpLink" href="#" target="_blank">📍 네이버 지도로 찾아가기</a>
       <button class="mcls" onclick="closeVp()">닫기</button>
     </div>
@@ -230,6 +231,10 @@
   <div id="glist"></div>
   <div class="sec" style="margin-top:1.5rem">경기장 안내</div>
   <div class="vrow" id="venues"></div>
+  <div id="restSection" style="display:none">
+    <div class="sec" style="margin-top:1.5rem">점심 식당 안내 (화정팀)</div>
+    <div class="vrow" id="restaurants"></div>
+  </div>
 </div>
 <script>
 const ROSTER = {
@@ -327,6 +332,10 @@ const TOURS = {
       '화순중 구장':{addr:'전남 화순군 화순읍 칠충로 71',url:'https://map.naver.com/p/search/%ED%99%94%EC%88%9C%EC%A4%91%ED%95%99%EA%B5%90',games:['8/14 고학년','8/14 저학년']},
       '화순이양야구장':{addr:'전남 화순군 이양면 금능1길 46',url:'https://map.naver.com/p/search/%ED%99%94%EC%88%9C%EA%B5%B0%20%EA%B8%88%EB%8A%A51%EA%B8%B8%2046',games:['8/15 고학년×2','8/15 저학년','8/16 저학년']},
     },
+    restaurants:{
+      '화순추어탕한그릇':{addr:'전남 화순군 화순읍 교리 107-1',tel:'010-9886-6968',url:'https://map.naver.com/p/search/%ED%99%94%EC%88%9C%EA%B5%B0%20%ED%99%94%EC%88%9C%EC%9D%8D%20%EA%B5%90%EB%A6%AC%20107-1%20%ED%99%94%EC%88%9C%EC%B6%94%EC%96%B4%ED%83%95%ED%95%9C%EA%B7%B8%EB%A6%87',dates:['8/14']},
+      '이양한우리식당':{addr:'전남 화순군 이양면 이양로 115',tel:'010-9631-3300',url:'https://map.naver.com/p/search/%ED%99%94%EC%88%9C%EA%B5%B0%20%EC%9D%B4%EC%96%91%EB%A9%B4%20%EC%9D%B4%EC%96%91%EB%A1%9C%20115%20%EC%9D%B4%EC%96%91%ED%95%9C%EC%9A%B0%EB%A6%AC%EC%8B%9D%EB%8B%B9',dates:['8/15','8/16']},
+    },
     games:[
       {id:'hs1',date:'8/14',dow:'금',time:'08:30~10:00',hour:8, cat:'고학년',venue:'화순중 구장',left:'화정',right:'화순'},
       {id:'hs2',date:'8/14',dow:'금',time:'10:00~11:30',hour:10,cat:'저학년',venue:'화순중 구장',left:'화정',right:'화순'},
@@ -336,11 +345,11 @@ const TOURS = {
       {id:'hs6',date:'8/16',dow:'일',time:'08:30~10:00',hour:8, cat:'저학년',venue:'화순이양야구장',left:'화정',right:'순천북초'},
     ],
     lineups:{
-      hs1:{CF:'박서현',LF:'김세린',RF:'노현서',SS:'김강우',SP:'장민준',B2:'석훈빈',B3:'노현우',B1:'송지율',EH:'정현우',C:'김선균'},
+      hs1:{CF:'정현우',LF:'김세린',RF:'노현서',SS:'김강우',SP:'장민준',B2:'석훈빈',B3:'노현우',B1:'송지율',EH:'',C:'김선균'},
       hs2:{CF:'정지후',LF:'정은우',RF:'강주찬',SS:'박서현',SP:'김용진',B2:'심연후',B3:'김세린',B1:'오유찬(54)',EH:'',C:'신수호'},
-      hs3:{CF:'박서현',LF:'용종원',RF:'김태연',SS:'김용진',SP:'오유찬(7)',B2:'유수완',B3:'이승원',B1:'송유준',EH:'김찬린',C:'안민준'},
+      hs3:{CF:'김찬린',LF:'용종원',RF:'김태연',SS:'김용진',SP:'오유찬(7)',B2:'유수완',B3:'이승원',B1:'송유준',EH:'',C:'안민준'},
       hs4:{CF:'박서현',LF:'용종원',RF:'김찬린',SS:'김용진',SP:'유수완',B2:'장유준',B3:'이승원',B1:'김태연',EH:'',C:'안민준'},
-      hs5:{CF:'박서현',LF:'용종원',RF:'이승원',SS:'오유찬(7)',SP:'송유준',B2:'유수완',B3:'김용진',B1:'김태연',EH:'김찬린',C:'안민준'},
+      hs5:{CF:'김찬린',LF:'용종원',RF:'이승원',SS:'오유찬(7)',SP:'송유준',B2:'유수완',B3:'김용진',B1:'김태연',EH:'',C:'안민준'},
       hs6:{CF:'박서현',LF:'장유준',RF:'김찬린',SS:'유수완',SP:'김용진',B2:'이승원',B3:'용종원',B1:'김태연',EH:'',C:'안민준'},
     }
   }
@@ -366,8 +375,21 @@ function openVp(name,e){
   const v=TOURS[tour].venues[name];if(!v)return;
   document.getElementById('vpName').textContent=name;
   document.getElementById('vpAddr').textContent=v.addr;
+  document.getElementById('vpGamesLabel').textContent='배정 경기';
   document.getElementById('vpGames').innerHTML=v.games.map(g=>`<span class="vptag">${g}</span>`).join('');
+  document.getElementById('vpTel').textContent='';
   document.getElementById('vpLink').href=v.url;
+  document.getElementById('vpov').classList.add('open');
+}
+function openRp(name,e){
+  if(e)e.stopPropagation();
+  const r=TOURS[tour].restaurants[name];if(!r)return;
+  document.getElementById('vpName').textContent=name;
+  document.getElementById('vpAddr').textContent=r.addr;
+  document.getElementById('vpGamesLabel').textContent='이용 날짜';
+  document.getElementById('vpGames').innerHTML=r.dates.map(d=>`<span class="vptag">${d}</span>`).join('');
+  document.getElementById('vpTel').textContent='☎ '+r.tel;
+  document.getElementById('vpLink').href=r.url;
   document.getElementById('vpov').classList.add('open');
 }
 function showPl(key,posLabel){
@@ -488,6 +510,17 @@ function renderAll(){
       <span style="font-size:22px">🏟️</span>
       <div><div class="vc-name">${name}</div><div class="vc-addr">${v.addr}</div><div class="vc-link">📍 지도 보기</div></div>
     </div>`).join('');
+  const restSec=document.getElementById('restSection');
+  if(T.restaurants){
+    restSec.style.display='block';
+    document.getElementById('restaurants').innerHTML=Object.entries(T.restaurants).map(([name,r])=>`
+      <div class="vcard" onclick="openRp('${name}',event)">
+        <span style="font-size:22px">🍽️</span>
+        <div><div class="vc-name">${name}</div><div class="vc-addr">${r.addr}</div><div class="vc-link">📍 지도 보기 · ${r.dates.join(', ')}</div></div>
+      </div>`).join('');
+  } else {
+    restSec.style.display='none';
+  }
   renderFilters();
   renderGames();
 }
