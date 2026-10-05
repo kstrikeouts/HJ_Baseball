@@ -186,7 +186,7 @@
     <button type="button" class="btn-confirm" onclick="doSearch()">확인</button>
     <button type="button" class="btn-reset" onclick="clearSearch()">초기화</button>
   </div>
-  <div class="search-note">※ 선수 검색 시 해당 선수 출전 경기만 표시됩니다. 라인업은 추후 업데이트 예정입니다.</div>
+  <div class="search-note">※ 경기 카드를 누르면 수비 라인업이 표시됩니다. 선수 검색 시 해당 선수 출전 경기만 표시됩니다.</div>
   <div class="stats" id="stats"></div>
   <div class="sec">화정 경기 일정</div>
   <div class="search-info" id="searchInfo"></div>
@@ -203,7 +203,7 @@ const ROSTER = {
   '고준석':{num:'49',school:'광주화정초',birth:'18.05.25'},
   '김강우':{num:'3',school:'전남중학교',birth:'13.05.21'},
   '김경환':{num:'16',school:'양산중학교',birth:'11.06.02'},
-  '김도윤':{num:'1',school:'진제초등',birth:'15.07.17'},
+  '김도윤':{num:'73',school:'진제초등',birth:'15.07.17'},
   '김동유':{num:'55',school:'운남중학교',birth:'13.12.06'},
   '김선균':{num:'29',school:'',birth:'14.02.20'},
   '김세린':{num:'68',school:'전남중학교',birth:'13.03.29'},
@@ -246,6 +246,8 @@ const ROSTER = {
   '박윤건':{num:'',school:'',birth:''},
   '지일우':{num:'',school:'',birth:''},
   '이서준':{num:'',school:'',birth:''},
+  '정시윤':{num:'',school:'',birth:''},
+  '정승호':{num:'',school:'',birth:''},
   '최민후':{num:'83',school:'마지초등',birth:'18.10.31'},
   '하유성':{num:'87',school:'화정남초',birth:'17.07.13'},
   '하준우':{num:'92',school:'화정남초',birth:'17.01.11'},
@@ -274,7 +276,22 @@ const T = {
     {id:'g9',date:'10/11',dow:'일',time:'14:40~16:20',hour:14,cat:'유소년',venue:'영암공설운동장 야구장',left:'JW베이스볼',right:'화정'},
   ],
   coaches:{},
-  lineups:{ g1:{}, g2:{}, g3:{}, g4:{}, g5:{}, g6:{}, g7:{}, g8:{}, g9:{} }
+  gameCoaches:{
+    g1:'오철희 · 신준원', g2:'오철희', g3:'오철희',
+    g4:'오철희 · 신준원 · 강기백', g5:'오철희', g6:'오철희 · 강기백',
+    g7:'오철희 · 강기백', g8:'오철희 · 신준원 · 강기백', g9:'오철희'
+  },
+  lineups:{
+    g1:{CF:'이찬을',LF:'박건률',RF:'정현우',SS:'심연후',B2:'정시윤',B3:'노현우',SP:'신수호',B1:'강주찬',C:'오유찬(54)',EH:'석훈빈'},
+    g2:{CF:'정지후',LF:'문다원',RF:'강은찬',SS:'임서준',B2:'정승호',B3:'박윤건',SP:'정은우',B1:'지일우',C:'변지성',EH:'고준석'},
+    g3:{CF:'노현서',LF:'',RF:'김도윤',SS:'오유찬(7)',B2:'김용진',B3:'석훈빈',SP:'장민준',B1:'김현승',C:'김찬린',EH:''},
+    g4:{CF:'이찬을',LF:'박건률',RF:'강주찬',SS:'심연후',B2:'정시윤',B3:'노현우',SP:'김도윤',B1:'오유찬(54)',C:'정현우',EH:'신수호'},
+    g5:{CF:'장민준',LF:'김찬린',RF:'김세린',SS:'오유찬(7)',B2:'오유빈',B3:'석훈빈',SP:'노현서',B1:'김도윤',C:'김현승',EH:'김용진'},
+    g6:{CF:'정승호',LF:'문다원',RF:'강은찬',SS:'고준석',B2:'정은우',B3:'박윤건',SP:'정지후',B1:'변지성',C:'지일우',EH:'임서준'},
+    g7:{CF:'지일우',LF:'문다원',RF:'정승호',SS:'변지성',B2:'고준석',B3:'정은우',SP:'임서준',B1:'정지후',C:'박윤건',EH:'강은찬'},
+    g8:{CF:'정시윤',LF:'박건률',RF:'오유찬(54)',SS:'신수호',B2:'심연후',B3:'정현우',SP:'노현우',B1:'이찬을',C:'강주찬',EH:'석훈빈'},
+    g9:{CF:'장민준',LF:'김용진',RF:'노현서',SS:'오유찬(7)',B2:'김세린',B3:'오유빈',SP:'석훈빈',B1:'김찬린',C:'김현승',EH:''}
+  }
 };
 const POS = [
   {key:'CF',label:'CF 중견',x:50,y:6, cls:''},
@@ -486,8 +503,9 @@ function openGame(id){
   const vurl = T.venues[g.venue]?.url || '#';
   let fieldHtml;
   if(hasLineup){
-    const nodes = POS.filter(p=>!(p.key==='EH'&&!lu[p.key])).map(p=>{
+    const nodes = POS.filter(p=>lu[p.key]).map(p=>{
       const key = lu[p.key] || '';
+      if(!key) return '';
       const disp = key.replace(/\(\d+\)$/,'');
       const num = ROSTER[key] && ROSTER[key].num ? `#${ROSTER[key].num}` : '';
       return`<div class="pnode ${p.cls}" style="left:${p.x}%;top:${p.y}%" onclick="showPl('${key}','${p.label}')">
@@ -519,7 +537,7 @@ function openGame(id){
     <div class="meta">
       <span class="mlink" onclick="openVp('${g.venue}',event)">📍 ${g.venue}</span>
       <span>·</span><span>화정 ${g.right==='화정'?'홈':'원정'}</span>
-      ${T.coaches[g.cat]?`<span>·</span><span>👤 ${T.coaches[g.cat]}</span>`:''}
+      ${(T.gameCoaches&&T.gameCoaches[g.id])?`<span>·</span><span>👤 ${T.gameCoaches[g.id]}</span>`:''}
     </div>
     ${fieldHtml}`;
   document.getElementById('gov').classList.add('open');
