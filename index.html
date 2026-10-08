@@ -195,7 +195,7 @@
   </div>
   <div class="notice">
     <span>⚠️</span>
-    <div><b>대회기간: 10/9(금) ~ 10/11(일)</b><br>장소: 영암공설운동장 · 세한대 일대 (구장별 주소 추후 업데이트)</div>
+    <div><b>대회기간: 10/9(금) ~ 10/11(일)</b><br>장소: 영암종합스포츠타운 공설운동장(영암읍 여운재로 21) · 세한대학교 영암캠퍼스(삼호읍 녹색로 1113)<br>두 권역은 차로 20분 거리입니다.</div>
   </div>
   <div class="search-bar">
     <input type="text" id="playerSearch" placeholder="선수 이름 검색 (선수 정보 조회)"
@@ -277,22 +277,26 @@ const T = {
   cats:['전체','유소년','꿈나무','새싹'],
   lat:34.80, lon:126.70,
   dates:{'10/9':'2026-10-09','10/10':'2026-10-10','10/11':'2026-10-11'},
+  zones:{
+    yeongam:{name:'영암종합스포츠타운 공설운동장',addr:'전남 영암군 영암읍 여운재로 21',url:'https://map.naver.com/p/search/전남%20영암군%20영암읍%20여운재로%2021'},
+    sehan:{name:'세한대학교 영암캠퍼스',addr:'전남 영암군 삼호읍 녹색로 1113',url:'https://map.naver.com/p/search/전남%20영암군%20삼호읍%20녹색로%201113'}
+  },
   venues:{
-    '영암공설운동장 야구장':{addr:'주소 추후 업데이트',url:'',games:['10/11 14:40 유소년']},
-    '공설 축구장A':{addr:'주소 추후 업데이트',url:'',games:['10/11 13:00 꿈나무']},
-    '공설 축구장B':{addr:'주소 추후 업데이트',url:'',games:['10/10 09:00 꿈나무','10/10 16:20 새싹','10/11 10:40 새싹']},
-    '세한대야구장':{addr:'주소 추후 업데이트',url:'',games:['10/9 14:40 유소년','10/10 14:40 유소년']},
-    '세한대 축구장A':{addr:'주소 추후 업데이트',url:'',games:['10/9 10:40 꿈나무','10/9 13:00 새싹']},
+    '영암공설운동장 야구장':{zone:'yeongam',games:['10/11 14:40 유소년']},
+    '영암공설운동장 축구장A':{zone:'yeongam',games:['10/11 13:00 꿈나무']},
+    '영암공설운동장 축구장B':{zone:'yeongam',games:['10/10 09:00 꿈나무','10/10 16:20 새싹','10/11 10:40 새싹']},
+    '세한대야구장':{zone:'sehan',games:['10/9 14:40 유소년','10/10 14:40 유소년']},
+    '세한대 축구장A':{zone:'sehan',games:['10/9 10:40 꿈나무','10/9 13:00 새싹']},
   },
   games:[
     {id:'g1',date:'10/9', dow:'금',time:'10:40~12:10',hour:10,cat:'꿈나무',venue:'세한대 축구장A',left:'화정',right:'나주베스트'},
     {id:'g2',date:'10/9', dow:'금',time:'13:00~14:30',hour:13,cat:'새싹', venue:'세한대 축구장A',left:'화정',right:'원더베이스볼'},
     {id:'g3',date:'10/9', dow:'금',time:'14:40~16:20',hour:14,cat:'유소년',venue:'세한대야구장',left:'제주야구학교A',right:'화정'},
-    {id:'g4',date:'10/10',dow:'토',time:'09:00~10:30',hour:9, cat:'꿈나무',venue:'공설 축구장B',left:'영암군B',right:'화정'},
+    {id:'g4',date:'10/10',dow:'토',time:'09:00~10:30',hour:9, cat:'꿈나무',venue:'영암공설운동장 축구장B',left:'영암군B',right:'화정'},
     {id:'g5',date:'10/10',dow:'토',time:'14:40~16:20',hour:14,cat:'유소년',venue:'세한대야구장',left:'광주서구',right:'화정'},
-    {id:'g6',date:'10/10',dow:'토',time:'16:20~18:00',hour:16,cat:'새싹', venue:'공설 축구장B',left:'화정',right:'SB A'},
-    {id:'g7',date:'10/11',dow:'일',time:'10:40~12:10',hour:10,cat:'새싹', venue:'공설 축구장B',left:'화정',right:'송원'},
-    {id:'g8',date:'10/11',dow:'일',time:'13:00~14:30',hour:13,cat:'꿈나무',venue:'공설 축구장A',left:'영클스',right:'화정'},
+    {id:'g6',date:'10/10',dow:'토',time:'16:20~18:00',hour:16,cat:'새싹', venue:'영암공설운동장 축구장B',left:'화정',right:'SB A'},
+    {id:'g7',date:'10/11',dow:'일',time:'10:40~12:10',hour:10,cat:'새싹', venue:'영암공설운동장 축구장B',left:'화정',right:'송원'},
+    {id:'g8',date:'10/11',dow:'일',time:'13:00~14:30',hour:13,cat:'꿈나무',venue:'영암공설운동장 축구장A',left:'영클스',right:'화정'},
     {id:'g9',date:'10/11',dow:'일',time:'14:40~16:20',hour:14,cat:'유소년',venue:'영암공설운동장 야구장',left:'JW베이스볼',right:'화정'},
   ],
   coaches:{},
@@ -326,14 +330,19 @@ const POS = [
   {key:'C', label:'C 포수', x:50,y:87,cls:'catcher'},
 ];
 let filt='전체', wxCache={}, sel=null;
+function venueInfo(name){
+  const v=T.venues[name]; if(!v) return null;
+  const z=(T.zones||{})[v.zone]||{};
+  return {games:v.games||[], zone:z.name||'', addr:z.addr||'', url:z.url||''};
+}
 function closeGame(e){if(e&&e.target!==document.getElementById('gov'))return;document.getElementById('gov').classList.remove('open');}
 function closePl(){document.getElementById('plov').classList.remove('open');}
 function closeVp(){document.getElementById('vpov').classList.remove('open');}
 function openVp(name,e){
   if(e)e.stopPropagation();
-  const v=T.venues[name];if(!v)return;
+  const v=venueInfo(name);if(!v)return;
   document.getElementById('vpName').textContent=name;
-  document.getElementById('vpAddr').textContent=v.addr;
+  document.getElementById('vpAddr').innerHTML=(v.zone?`<b>${v.zone}</b><br>`:'')+v.addr;
   document.getElementById('vpGames').innerHTML=v.games.map(g=>`<span class="vptag">${g}</span>`).join('');
   const lk=document.getElementById('vpLink');
   if(v.url){lk.href=v.url;lk.style.display='flex';}else{lk.style.display='none';}
@@ -459,11 +468,12 @@ function renderAll(){
   document.getElementById('stats').innerHTML=[
     {n:T.games.length,l:'화정 경기 수'},{n:days,l:'경기 일수'},{n:cats,l:'참가 부문'},{n:venues,l:'경기장 수'}
   ].map(s=>`<div class="stat"><div class="n">${s.n}</div><div class="l">${s.l}</div></div>`).join('');
-  document.getElementById('venues').innerHTML=Object.entries(T.venues).map(([name,v])=>`
-    <div class="vcard" onclick="openVp('${name}',event)">
+  document.getElementById('venues').innerHTML=Object.keys(T.venues).map(name=>{
+    const v=venueInfo(name);
+    return `<div class="vcard" onclick="openVp('${name}',event)">
       <span style="font-size:22px">🏟️</span>
-      <div><div class="vc-name">${name}</div><div class="vc-addr">${v.addr}</div><div class="vc-link">${v.url?'📍 지도 보기':'🕓 주소 준비중'}</div></div>
-    </div>`).join('');
+      <div><div class="vc-name">${name}</div><div class="vc-addr">${v.zone}<br>${v.addr}</div><div class="vc-link">${v.url?'📍 지도 보기':'🕓 주소 준비중'}</div></div>
+    </div>`;}).join('');
   renderFilters();
   renderGames();
   fetchWeather();
@@ -494,7 +504,7 @@ function renderGames(){
     <div class="dlbl">📅 ${date}(${gs[0].dow}요일)</div>
     <div class="gcards">${gs.map(g=>{
       const isH = g.right==='화정';
-      const vurl = T.venues[g.venue]?.url || '#';
+      const vurl = (venueInfo(g.venue)||{}).url || "#";
       let posTag='';
       if(sel){
         const lu=T.lineups[g.id]||{};
@@ -525,7 +535,7 @@ function openGame(id){
   const g = T.games.find(x=>x.id===id); if(!g) return;
   const lu = T.lineups[g.id] || {};
   const hasLineup = Object.values(lu).some(v=>v);
-  const vurl = T.venues[g.venue]?.url || '#';
+  const vurl = (venueInfo(g.venue)||{}).url || "#";
   let fieldHtml;
   if(hasLineup){
     const nodes = POS.filter(p=>lu[p.key]).map(p=>{
