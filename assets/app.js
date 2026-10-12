@@ -421,6 +421,8 @@ async function boot(){
     document.getElementById('hdrTitle').textContent=T.name;
     document.getElementById('noticeBox').innerHTML=T.notice||'';
     renderAll();
+    const u=document.getElementById('updated');
+    if(u) u.textContent=T.updated?`마지막 업데이트 ${T.updated}`:'';
   }catch(e){
     document.getElementById('glist').innerHTML=
       '<div class="empty-msg">데이터를 불러오지 못했습니다.<br>새로고침해 주세요.</div>';

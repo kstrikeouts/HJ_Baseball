@@ -135,3 +135,4 @@
   .search-info{font-size:12px;color:var(--t2);margin-bottom:10px;padding:6px 12px;background:#f1f5f9;border-radius:var(--rs);display:none;}
   .search-info.show{display:block;}
   @media(max-width:400px){.stats{grid-template-columns:repeat(2,1fr);}.vrow{grid-template-columns:1fr;}}
+  .updated{margin-top:1.5rem;padding-top:1rem;border-top:.5px solid var(--br);text-align:center;font-size:11px;color:var(--t2);line-height:1.6;}
