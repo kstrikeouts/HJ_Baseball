@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>화정유소년야구단 - 라인업 관리</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  .abar{background:var(--main);color:#fff;border-radius:var(--rl);padding:.9rem 1.1rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .abar h1{font-size:16px;font-weight:700;}
+  .abar p{font-size:11px;color:rgba(255,255,255,.75);margin-top:3px;}
+  .abar a{color:#fff;font-size:11px;text-decoration:underline;opacity:.85;white-space:nowrap;}
+  .demo{background:#fff8e1;border:1px solid #ffcc02;border-radius:var(--rm);padding:.7rem .9rem;margin-bottom:1rem;font-size:12.5px;color:#7a4e00;line-height:1.55;}
+  .tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1rem;}
+  .tab{padding:11px;border-radius:var(--rm);border:1.5px solid var(--br);background:var(--bg);color:var(--t2);font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;}
+  .tab.on{background:var(--light);border-color:var(--main);color:var(--txt);}
+  .gsec{border:1px solid var(--br);border-radius:var(--rl);margin-bottom:10px;background:var(--bg);overflow:hidden;}
+  .ghead{display:flex;align-items:center;gap:8px;padding:.85rem 1rem;cursor:pointer;background:var(--bg);}
+  .ghead:hover{background:var(--bg2);}
+  .gh-main{flex:1;min-width:0;}
+  .gh-t{font-size:14px;font-weight:700;color:var(--tx);}
+  .gh-s{font-size:11px;color:var(--t2);margin-top:3px;}
+  .gh-n{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--light);color:var(--txt);border:.5px solid var(--border);white-space:nowrap;}
+  .gh-n.warn{background:#fff1f0;color:#a3322f;border-color:#f0b7b2;}
+  .chev{color:var(--b2);font-size:13px;}
+  .gbody{display:none;padding:.25rem 1rem 1rem;border-top:1px solid var(--br);}
+  .gsec.open .gbody{display:block;}
+  .prow{display:flex;align-items:center;gap:10px;padding:7px 0;}
+  .plab{width:74px;flex-shrink:0;font-size:12px;font-weight:600;color:var(--t2);}
+  .prow select{flex:1;min-width:0;padding:10px;border-radius:var(--rs);border:1.5px solid var(--br);background:var(--bg);font-size:15px;font-family:inherit;color:var(--tx);}
+  .prow select:focus{outline:none;border-color:var(--main);}
+  .prow select.empty{color:var(--b2);}
+  .prow select.dup{border-color:#c0392b;background:#fff5f4;}
+  .ghint{font-size:11px;color:#a3322f;margin-top:8px;display:none;}
+  .ghint.show{display:block;}
+  .rlist{display:flex;flex-direction:column;gap:7px;margin-bottom:1rem;}
+  .ritem{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--br);border-radius:var(--rm);padding:8px 10px;}
+  .ritem .rn{flex:1;font-size:14px;font-weight:600;color:var(--tx);}
+  .ritem input{width:72px;padding:8px;border-radius:var(--rs);border:1.5px solid var(--br);font-size:14px;font-family:inherit;text-align:center;}
+  .ritem input:focus{outline:none;border-color:var(--main);}
+  .rdel{border:none;background:none;color:#b0413e;font-size:13px;cursor:pointer;padding:6px;font-family:inherit;}
+  .radd{display:flex;gap:8px;margin-bottom:1rem;}
+  .radd input{padding:11px;border-radius:var(--rm);border:1.5px solid var(--br);font-size:15px;font-family:inherit;}
+  .radd input.nm{flex:1;min-width:0;}
+  .radd input.nu{width:84px;text-align:center;}
+  .radd button{padding:11px 16px;border-radius:var(--rm);border:none;background:var(--mid);color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;}
+  .savebar2{position:sticky;bottom:0;background:linear-gradient(to top,var(--bg2) 72%,transparent);padding:14px 0 10px;margin-top:4px;}
+  .bigsave{width:100%;padding:15px;border:none;border-radius:var(--rm);background:var(--main);color:#fff;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;}
+  .bigsave:disabled{opacity:.45;cursor:default;}
+  .savenote{font-size:11px;color:var(--t2);text-align:center;margin-top:7px;line-height:1.5;}
+  .gate{max-width:340px;margin:16vh auto 0;background:var(--bg);border:1px solid var(--br);border-radius:var(--rl);padding:1.5rem 1.4rem;text-align:center;}
+  .gate h2{font-size:17px;color:var(--txt);margin-bottom:6px;}
+  .gate p{font-size:12px;color:var(--t2);margin-bottom:16px;line-height:1.6;}
+  .gate input{width:100%;padding:13px;border-radius:var(--rm);border:1.5px solid var(--br);font-size:16px;font-family:inherit;text-align:center;margin-bottom:10px;}
+  .gate input:focus{outline:none;border-color:var(--main);}
+  .gate button{width:100%;padding:13px;border:none;border-radius:var(--rm);background:var(--main);color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;}
+  .gate .err{font-size:12px;color:#c0392b;margin-top:10px;display:none;}
+  .gate .err.show{display:block;}
+  .pv{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:900;align-items:flex-end;justify-content:center;}
+  .pv.open{display:flex;}
+  .pvbox{background:var(--bg);border-radius:var(--rl) var(--rl) 0 0;width:100%;max-width:640px;max-height:88vh;display:flex;flex-direction:column;}
+  .pvh{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.2rem .8rem;border-bottom:1px solid var(--br);}
+  .pvh h3{font-size:15px;font-weight:700;color:var(--tx);}
+  .pvb{overflow-y:auto;padding:1rem 1.2rem 1.5rem;}
+  .chg{font-size:13px;line-height:1.7;color:var(--tx);}
+  .chg b{color:var(--mid);}
+  .chg .none{color:var(--t2);}
+  .chg code{background:var(--bg2);padding:1px 6px;border-radius:4px;font-size:12px;}
+</style>
+</head>
+<body>
+<div class="pv" id="pv" onclick="if(event.target.id==='pv')closePv()">
+  <div class="pvbox">
+    <div class="pvh"><h3 id="pvTitle">변경 내용</h3><button class="xbtn" onclick="closePv()">✕</button></div>
+    <div class="pvb"><div class="chg" id="pvBody"></div></div>
+  </div>
+</div>
+
+<div class="wrap" id="gateWrap">
+  <div class="gate">
+    <h2>⚾ 라인업 관리</h2>
+    <p>광주화정유소년야구단<br>관리용 비밀번호를 입력하세요</p>
+    <input type="password" id="pw" placeholder="비밀번호" onkeydown="if(event.key==='Enter')unlock()">
+    <button onclick="unlock()">들어가기</button>
+    <div class="err" id="gateErr">비밀번호가 맞지 않습니다</div>
+  </div>
+</div>
+
+<div class="wrap" id="app" style="display:none">
+  <div class="abar">
+    <div>
+      <h1 id="tName">불러오는 중…</h1>
+      <p id="tSub"></p>
+    </div>
+    <a href="./">대시보드 →</a>
+  </div>
+  <div class="demo" id="demoNote">
+    <b>미리보기 모드입니다.</b> 지금은 저장 버튼을 눌러도 실제로 반영되지 않고, 무엇이 바뀌는지만 보여줍니다. 조작감을 확인해 보세요.
+  </div>
+  <div class="tabs">
+    <button class="tab on" id="tabL" onclick="setTab('lineup')">라인업</button>
+    <button class="tab" id="tabR" onclick="setTab('roster')">선수 명단</button>
+  </div>
+  <div id="paneLineup"></div>
+  <div id="paneRoster" style="display:none"></div>
+  <div class="savebar2">
+    <button class="bigsave" id="saveBtn" onclick="save()">저장하기</button>
+    <div class="savenote" id="saveNote">변경한 내용이 없습니다</div>
+  </div>
+</div>
+
+<script>
+/* 연결 후 이 값만 Worker 주소로 바꾸면 실제 저장이 동작합니다 */
+const API = '';
+const PASSWORD = 'hwajung';
+
+const POS = [
+  {key:'CF',label:'CF 중견'},{key:'LF',label:'LF 좌익'},{key:'RF',label:'RF 우익'},
+  {key:'SS',label:'SS 유격'},{key:'B2',label:'2B 2루'},{key:'B3',label:'3B 3루'},
+  {key:'SP',label:'SP 투수'},{key:'B1',label:'1B 1루'},{key:'C',label:'C 포수'},
+  {key:'EH',label:'EH 지명'}
+];
+let T=null, ROSTER=null, orig=null, tab='lineup';
+
+const disp = n => n.replace(/\(\d+\)$/,'');
+const clone = o => JSON.parse(JSON.stringify(o));
+
+function unlock(){
+  const v=document.getElementById('pw').value.trim();
+  if(v!==PASSWORD){ document.getElementById('gateErr').classList.add('show'); return; }
+  sessionStorage.setItem('hjAuth','1');
+  document.getElementById('gateWrap').style.display='none';
+  document.getElementById('app').style.display='';
+  boot();
+}
+if(sessionStorage.getItem('hjAuth')==='1'){
+  document.getElementById('gateWrap').style.display='none';
+  document.getElementById('app').style.display='';
+  addEventListener('DOMContentLoaded',boot);
+}
+
+async function boot(){
+  if(T) return;
+  const [r,t]=await Promise.all([
+    fetch('data/roster.json?v='+Date.now()).then(x=>x.json()),
+    fetch('data/current.json?v='+Date.now()).then(x=>x.json())
+  ]);
+  ROSTER=r; T=t;
+  orig={roster:clone(r), lineups:clone(t.lineups)};
+  document.getElementById('tName').textContent=T.shortName||T.name;
+  document.getElementById('tSub').textContent=`화정 ${T.games.length}경기 · 선수 ${Object.keys(ROSTER).length}명`;
+  if(API) document.getElementById('demoNote').style.display='none';
+  renderLineup(); renderRoster(); dirtyCheck();
+}
+
+function setTab(t){
+  tab=t;
+  document.getElementById('tabL').className='tab'+(t==='lineup'?' on':'');
+  document.getElementById('tabR').className='tab'+(t==='roster'?' on':'');
+  document.getElementById('paneLineup').style.display=t==='lineup'?'':'none';
+  document.getElementById('paneRoster').style.display=t==='roster'?'':'none';
+}
+
+function names(){ return Object.keys(ROSTER).sort((a,b)=>disp(a).localeCompare(disp(b),'ko')); }
+
+function renderLineup(){
+  const byDate={};
+  T.games.forEach(g=>{ (byDate[g.date]=byDate[g.date]||[]).push(g); });
+  document.getElementById('paneLineup').innerHTML = Object.entries(byDate).map(([d,gs])=>`
+    <div class="dlbl">📅 ${d}(${gs[0].dow}요일)</div>
+    ${gs.map(g=>{
+      const lu=T.lineups[g.id]||{};
+      const n=POS.filter(p=>lu[p.key]).length;
+      return `<div class="gsec" id="sec${g.id}">
+        <div class="ghead" onclick="toggle('${g.id}')">
+          <div class="gh-main">
+            <div class="gh-t">${g.left} vs ${g.right}</div>
+            <div class="gh-s">${g.time} · ${g.cat} · ${g.venue}</div>
+          </div>
+          <span class="gh-n" id="cnt${g.id}">${n}명</span>
+          <span class="chev">▾</span>
+        </div>
+        <div class="gbody">
+          ${POS.map(p=>`<div class="prow">
+            <span class="plab">${p.label}</span>
+            <select id="s_${g.id}_${p.key}" onchange="pick('${g.id}','${p.key}',this.value)">
+              <option value="">— 선택 안 함 —</option>
+              ${names().map(nm=>`<option value="${nm}"${lu[p.key]===nm?' selected':''}>${disp(nm)}${ROSTER[nm].num?'  '+ROSTER[nm].num:''}</option>`).join('')}
+            </select>
+          </div>`).join('')}
+          <div class="ghint" id="hint${g.id}"></div>
+        </div>
+      </div>`;
+    }).join('')}`).join('');
+  T.games.forEach(g=>paint(g.id));
+}
+
+function toggle(id){ document.getElementById('sec'+id).classList.toggle('open'); }
+
+function pick(gid,key,val){
+  T.lineups[gid]=T.lineups[gid]||{};
+  T.lineups[gid][key]=val;
+  paint(gid); dirtyCheck();
+}
+
+function paint(gid){
+  const lu=T.lineups[gid]||{};
+  const seen={}, dups=new Set();
+  POS.forEach(p=>{ const v=lu[p.key]; if(!v) return; if(seen[v]) dups.add(v); seen[v]=1; });
+  POS.forEach(p=>{
+    const el=document.getElementById(`s_${gid}_${p.key}`); if(!el) return;
+    el.className = (!lu[p.key]?'empty ':'') + (lu[p.key]&&dups.has(lu[p.key])?'dup':'');
+  });
+  const n=POS.filter(p=>lu[p.key]).length;
+  const cnt=document.getElementById('cnt'+gid);
+  cnt.textContent=n+'명'; cnt.className='gh-n'+(dups.size?' warn':'');
+  const h=document.getElementById('hint'+gid);
+  if(dups.size){ h.textContent='⚠️ 같은 선수가 두 자리에 있습니다: '+[...dups].map(disp).join(', '); h.classList.add('show'); }
+  else h.classList.remove('show');
+}
+
+function renderRoster(){
+  document.getElementById('paneRoster').innerHTML=`
+    <div class="radd">
+      <input class="nm" id="newName" placeholder="선수 이름" autocomplete="off">
+      <input class="nu" id="newNum" placeholder="등번호" inputmode="numeric" autocomplete="off">
+      <button onclick="addPlayer()">추가</button>
+    </div>
+    <div class="rlist">
+      ${names().map(n=>`<div class="ritem">
+        <span class="rn">${disp(n)}</span>
+        <input value="${ROSTER[n].num||''}" placeholder="—" inputmode="numeric"
+               onchange="setNum('${n}',this.value)">
+        <button class="rdel" onclick="delPlayer('${n}')">삭제</button>
+      </div>`).join('')}
+    </div>`;
+}
+
+function setNum(n,v){ ROSTER[n].num=v.trim(); dirtyCheck(); }
+
+function addPlayer(){
+  const nm=document.getElementById('newName').value.trim();
+  const nu=document.getElementById('newNum').value.trim();
+  if(!nm) return;
+  let key=nm;
+  if(ROSTER[nm]!==undefined || Object.keys(ROSTER).some(k=>disp(k)===nm)){
+    if(!nu){ alert('같은 이름의 선수가 있습니다. 구분을 위해 등번호를 입력하세요.'); return; }
+    key=`${nm}(${nu})`;
+  }
+  if(ROSTER[key]){ alert('이미 등록된 선수입니다.'); return; }
+  ROSTER[key]={num:nu};
+  document.getElementById('newName').value='';
+  document.getElementById('newNum').value='';
+  renderRoster(); renderLineup(); dirtyCheck();
+}
+
+function delPlayer(n){
+  const used=T.games.filter(g=>Object.values(T.lineups[g.id]||{}).includes(n));
+  if(used.length){
+    alert(`${disp(n)} 선수는 ${used.length}개 경기 라인업에 들어 있습니다.\n먼저 해당 경기에서 빼주세요.`);
+    return;
+  }
+  if(!confirm(`${disp(n)} 선수를 명단에서 지울까요?`)) return;
+  delete ROSTER[n];
+  renderRoster(); renderLineup(); dirtyCheck();
+}
+
+function diff(){
+  const out=[];
+  T.games.forEach(g=>{
+    const a=orig.lineups[g.id]||{}, b=T.lineups[g.id]||{};
+    POS.forEach(p=>{
+      const x=a[p.key]||'', y=b[p.key]||'';
+      if(x!==y) out.push({type:'lineup',g,pos:p.label,from:x,to:y});
+    });
+  });
+  Object.keys(ROSTER).forEach(n=>{
+    if(!orig.roster[n]) out.push({type:'add',name:n,num:ROSTER[n].num});
+    else if((orig.roster[n].num||'')!==(ROSTER[n].num||''))
+      out.push({type:'num',name:n,from:orig.roster[n].num||'없음',to:ROSTER[n].num||'없음'});
+  });
+  Object.keys(orig.roster).forEach(n=>{ if(!ROSTER[n]) out.push({type:'del',name:n}); });
+  return out;
+}
+
+function dirtyCheck(){
+  const d=diff();
+  document.getElementById('saveBtn').disabled = d.length===0;
+  document.getElementById('saveNote').textContent =
+    d.length===0 ? '변경한 내용이 없습니다' : `${d.length}건 변경됨`;
+}
+
+function changeHtml(d){
+  if(!d.length) return '<span class="none">변경한 내용이 없습니다.</span>';
+  const L=d.filter(x=>x.type==='lineup'), R=d.filter(x=>x.type!=='lineup');
+  let h='';
+  if(L.length){
+    h+='<b>라인업</b><br>';
+    L.forEach(x=>{
+      h+=`· ${x.g.date} ${x.g.cat} — ${x.pos}: `+
+         `<code>${x.from?disp(x.from):'빈자리'}</code> → <code>${x.to?disp(x.to):'빈자리'}</code><br>`;
+    });
+  }
+  if(R.length){
+    h+=(L.length?'<br>':'')+'<b>선수 명단</b><br>';
+    R.forEach(x=>{
+      if(x.type==='add') h+=`· 추가: ${disp(x.name)} ${x.num||'(번호 없음)'}<br>`;
+      if(x.type==='del') h+=`· 삭제: ${disp(x.name)}<br>`;
+      if(x.type==='num') h+=`· ${disp(x.name)} 등번호 ${x.from} → ${x.to}<br>`;
+    });
+  }
+  return h;
+}
+
+function stamp(){
+  const d=new Date(), p=n=>String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+
+async function save(){
+  const d=diff();
+  if(!d.length) return;
+  if(!API){
+    document.getElementById('pvTitle').textContent='이렇게 저장됩니다';
+    document.getElementById('pvBody').innerHTML=changeHtml(d)+
+      '<br><br><span class="none">미리보기 모드라 실제로는 저장되지 않았습니다.</span>';
+    document.getElementById('pv').classList.add('open');
+    return;
+  }
+  const btn=document.getElementById('saveBtn');
+  btn.disabled=true; btn.textContent='저장 중…';
+  try{
+    T.updated=stamp();
+    const res=await fetch(API,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({password:PASSWORD, current:T, roster:ROSTER})
+    });
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    orig={roster:clone(ROSTER), lineups:clone(T.lineups)};
+    document.getElementById('pvTitle').textContent='저장했습니다';
+    document.getElementById('pvBody').innerHTML=changeHtml(d)+
+      '<br><br><span class="none">1~2분 뒤 대시보드에 반영됩니다.</span>';
+    document.getElementById('pv').classList.add('open');
+  }catch(e){
+    alert('저장하지 못했습니다.\n잠시 뒤 다시 시도해 주세요.\n\n'+e.message);
+  }finally{
+    btn.textContent='저장하기'; dirtyCheck();
+  }
+}
+
+function closePv(){ document.getElementById('pv').classList.remove('open'); }
+</script>
+</body>
+</html>
